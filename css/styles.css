@@ -1,0 +1,29 @@
+nav {
+    background-color: aqua;
+    padding-bottom: 20px;
+}
+
+.chatbot-header {
+    padding-bottom: 100px;
+}
+
+.chatbot-window {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    margin: 0 20px 0 20px;
+    background-color: blanchedalmond;
+}
+
+.chatbot-footer {
+    padding-top: 100px;
+    vertical-align: bottom;
+    padding-bottom: 10px;
+}
+
+.container-lg {
+    background-color: beige;
+}
+
+.message {
+    background-color: bisque;
+}
