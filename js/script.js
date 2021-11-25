@@ -1,8 +1,20 @@
+const url = '/send';
 function sendMessage() {
     let message = document.querySelector('#sendMessage').value;
+    document.querySelector('#textWindow').innerHTML += `<div class="message">${message}</div>`;
     if (message) {
-        document.querySelector('#textWindow').innerHTML += `<div class="message">${message}</div>`;
+        //isPending = true;
         document.querySelector('#sendMessage').value = "";
+        // fetch(url)
+        // .then(res => {
+        //     if (!res.ok) {
+        //         throw Error('Could not fetch the data for this message')
+        //     }
+        // })
+        // .then(data => {
+        //     document.querySelector('#textWindow').innerHTML += `<div class="message">${data}</div>`;
+        //     //isPending = false
+        // })
     }
 }
 
