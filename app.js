@@ -5,8 +5,8 @@ const path = require("path");
 const app = express();
 
 app.use(require("morgan")("combined"));
-app.use(require("body-parser").urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json({ limit: "50mb", extended: true }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(
   require("express-session")({
     secret: "keyboard cat",
@@ -27,11 +27,10 @@ const assistant = new AssistantV2({
     "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/8d74b58f-52d4-4fed-971f-15abc4c09151",
 });
 
-const messages = [];
 const AssistantId = "5b1b16e6-2b64-4e35-952a-bc7eb3380250";
 
-app.use("/css", express.static(path.join(__dirname, "css")));
-app.use("/js", express.static(path.join(__dirname, "js")));
+app.use("/css", express.static(path.join(__dirname, "src", "css")));
+app.use("/js", express.static(path.join(__dirname, "src", "js")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
@@ -57,7 +56,7 @@ app.post("/createsession", (req, res) => {
 app.post("/deletesession", (req, res) => {
   let sessionId = req.body.sessionId;
   if (sessionId == null) {
-    res.status(500).send("Session Id is missing");
+    res.status(500).send("Session ID is missing");
   }
 
   assistant
@@ -97,8 +96,6 @@ app.post("/send", (req, res) => {
       },
     })
     .then((response) => {
-      //   console.log(JSON.stringify(response.result, null, 2));
-
       let answers = response.result.output.generic ?? [];
       let parsed = extractAnswers(answers);
 
