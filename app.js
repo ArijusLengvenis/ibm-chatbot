@@ -18,6 +18,7 @@ app.use(
 const AssistantV2 = require("ibm-watson/assistant/v2");
 const { IamAuthenticator } = require("ibm-watson/auth");
 
+const AssistantId = "5b1b16e6-2b64-4e35-952a-bc7eb3380250"
 const assistant = new AssistantV2({
   version: "2021-06-14",
   authenticator: new IamAuthenticator({
@@ -140,7 +141,7 @@ function parseSearchAnswer(answer) {
     results.push({
       title: primaryResult.title,
       body: primaryResult.body,
-      score: primaryResult.result_metadata.score,
+      score: primaryResult.result_metadata.confidence,
     });
   }
 

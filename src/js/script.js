@@ -1,4 +1,5 @@
 const url = 'http://localhost:8081/send';
+let sessionId = null
 function sendMessage() {
     const message = document.querySelector('#textBox').value;
     document.querySelector('.chatBox').innerHTML += `<div class="messageDiv messageDivRight">
@@ -6,6 +7,12 @@ function sendMessage() {
         <p class="messageText">${message}</p>
     </div>
 </div>`;
+
+    if (!sessionId) {
+        alert("Session not initialized yet, please wait")
+        return;
+    }
+
     if (message) {
         //isPending = true;
         console.log(JSON.stringify(message))
@@ -14,14 +21,14 @@ function sendMessage() {
             method: 'POST',
             headers: { "Content-Type": "application/json",
         "Header1": "H1"},
-            body: JSON.stringify({ message: message })
+            body: JSON.stringify({ message: message, sessionId: sessionId })
           })
         .then(res => res.json())
         .then(data => {
             console.log(data)
             document.querySelector('.chatBox').innerHTML += `<div class="messageDiv messageDivLeft">
             <div class="messageBox">
-                <p class="messageText">${data.message}</p>
+                <p class="messageText">${data[0].text}</p>
             </div>
         </div>`;
             //isPending = false
@@ -32,6 +39,20 @@ function sendMessage() {
     }
 }
 
+function initChatbotSession() {
+    fetch("/createsession", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }
+    })
+    .then(res => res.json())
+    .then(data => {
+        sessionId = data.session_id
+    })
+    .catch(err => {
+        console.error(err)
+    })
+}
+
 const chatbot = document.querySelector('.generalBox');
 chatbot.addEventListener('keydown', (event) => {
     if (event.keyCode === 13) {
@@ -39,3 +60,4 @@ chatbot.addEventListener('keydown', (event) => {
         document.querySelector('.submitButton').click();
     }
 });
+initChatbotSession()
