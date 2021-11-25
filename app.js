@@ -27,8 +27,7 @@ const assistant = new AssistantV2({
     "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/8d74b58f-52d4-4fed-971f-15abc4c09151",
 });
 
-app.use("/css", express.static(path.join(__dirname, "css")));
-app.use("/js", express.static(path.join(__dirname, "js")));
+app.use("/src", express.static(path.join(__dirname, "src")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
