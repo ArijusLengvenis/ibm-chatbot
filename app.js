@@ -6,6 +6,7 @@ const app = express();
 
 app.use(require("morgan")("combined"));
 app.use(require("body-parser").urlencoded({ extended: true }));
+app.use(express.json());
 app.use(
   require("express-session")({
     secret: "keyboard cat",
@@ -27,6 +28,7 @@ const assistant = new AssistantV2({
 });
 
 const messages = [];
+const AssistantId = "5b1b16e6-2b64-4e35-952a-bc7eb3380250";
 
 app.use("/css", express.static(path.join(__dirname, "css")));
 app.use("/js", express.static(path.join(__dirname, "js")));
@@ -35,23 +37,130 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.post("/send", (req, res) => {
+app.post("/createsession", (req, res) => {
   assistant
-    .message({
-      assistantId: "9955da3f-87d4-4b4f-bed8-6760883dc224",
-      sessionId: "8d74b58f-52d4-4fed-971f-15abc4c09151",
-      input: {
-        message_type: "text",
-        text: req.body.message,
-      },
+    .createSession({
+      assistantId: AssistantId,
     })
-    .then((res) => {
-      console.log(JSON.stringify(res.result, null, 2));
-      messages.push(res.result);
+    .then((response) => {
+      let sessionId = response.result.session_id;
+      res.status(200).json({
+        session_id: sessionId,
+      });
     })
     .catch((err) => {
       console.log(err);
+      res.status(500).send(err);
     });
 });
+
+app.post("/deletesession", (req, res) => {
+  let sessionId = req.body.sessionId;
+  if (sessionId == null) {
+    res.status(500).send("Session Id is missing");
+  }
+
+  assistant
+    .deleteSession({
+      assistantId: AssistantId,
+      sessionId: sessionId,
+    })
+    .then((response) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send(err);
+    });
+});
+
+app.post("/send", (req, res) => {
+  let sessionId = req.body.sessionId;
+  if (sessionId == null) {
+    res.status(500).send("Session Id is missing");
+    return;
+  }
+
+  let message = req.body.message;
+  if (message == null) {
+    res.status(500).send("Message is missing");
+    return;
+  }
+
+  assistant
+    .message({
+      assistantId: AssistantId,
+      sessionId: sessionId,
+      input: {
+        message_type: "text",
+        text: message,
+      },
+    })
+    .then((response) => {
+      //   console.log(JSON.stringify(response.result, null, 2));
+
+      let answers = response.result.output.generic ?? [];
+      let parsed = extractAnswers(answers);
+
+      res.status(200).json(parsed);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send(err);
+    });
+});
+
+function extractAnswers(answers) {
+  let parsed = [];
+  for (let answer of answers) {
+    switch (answer.response_type) {
+      case "search":
+        var ans = parseSearchAnswer(answer);
+        if (ans != null) {
+          parsed.push(ans);
+        }
+        break;
+      case "text":
+        var ans = parseTextAnswer(answer);
+        if (ans != null) {
+          parsed.push(ans);
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  return parsed;
+}
+
+function parseTextAnswer(answer) {
+  return {
+    text: answer.text,
+  };
+}
+
+function parseSearchAnswer(answer) {
+  let results = [];
+  for (let primaryResult of answer.primary_results) {
+    results.push({
+      title: primaryResult.title,
+      body: primaryResult.body,
+      score: primaryResult.result_metadata.score,
+    });
+  }
+
+  results.sort((a, b) => {
+    return b.score - a.score;
+  });
+
+  if (results.length == 0) {
+    return null;
+  } else {
+    return {
+      text: results[0].body,
+    };
+  }
+}
 
 module.exports = app;
