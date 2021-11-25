@@ -1,8 +1,26 @@
+const url = 'http://localhost:8081/send';
 function sendMessage() {
-    let message = document.querySelector('#sendMessage').value;
+    const message = document.querySelector('#sendMessage').value;
+    document.querySelector('#textWindow').innerHTML += `<div class="message">${message}</div>`;
     if (message) {
-        document.querySelector('#textWindow').innerHTML += `<div class="message">${message}</div>`;
+        //isPending = true;
+        console.log(JSON.stringify(message))
         document.querySelector('#sendMessage').value = "";
+        fetch(url, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json",
+        "Header1": "H1"},
+            body: JSON.stringify({ message: message })
+          })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            document.querySelector('#textWindow').innerHTML += `<div class="message">${data.message}</div>`;
+            //isPending = false
+        })
+        .catch(error => {
+            console.error('Error: ',error);
+        })
     }
 }
 
@@ -13,3 +31,7 @@ chatbot.addEventListener('keydown', (event) => {
         document.querySelector('#sendMessageButton').click();
     }
 });
+
+function doThing(){
+    console.log('adadsdas')
+}
