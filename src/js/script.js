@@ -26,11 +26,13 @@ function sendMessage() {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            document.querySelector('.chatBox').innerHTML += `<div class="messageDiv messageDivLeft">
-            <div class="messageBox">
-                <p class="messageText">${data[0].text}</p>
-            </div>
-        </div>`;
+            if (data.length > 0) {
+                document.querySelector('.chatBox').innerHTML += `<div class="messageDiv messageDivLeft">
+                <div class="messageBox">
+                    <p class="messageText">${data[0].text}</p>
+                </div>
+            </div>`;
+            }
             //isPending = false
         })
         .catch(error => {

@@ -28,6 +28,21 @@ const assistant = new AssistantV2({
     "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/8d74b58f-52d4-4fed-971f-15abc4c09151",
 });
 
+// FORMAT OUR API RESPONDS WITH
+class APIResponse {
+    header;
+    text;
+    confidence = 1;
+
+    json() {
+        return {
+            header: this.header,
+            text: this.text,
+            confidence: this.confidence
+        }
+    }
+}
+
 app.use("/src", express.static(path.join(__dirname, "src")));
 
 app.get("/", (req, res) => {
@@ -112,7 +127,7 @@ function extractAnswers(answers) {
       case "search":
         var ans = parseSearchAnswer(answer);
         if (ans != null) {
-          parsed.push(ans);
+          parsed = [...parsed, ...ans]
         }
         break;
       case "text":
@@ -130,31 +145,39 @@ function extractAnswers(answers) {
 }
 
 function parseTextAnswer(answer) {
-  return {
-    text: answer.text,
-  };
+    let apiResponse = new APIResponse()
+    apiResponse.text = answer.text
+    return apiResponse.json()
 }
 
 function parseSearchAnswer(answer) {
   let results = [];
+
+  if (answer.primary_results.length == 0) {
+    let apiResponse = new APIResponse()
+    apiResponse.text = answer.header
+    return [apiResponse.json()]
+  }
+
   for (let primaryResult of answer.primary_results) {
-    results.push({
-      title: primaryResult.title,
-      body: primaryResult.body,
-      score: primaryResult.result_metadata.confidence,
-    });
+    let apiResponse = new APIResponse()
+    apiResponse.header = primaryResult.title
+    apiResponse.text = primaryResult.body
+    apiResponse.confidence = primaryResult.result_metadata.confidence
+    results.push(apiResponse.json());
   }
 
   results.sort((a, b) => {
-    return b.score - a.score;
+    return b.confidence - a.confidence;
   });
 
+  let MAX_RESULTS = 2
   if (results.length == 0) {
     return null;
+  } else if (results.length > MAX_RESULTS) {
+    return results.slice(0, MAX_RESULTS)
   } else {
-    return {
-      text: results[0].body,
-    };
+      return results
   }
 }
 
