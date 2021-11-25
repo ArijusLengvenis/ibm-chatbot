@@ -1,0 +1,51 @@
+body{
+    width: 100vw;
+    background-color: palevioletred;
+    justify-content: center;
+    display:flex;
+}
+
+.generalBox{
+    width: 1000px;
+    height: 100vh;
+    background-color: lightgrey;
+}
+
+.chatBox{
+    overflow: auto;
+    max-height: 90vh;
+    margin-bottom: 100px;
+}
+
+.messageDiv{
+    width: 100%;
+    height: auto;
+    padding: 2px;
+    display: flex;
+}
+
+.messageDivLeft{
+    justify-content: left;
+}
+
+.messageDivRight{
+    justify-content: right;
+}
+
+.messageBox{
+    height: auto;
+    max-width: 450px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+
+    border: solid hotpink 3px;
+    border-radius: 30px;
+}
+
+.messageText{
+
+}
