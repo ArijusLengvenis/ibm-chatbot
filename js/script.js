@@ -13,3 +13,7 @@ chatbot.addEventListener('keydown', (event) => {
         document.querySelector('#sendMessageButton').click();
     }
 });
+
+function doThing(){
+    console.log('adadsdas')
+}
