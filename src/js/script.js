@@ -1,11 +1,15 @@
 const url = 'http://localhost:8081/send';
 function sendMessage() {
-    const message = document.querySelector('#sendMessage').value;
-    document.querySelector('#textWindow').innerHTML += `<div class="message">${message}</div>`;
+    const message = document.querySelector('#textBox').value;
+    document.querySelector('.chatBox').innerHTML += `<div class="messageDiv messageDivRight">
+    <div class="messageBox">
+        <p class="messageText">${message}</p>
+    </div>
+</div>`;
     if (message) {
         //isPending = true;
         console.log(JSON.stringify(message))
-        document.querySelector('#sendMessage').value = "";
+        document.querySelector('#textBox').value = "";
         fetch(url, {
             method: 'POST',
             headers: { "Content-Type": "application/json",
@@ -15,7 +19,11 @@ function sendMessage() {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            document.querySelector('#textWindow').innerHTML += `<div class="message">${data.text}</div>`;
+            document.querySelector('.chatBox').innerHTML += `<div class="messageDiv messageDivLeft">
+            <div class="messageBox">
+                <p class="messageText">${data.message}</p>
+            </div>
+        </div>`;
             //isPending = false
         })
         .catch(error => {
@@ -24,14 +32,10 @@ function sendMessage() {
     }
 }
 
-const chatbot = document.querySelector('.chatbot-body');
+const chatbot = document.querySelector('.generalBox');
 chatbot.addEventListener('keydown', (event) => {
     if (event.keyCode === 13) {
         event.preventDefault();
-        document.querySelector('#sendMessageButton').click();
+        document.querySelector('.submitButton').click();
     }
 });
-
-function doThing(){
-    console.log('adadsdas')
-}
