@@ -1,29 +1,51 @@
-nav {
-    background-color: aqua;
-    padding-bottom: 20px;
+body{
+    width: 100vw;
+    background-color: palevioletred;
+    justify-content: center;
+    display:flex;
 }
 
-.chatbot-header {
-    padding-bottom: 100px;
+.generalBox{
+    width: 1000px;
+    height: 100vh;
+    background-color: lightgrey;
 }
 
-.chatbot-window {
-    padding-top: 200px;
-    padding-bottom: 200px;
-    margin: 0 20px 0 20px;
-    background-color: blanchedalmond;
+.chatBox{
+    overflow: auto;
+    max-height: 90vh;
+    margin-bottom: 100px;
 }
 
-.chatbot-footer {
-    padding-top: 100px;
-    vertical-align: bottom;
-    padding-bottom: 10px;
+.messageDiv{
+    width: 100%;
+    height: auto;
+    padding: 2px;
+    display: flex;
 }
 
-.container-lg {
-    background-color: beige;
+.messageDivLeft{
+    justify-content: left;
 }
 
-.message {
-    background-color: bisque;
+.messageDivRight{
+    justify-content: right;
+}
+
+.messageBox{
+    height: auto;
+    max-width: 450px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+
+    border: solid hotpink 3px;
+    border-radius: 30px;
+}
+
+.messageText{
+
 }
