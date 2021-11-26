@@ -3,6 +3,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
+const whiteList = [{ username: 'admin', password: 'admin' }];
 
 app.use(require("morgan")("combined"));
 app.use(express.json({ limit: "50mb", extended: true }));
@@ -67,7 +68,7 @@ app.post("/createsession", (req, res) => {
 });
 
 app.post("/deletesession", (req, res) => {
-  let sessionId = req.body.sessionId;
+  const sessionId = req.body.sessionId;
   if (sessionId == null) {
     res.status(500).send("Session ID is missing");
   }
@@ -87,13 +88,13 @@ app.post("/deletesession", (req, res) => {
 });
 
 app.post("/send", (req, res) => {
-  let sessionId = req.body.sessionId;
+  const sessionId = req.body.sessionId;
   if (sessionId == null) {
     res.status(500).send("Session Id is missing");
     return;
   }
 
-  let message = req.body.message;
+  const message = req.body.message;
   if (message == null) {
     res.status(500).send("Message is missing");
     return;
@@ -109,8 +110,8 @@ app.post("/send", (req, res) => {
       },
     })
     .then((response) => {
-      let answers = response.result.output.generic ?? [];
-      let parsed = extractAnswers(answers);
+      const answers = response.result.output.generic ?? [];
+      const parsed = extractAnswers(answers);
 
       res.status(200).json(parsed);
     })
@@ -119,6 +120,20 @@ app.post("/send", (req, res) => {
       res.status(500).send(err);
     });
 });
+
+app.post("/authenticate", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  if (username && password) {
+    if (whiteList.some(member => member.username === username && member.password === password)) {
+        res.status(200).json("Redirecting...")
+    }
+    else {
+        res.status(500).json("Wrong credentials")
+    }
+  }
+})
+
 
 function extractAnswers(answers) {
   let parsed = [];

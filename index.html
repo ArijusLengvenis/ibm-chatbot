@@ -10,6 +10,15 @@
 
     <body>
         <div class="generalBox">
+            <div class="authentication">
+                <form action="http://localhost:8081/authenticate" method="POST">
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" placeholder="username">
+                    <label for="password">Password: </label>
+                    <input type="text" name="password" placeholder="password">
+                    <button type="submit">Log in</button>
+                </form>
+            </div>
             <div class="chatBox">
                 <div class="messageDiv messageDivLeft">
                     <div class="messageBox">
@@ -34,13 +43,11 @@
 
 
             <div class="submitDiv">
-                <label for="textBox">First name:</label>
+                <label for="textBox">Write your question here:</label>
                 <input type="text" id="textBox" name="textBox">
 
                 <button class="submitButton" onclick="sendMessage()">Submit</button>
             </div>
-
-
 
 
             </div>
