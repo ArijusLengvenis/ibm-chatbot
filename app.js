@@ -186,7 +186,7 @@ function parseSearchAnswer(answer) {
     return b.confidence - a.confidence;
   });
 
-  let MAX_RESULTS = 2
+  const MAX_RESULTS = 2
   if (results.length == 0) {
     return null;
   } else if (results.length > MAX_RESULTS) {
