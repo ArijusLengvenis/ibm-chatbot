@@ -25,6 +25,20 @@ function sendMessage() {
         })
     .then(res => res.json())
     .then(data => {
+        //RETURNED WATSON ASSISTANT ANSWER
+        /*
+            The answer (data) returned is an array (max size of 5, but could vary) of objects containing
+            The header, text, document url and confidence metrics.
+
+            Current plan of implementation:
+            * Display top 2 answers with the Bot explaining "Is this what you wanted" or
+                "This is something else I found.." along with the heading and answer.
+            * Hiding the rest behind a "Reveal more" button. 
+                Once pressed the button will reveal the next (up to 3) most confident answers. 
+            * If a message is clicked, it takes the user to the full document of the particular answer.
+            * While the chatbot was "thinking" it would display a loading signal of some kind
+                (isPending stands for the variable which controls this signal)
+        */
         if (data.length > 0) {
             document.querySelector('.chatBox').innerHTML += `<div class="messageDiv messageDivLeft">
             <div class="messageBox">

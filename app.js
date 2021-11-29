@@ -44,6 +44,21 @@ class APIResponse {
     }
 }
 
+app.on('listening', () => {
+  /*
+    On server startup - check current commit hashes on github;
+    If hashes match, initialize a 24 hour timer to repeat the action and do nothing;
+    If they do not match:
+      * Run updateDiscoveryRepo() - returns the current commit hash as output;
+        Inside the function:
+          * clone current repository locally;
+          * take specific file(s) out of repo for extraction (denoted by the "extraction" feature in the obj);
+          * use the new files to update Discovery using the API (deleting the old file in the process);
+      * Replace the commit hash with the new one;
+      * Wait 24 hours to repeat the check.
+  */
+});
+
 app.use("/src", express.static(path.join(__dirname, "src")));
 
 app.get("/", (req, res) => {
@@ -124,6 +139,15 @@ app.post("/send", (req, res) => {
 app.post("/authenticate", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
+  /*
+    IMPLEMENT LATER:
+
+    Send username and password to WA through an encrypted channel;
+    If positive authentication token received, then reroute,
+    else throw error.
+
+    Eliminate whitelist from server.
+  */
   if (username && password) {
     if (whiteList.some(member => member.username === username && member.password === password)) {
         res.status(200).redirect('https://eu-gb.discovery.watson.cloud.ibm.com/regions/eu-gb/services/crn%3Av1%3Abluemix%3Apublic%3Adiscovery%3Aeu-gb%3Aa%2Fe249219992a043ae9bbf3a2d3997ce9d%3A0827ccfe-7eb7-4648-b371-a836867b4ba5%3A%3A')
