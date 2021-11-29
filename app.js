@@ -174,19 +174,19 @@ function parseSearchAnswer(answer) {
     return [apiResponse.json()]
   }
 
-  for (let primaryResult of answer.primary_results) {
+  for (let result of [...answer.primary_results, ...answer.additional_results]) {
     let apiResponse = new APIResponse()
-    apiResponse.header = primaryResult.title
-    apiResponse.text = primaryResult.body
-    apiResponse.confidence = primaryResult.result_metadata.confidence
+    apiResponse.header = result.title
+    apiResponse.text = result.body
+    apiResponse.confidence = result.result_metadata.confidence
     results.push(apiResponse.json());
   }
-
+  
   results.sort((a, b) => {
     return b.confidence - a.confidence;
   });
 
-  const MAX_RESULTS = 2
+  const MAX_RESULTS = 5
   if (results.length == 0) {
     return null;
   } else if (results.length > MAX_RESULTS) {
