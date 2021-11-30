@@ -68,7 +68,7 @@ function initChatbotSession() {
     })
 }
 
-const chatbot = document.querySelector('.chatBox');
+const chatbot = document.querySelector('.submitDiv');
 chatbot.addEventListener('keydown', (event) => {
     if (event.keyCode === 13) {
         event.preventDefault();

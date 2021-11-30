@@ -127,7 +127,7 @@ app.post("/send", async (req, res) => {
   }
 
   try {
-    let answers = await getAnswersToQuery(sessionId, message)
+    const answers = await getAnswersToQuery(sessionId, message)
     res.status(200).json(answers)
   } catch(err) {
     console.error(err)
@@ -156,7 +156,7 @@ app.post("/rate", async (req, res) => {
   }
 
   try {
-    let existingQueryId = await getTrainingQueryId(query)
+    const existingQueryId = await getTrainingQueryId(query)
     if (existingQueryId) {
       addExampleToTrainingQuery(existingQueryId, documentId, isRelevant)
     } else {
@@ -198,7 +198,7 @@ function getRelevance(isRelevant) {
 // List all training queries
 async function getTrainingQueries() {
   try {
-    let trainingDataSet = await discovery.listTrainingData({
+    const trainingDataSet = await discovery.listTrainingData({
       environmentId: DiscoveryEnvironmentId,
       collectionId: DiscoveryCollectionId
     })
@@ -211,8 +211,8 @@ async function getTrainingQueries() {
 // Get query_id of a query (given that it exists)
 async function getTrainingQueryId(query) {
   try {
-    let trainingQueries = await getTrainingQueries()
-    let filteredQueries = trainingQueries.filter(trainingQuery => {
+    const trainingQueries = await getTrainingQueries()
+    const filteredQueries = trainingQueries.filter(trainingQuery => {
       return trainingQuery.natural_language_query == query.toLowerCase().trim()
     })
     if (filteredQueries.length == 0) {
@@ -228,7 +228,7 @@ async function getTrainingQueryId(query) {
 // Add new training query
 async function addNewTrainingQuery(query, documentId, isRelevant) {
   try {
-    let trainingQuery = await discovery.addTrainingData({
+    const trainingQuery = await discovery.addTrainingData({
       environmentId: DiscoveryEnvironmentId,
       collectionId: DiscoveryCollectionId,
       naturalLanguageQuery: query,
@@ -261,7 +261,7 @@ async function addExampleToTrainingQuery(queryId, documentId, isRelevant) {
 // Answer a question using Watson Assistant
 async function getAnswersToQuery(sessionId, query) {
   try {
-    let response = await assistant.message({
+    const response = await assistant.message({
       assistantId: AssistantId,
       sessionId: sessionId,
       input: {
@@ -269,8 +269,8 @@ async function getAnswersToQuery(sessionId, query) {
         text: query,
       },
     })
-    let rawAnswers = response.result.output.generic ?? [];
-    let extractedAnswers = extractAnswers(rawAnswers)
+    const rawAnswers = response.result.output.generic ?? [];
+    const extractedAnswers = extractAnswers(rawAnswers)
     return extractedAnswers
   } catch (err) {
     throw err
@@ -289,7 +289,7 @@ function extractAnswers(answers) {
 
   // Convert search answer to APIReponse class
   function parseSearchAnswer(answer) {
-  let results = [];
+  const results = [];
 
   if (answer.primary_results.length == 0) {
     let apiResponse = new APIResponse()
@@ -320,7 +320,7 @@ function extractAnswers(answers) {
   }
   }
 
-  let parsed = [];
+  const parsed = [];
   for (let answer of answers) {
     switch (answer.response_type) {
       case "search":
