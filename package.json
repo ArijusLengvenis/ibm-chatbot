@@ -5,8 +5,11 @@
   "main": "app.js",
   "scripts": {
     "pre-test": "eslint .",
-    "start": "nodemon node server.js"
+    "prefix": "postcss src/css/styles.min.css --use autoprefixer -d src/css/",
+    "sass": "sass src/scss/styles.scss src/css/styles.min.css --style compressed && npm run prefix",
+    "start": "nodemon server.js"
   },
+  "browserslist": "last 4 versions",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ArijusLengvenis/SE-Assignment-IBM-ChatBot.git"
@@ -25,6 +28,7 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^5.0.0-beta1",
     "bootstrap-icons": "^1.2.2",
@@ -33,6 +37,9 @@
     "express-session": "^1.17.2",
     "ibm-watson": "^6.2.1",
     "jquery": ">=3.4.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "postcss": "^8.4.4",
+    "postcss-cli": "^9.0.2",
+    "sass": "^1.44.0"
   }
 }

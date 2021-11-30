@@ -73,7 +73,8 @@ app.on('listening', () => {
   */
 });
 
-app.use("/src", express.static(path.join(__dirname, "src")));
+app.use("/css", express.static(path.join(__dirname, "src", "css")));
+app.use("/js", express.static(path.join(__dirname, "src", "js")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
