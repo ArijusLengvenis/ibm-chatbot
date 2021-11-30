@@ -320,7 +320,7 @@ function extractAnswers(answers) {
   }
   }
 
-  const parsed = [];
+  let parsed = [];
   for (let answer of answers) {
     switch (answer.response_type) {
       case "search":
