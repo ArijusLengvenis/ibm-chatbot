@@ -29,12 +29,12 @@ body{
 }
 
 .messageDivLeft{
-    justify-content: left;
+    justify-content: flex-start;
 
 }
 
 .messageDivRight{
-    justify-content: right;
+    justify-content: flex-end;
 }
 
 .messageBox{

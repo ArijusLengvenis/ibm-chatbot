@@ -87,7 +87,7 @@ app.post("/createsession", async (req, res) => {
       assistantId: AssistantId,
     })
     let sessionId = response.result.session_id;
-    res.status(200).json({
+    res.status(201).json({
       session_id: sessionId,
     });
   } catch (err) {
@@ -107,7 +107,7 @@ app.post("/deletesession", async (req, res) => {
       assistantId: AssistantId,
       sessionId: sessionId,
     })
-    res.sendStatus(200);
+    res.sendStatus(204);
   } catch(err) {
     console.error(err);
     res.status(500).send(err);
@@ -163,7 +163,7 @@ app.post("/rate", async (req, res) => {
     } else {
       addNewTrainingQuery(query, documentId, isRelevant)
     }
-    res.sendStatus(200)
+    res.sendStatus(201)
   } catch(err) {
     res.status(500).send(err)
   }
