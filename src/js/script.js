@@ -1,10 +1,14 @@
 const url = 'http://localhost:8081/send';
 let sessionId = null;
+let id = 0;
+let messages = {};
 
 function sendMessage() {
     const message = document.querySelector('#textBox').value;
     if (!message) return;
-    document.querySelector('.chatBox').innerHTML += generateHTML(message, 'right');
+    document.querySelector('.chatBox').innerHTML += generateHTML(message);
+    id++;
+
 
     if (!sessionId) {
         alert("Session not initialized yet, please wait")
@@ -12,7 +16,6 @@ function sendMessage() {
     }
 
     //isPending = true;
-    console.log(JSON.stringify(message))
     document.querySelector('#textBox').value = "";
     fetch(url, {
         method: 'POST',
@@ -21,49 +24,115 @@ function sendMessage() {
         })
     .then(res => res.json())
     .then(data => {
-        //RETURNED WATSON ASSISTANT ANSWER
-        /*
-            The answer (data) returned is an array (max size of 5, but could vary) of objects containing
-            The header, text, document url and confidence metrics.
-
-            Current plan of implementation:
-            * Display top 2 answers with the Bot explaining "Is this what you wanted" or
-                "This is something else I found.." along with the heading and answer.
-            * Hiding the rest behind a "Reveal more" button. 
-                Once pressed the button will reveal the next (up to 3) most confident answers. 
-            * If a message is clicked, it takes the user to the full document of the particular answer.
-            * While the chatbot was "thinking" it would display a loading signal of some kind
-                (isPending stands for the variable which controls this signal)
-        */
         if (data.length > 0) {
-            document.querySelector('.chatBox').innerHTML += generateHTML(data[0].text, 'left');
+            data.query = message;
+            messages[id]=data;
+            document.querySelector('.chatBox').innerHTML += insertAnswerMessage(data);
+            id++;
         }
         //isPending = false
     })
     .catch(error => {
-        console.error('Error: ',error);
+        console.error(error);
     })
 }
 
-function generateHTML(message, leftRight){
-    if (leftRight === 'left'){
-        return `<div class="messageDiv messageDivLeft">
-                    <img class="profilePicture" src="https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw=">
+function generateHTML(message){
+    return `<div id="message${id}" class="messageDiv messageDivRight">
+                <div class="messageBox messageBoxRight">
+                    <p class="messageText">${message}</p>
+                </div>
+                <img class="profilePicture" src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png">
+            </div>`
+}
+
+function insertAnswerMessage(messages) {
+    if (messages.length == 1){
+        return `<div id="message${id}" class="messageDiv messageDivLeft">
                     <div class="messageBox messageBoxLeft">
-                        <p class="messageText">${message}</p>
-                    </div>
-                </div>`
-    } else if (leftRight === 'right'){
-        return `<div class="messageDiv messageDivRight">
-                    <div class="messageBox messageBoxRight">
-                        <p class="messageText">${message}</p>
+                        <p class="messageText">Here is what I found:</p>
+                        <p class="messageText">${messages[0].text}</p>
+                        <button id="p${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${true})">Thumbs Up</button>
+                        <button id="n${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${false})">Thumbs Down</button>
                     </div>
                     <img class="profilePicture" src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png">
                 </div>`
     }
-
+    else if (messages.length == 2) {
+        return `<div id="message${id}" class="messageDiv messageDivLeft">
+                    <div class="messageBox messageBoxLeft">
+                        <p class="messageText">Here is what I found:</p>
+                        <p class="messageText">${messages[0].text}</p>
+                        <button id="p${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${true})">Thumbs Up</button>
+                        <button id="n${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${false})">Thumbs Down</button>
+                        <p class="messageText">This is something similar that I found:</p>
+                        <p class="messageText">${messages[1].text}</p>
+                        <button id="p${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${true})">Thumbs Up</button>
+                        <button id="n${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${false})">Thumbs Down</button>
+                    </div>
+                    <img class="profilePicture" src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png">
+                </div>`
+    }
+    
+    return `<div id="message${id}" class="messageDiv messageDivLeft">
+                <div class="messageBox messageBoxLeft">
+                    <p class="messageText">Here is what I found:</p>
+                    <p class="messageText">${messages[0].text}</p>
+                    <button id="p${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${true})">Thumbs Up</button>
+                    <button id="n${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${false})">Thumbs Down</button>
+                    <p class="messageText">This is something similar that I found:</p>
+                    <p class="messageText">${messages[1].text}</p>
+                    <button id="p${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${true})">Thumbs Up</button>
+                    <button id="n${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${false})">Thumbs Down</button>
+                    <button id="loadMore" onclick="loadMore(${id})">Load More</button>
+                </div>
+                <img class="profilePicture" src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png">
+            </div>`
 }
 
+function loadMore(messageId) {
+    const messagesHere = messages[messageId].slice(2);
+    let messageDiv = document.querySelector(`#message${messageId}`).querySelector('.messageBox');
+    messageDiv.removeChild(messageDiv.querySelector('#loadMore'));
+    document.querySelector(`#message${messageId}`).removeChild(document.querySelector(`#message${messageId}`).querySelector('img'));
+    let id = 2;
+    messageDiv.innerHTML += '<p class="messageText">Additional answers:</p>'
+    messagesHere.forEach(message => {
+        messageDiv.innerHTML += `<p class="messageText">${message.text}</p>
+                                 <button id="p${message.id}" onclick="rateAnswer(${messageId}, ${id}, ${true})">Thumbs Up</button>
+                                 <button id="n${message.id}" onclick="rateAnswer(${messageId}, ${id}, ${false})">Thumbs Down</button>`;
+        id++;
+    })
+    document.querySelector(`#message${messageId}`).innerHTML += `<img class="profilePicture" src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png"></img>`;   
+}
+
+function rateAnswer(messageId, answerId, gradient) {
+    const url = 'http://localhost:8081/rate';
+    const message = messages[messageId][answerId];
+    fetch(url, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                query: messages[messageId].query,
+                documentId: message.id,
+                relevant: gradient
+            })
+        })
+        .then(res => res.json())
+        .then((data) => {
+            console.log('Rated ',data);
+            let messageDiv = document.querySelector(`#message${messageId}`).querySelector('.messageBox');
+            messageDiv.removeChild(messageDiv.querySelector(`#p${message.id}`));
+            let feedback = document.createElement('P');
+            let feedbackText = document.createTextNode('Thank you for your answer');
+            feedback.appendChild(feedbackText);
+            console.log(feedback);
+            messageDiv.replaceChild(feedback, messageDiv.querySelector(`#n${message.id}`));
+        })
+        .catch(error => {
+            console.error(error);
+        })
+}
 
 function initChatbotSession() {
     fetch("/createsession", {
@@ -84,7 +153,6 @@ chatbot.addEventListener('keydown', (event) => {
     if (event.keyCode === 13) {
         event.preventDefault();
         document.querySelector('.submitButton').click();
-        console.log('click')
     }
 });
 initChatbotSession()
