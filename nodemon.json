@@ -1,5 +1,5 @@
 {
-    "ext": "js,json,scss,html",
+    "ext": "js,scss,html",
     "events": {
         "start": "npm run sass",
         "restart": "npm run sass"
