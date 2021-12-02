@@ -1,25 +1,67 @@
-
 $chatbot-bg-color: white;
 $user-msg-color: #606FEE;
 $chatbot-msg-color: #FEFEFE;
+$IBM-Grey-10: #f4f4f4;
+$IBM-Grey-90: #262626;
+$IBM-Grey-100: #161616;
+
+
+
+//@font-face{
+//    font-family: 'IBM Plex Sans', sans-serif;
+//    src: url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&display=swap)
+//}
+
 
 body{
     width: 100vw;
-    background-color: palevioletred;
-    justify-content: center;
+    height: 100vh;
+    background-color: white;
     display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.navbarHeader{
+    width: 100vw;
+    height: 50px;
+    background-color: $IBM-Grey-90;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 3%;
+}
+
+.navbarTitle{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+    color: white;
+}
+
+.navbarButton{
+    height: 40px;
+    width: 100px;
+    background-color: #606fee;
+    border: none;
+    border-radius: 50px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
 }
 
 .generalBox{
     width: 1000px;
-    height: 100vh;
-    background-color: $chatbot-bg-color;
+    height: 95vh;
+    background-color: $IBM-Grey-10;
 }
 
 .chatBox{
     overflow: auto;
-    height: 80vh;
-    margin-bottom: 100px;
+    height: 85vh;
+    padding: 5px;
+
+
 }
 
 .messageDiv{
@@ -30,7 +72,6 @@ body{
 
 .messageDivLeft{
     justify-content: flex-start;
-
 }
 
 .messageDivRight{
@@ -46,6 +87,7 @@ body{
     padding-right: 15px;
     padding-left: 15px;
     padding-top: 5px;
+    padding-bottom: 5px;
 
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -63,6 +105,9 @@ body{
 
 .messageText{
     height: auto;
+    margin: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
 }
 
 .profilePicture{
@@ -70,4 +115,39 @@ body{
     height: 50px;
     width: auto;
     margin-top: auto;
+}
+
+.HR{
+    width: 80%;
+}
+
+.submitDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textbox{
+    height: 40px;
+    width: 90%;
+    border: solid, 2px, $IBM-Grey-90;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.submitButton{
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+}
+
+.fa-paper-plane{
+    color: white;
+    margin-right: 2px;
 }

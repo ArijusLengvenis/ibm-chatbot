@@ -2,6 +2,7 @@
 
 const express = require("express");
 const path = require("path");
+const fs = require("fs/promises")
 const app = express();
 const whiteList = [{ username: 'admin', password: 'admin' }];
 
@@ -158,10 +159,13 @@ app.post("/rate", async (req, res) => {
 
   try {
     const existingQueryId = await getTrainingQueryId(query)
+    const updatedRatings = await getUpdatedRating(existingQueryId, documentId, getRelevance(isRelevant))
+    const newRelevance = Math.round(updatedRatings.updatedRating) * 10
     if (existingQueryId) {
-      addExampleToTrainingQuery(existingQueryId, documentId, isRelevant)
+      await addExampleToTrainingQuery(existingQueryId, documentId, newRelevance, updatedRatings.existingDocument)
     } else {
-      addNewTrainingQuery(query, documentId, isRelevant)
+      const queryId = await addNewTrainingQuery(query, documentId, newRelevance)
+      await getUpdatedRating(queryId, documentId, getRelevance(isRelevant))
     }
     res.sendStatus(201)
   } catch(err) {
@@ -191,9 +195,94 @@ app.post("/authenticate", (req, res) => {
   }
 })
 
+// Add new rating to JSON file and return new average rating for the document
+async function getUpdatedRating(queryId, documentId, newRating) {
+
+  if (!queryId) {
+    return {
+      existingDocument: false,
+      updatedRating: newRating
+    }
+  }
+
+  async function getExisitingRatings() {
+    try {
+      const ratingsJsonString = await fs.readFile("src/json/Ratings.json");
+      const ratingsJson = JSON.parse(ratingsJsonString)
+      return ratingsJson
+    } catch (err) {
+      return null
+    }
+  }
+
+  async function updateExistingRatings(ratingsJson) {
+    try {
+      console.log(JSON.stringify(ratingsJson))
+      await fs.writeFile("src/json/Ratings.json", JSON.stringify(ratingsJson))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  try {
+    let ratingsJson = await getExisitingRatings();
+    if (ratingsJson) {
+      if (queryId in ratingsJson) {
+        // Query ID has already been rated
+        let ratedDocuments = ratingsJson[queryId]
+        if (documentId in ratedDocuments) {
+          // Document has already been given a rating
+          const documentRating = ratedDocuments[documentId]
+          const sumOfRatings = documentRating.avgRating * documentRating.ratingCount
+          const newAverageRating = (sumOfRatings + newRating) / (documentRating.ratingCount + 1)
+          const newDocumentRating = {
+            avgRating: newAverageRating,
+            ratingCount: documentRating.ratingCount + 1
+          }
+          ratedDocuments[documentId] = newDocumentRating
+          updateExistingRatings(ratingsJson)
+          return {
+            existingDocument: true,
+            updatedRating: newAverageRating
+          }
+        } else {
+          // Document has not been given a rating yet
+          const newDocumentRating = {
+            avgRating: newRating,
+            ratingCount: 1
+          }
+          ratedDocuments[documentId] = newDocumentRating
+          updateExistingRatings(ratingsJson)
+          return {
+            existingDocument: false,
+            updatedRating: newRating
+          }
+        }
+      } else {
+        // Query ID hasn't been given a rating yet
+        const newDocumentRating = {
+          avgRating: newRating,
+          ratingCount: 1
+        }
+        const newQueryRating = {
+          [documentId]: newDocumentRating
+        }
+        ratingsJson[queryId] = newQueryRating
+        updateExistingRatings(ratingsJson)
+        return {
+          existingDocument: false,
+          updatedRating: newRating
+        }
+      }
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
 // Convert to relevance scale
 function getRelevance(isRelevant) {
-  return isRelevant ? 10 : 0
+  return isRelevant ? 1 : 0
 }
 
 // List all training queries
@@ -227,7 +316,7 @@ async function getTrainingQueryId(query) {
 }
 
 // Add new training query
-async function addNewTrainingQuery(query, documentId, isRelevant) {
+async function addNewTrainingQuery(query, documentId, relevance) {
   try {
     const trainingQuery = await discovery.addTrainingData({
       environmentId: DiscoveryEnvironmentId,
@@ -235,7 +324,7 @@ async function addNewTrainingQuery(query, documentId, isRelevant) {
       naturalLanguageQuery: query,
       examples: [{
         document_id: documentId,
-        relevance: getRelevance(isRelevant)
+        relevance: relevance
       }]
     })
     return trainingQuery.result.query_id
@@ -245,15 +334,42 @@ async function addNewTrainingQuery(query, documentId, isRelevant) {
 }
 
 // Add new example to existing training query
-async function addExampleToTrainingQuery(queryId, documentId, isRelevant) {
+async function addExampleToTrainingQuery(queryId, documentId, relevance, isDocumentAlreadyRated) {
+
+  async function addNewTrainingExample(newRelevance) {
+    try {
+      await discovery.createTrainingExample({
+        environmentId: DiscoveryEnvironmentId,
+        collectionId: DiscoveryCollectionId,
+        queryId: queryId,
+        documentId: documentId,
+        relevance: newRelevance
+      })
+    } catch (err) {
+      throw err
+    }
+  }
+
+  async function updateExistingTrainingExample(newRelevance) {
+    try {
+      await discovery.updateTrainingExample({
+        environmentId: DiscoveryEnvironmentId,
+        collectionId: DiscoveryCollectionId,
+        queryId: queryId,
+        exampleId: documentId,
+        relevance: newRelevance
+      })
+    } catch (err) {
+      throw err
+    }
+  }
+
   try {
-    await discovery.createTrainingExample({
-      environmentId: DiscoveryEnvironmentId,
-      collectionId: DiscoveryCollectionId,
-      queryId: queryId,
-      documentId: documentId,
-      relevance: getRelevance(isRelevant)
-    })
+    if (isDocumentAlreadyRated) {
+      await updateExistingTrainingExample(relevance)
+    } else {
+      await addNewTrainingExample(relevance)
+    }
   } catch (err) {
     throw err
   }
