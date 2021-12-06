@@ -47,6 +47,14 @@ function generateHTML(message){
 }
 
 function insertAnswerMessage(messages) {
+    if (messages.some(message => message.text == "I searched my knowledge base, but did not find anything related to your query.")) {
+        return `<div id="message${id}" class="messageDiv messageDivLeft">
+                    <div class="messageBox messageBoxLeft">
+                        <p class="messageText">${messages[0].text}</p>
+                    </div>
+                    <img class="profilePicture" src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png">
+                </div>`
+    }
     if (messages.length == 1){
         return `<div id="message${id}" class="messageDiv messageDivLeft">
                     <div class="messageBox messageBoxLeft">

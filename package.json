@@ -1,5 +1,5 @@
 {
-  "name": "IBM Chatbot",
+  "name": "ibm-chatbot",
   "version": "0.5.0",
   "description": "IBM Chatbot for IBM Cloud for Financial Services",
   "main": "app.js",
