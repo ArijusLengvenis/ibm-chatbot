@@ -1,4 +1,3 @@
-const url = 'http://localhost:8081/send';
 let sessionId = null;
 let id = 0;
 let messages = {};
@@ -17,7 +16,7 @@ function sendMessage() {
 
     //isPending = true;
     document.querySelector('#textBox').value = "";
-    fetch(url, {
+    fetch("/send", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: message, sessionId: sessionId })
@@ -115,9 +114,8 @@ function loadMore(messageId) {
 }
 
 function rateAnswer(messageId, answerId, gradient) {
-    const url = 'http://localhost:8081/rate';
     const message = messages[messageId][answerId];
-    fetch(url, {
+    fetch("/rate", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
