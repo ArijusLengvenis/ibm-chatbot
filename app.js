@@ -21,26 +21,36 @@ const AssistantV2 = require("ibm-watson/assistant/v2");
 const DiscoveryV2 = require("ibm-watson/discovery/v1");
 const { IamAuthenticator } = require("ibm-watson/auth");
 
-const AssistantId = "5b1b16e6-2b64-4e35-952a-bc7eb3380250"
+const AssistantId = "7b730136-c29d-4c4c-8ce7-e64bd8c20fb5"
 const assistant = new AssistantV2({
   version: "2021-06-14",
   authenticator: new IamAuthenticator({
-    apikey: "6xqQREuVQe0i7hsktiYzqvPZsdkv_j3RV_H8GUHH7u9R",
+    apikey: "z359XU0gNHHMa1mm6A233NRUpuOSr8DR26DO4omZ3HHl",
   }),
   serviceUrl:
-    "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/8d74b58f-52d4-4fed-971f-15abc4c09151",
+    "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/79dfff8b-2db7-4e46-8941-e1cb58df7511",
 });
 
-const DiscoveryEnvironmentId = "2ab12c80-05d8-4232-9a93-a2a85d6c642e"
-const DiscoveryCollectionId = "592bc518-0f0d-4a76-9ba9-d5a1f5536b6a"
+const DiscoveryEnvironmentId = "8417abb8-ac0e-4576-b24b-a4c42be9010c"
+const DiscoveryCollectionId = "cfc05e8d-9526-4d0f-bff0-36a41b5bdfc1"
 const discovery = new DiscoveryV2({
   version: "2020-08-30",
   authenticator: new IamAuthenticator({
-    apikey: "CdIbNZTEHeoctQJZs8NgfDkM1dTfwkZ4AsHGpTpQXfrv",
+    apikey: "mX_B5TCqyDo99vl3YUuB-rC5qfLodj6fNt4wqLsNFgH7",
   }),
   serviceUrl:
-    "https://api.eu-gb.discovery.watson.cloud.ibm.com/instances/0827ccfe-7eb7-4648-b371-a836867b4ba5",
+    "https://api.eu-gb.discovery.watson.cloud.ibm.com/instances/ed97e2db-2a2a-4965-afd7-119eaaa5f34d",
 })
+
+function adminDeleteDocument(documentId) {
+  discovery.deleteDocument({
+    environmentId: DiscoveryEnvironmentId,
+    collectionId: DiscoveryCollectionId,
+    documentId: documentId
+  }).catch(err => {
+    console.error(err)
+  })
+}
 
 // Class used to send data back to frontend
 class APIResponse {
@@ -386,6 +396,7 @@ async function getAnswersToQuery(sessionId, query) {
         text: query,
       },
     })
+    console.log(JSON.stringify(response, null, 2))
     const rawAnswers = response.result.output.generic ?? [];
     const extractedAnswers = extractAnswers(rawAnswers)
     return extractedAnswers
