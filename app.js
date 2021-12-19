@@ -1,5 +1,3 @@
-"use strict";
-
 const express = require("express");
 const path = require("path");
 const fs = require("fs/promises")
@@ -69,21 +67,6 @@ class APIResponse {
   }
 }
 
-app.on('listening', () => {
-  /*
-    On server startup - check current commit hashes on github;
-    If hashes match, initialize a 24 hour timer to repeat the action and do nothing;
-    If they do not match:
-      * Run updateDiscoveryRepo() - returns the current commit hash as output;
-        Inside the function:
-          * clone current repository locally;
-          * take specific file(s) out of repo for extraction (denoted by the "extraction" feature in the obj);
-          * use the new files to update Discovery using the API (deleting the old file in the process);
-      * Replace the commit hash with the new one;
-      * Wait 24 hours to repeat the check.
-  */
-});
-
 app.use("/css", express.static(path.join(__dirname, "src", "css")));
 app.use("/js", express.static(path.join(__dirname, "src", "js")));
 
@@ -92,7 +75,6 @@ app.get("/", (req, res) => {
 });
 
 app.post("/createsession", async (req, res) => {
-
   try {
     let response = await assistant.createSession({
       assistantId: AssistantId,
