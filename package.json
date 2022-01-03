@@ -1,10 +1,9 @@
 {
-  "name": "royal-fork",
-  "version": "1.0.0",
-  "description": "Chess problem sharing website",
+  "name": "ibm-chatbot",
+  "version": "0.5.0",
+  "description": "IBM Chatbot for IBM Cloud for Financial Services",
   "main": "app.js",
   "scripts": {
-    "pre-test": "eslint .",
     "prefix": "postcss src/css/styles.min.css --use autoprefixer -d src/css/",
     "sass": "sass src/scss/styles.scss src/css/styles.min.css --style compressed && npm run prefix",
     "start": "nodemon server.js"
@@ -38,6 +37,7 @@
     "ibm-watson": "^6.2.1",
     "jquery": ">=3.4.1",
     "morgan": "^1.10.0",
+    "node-fetch": "^2.6.6",
     "postcss": "^8.4.4",
     "postcss-cli": "^9.0.2",
     "sass": "^1.44.0"

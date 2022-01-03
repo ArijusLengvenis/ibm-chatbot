@@ -1,5 +1,7 @@
 {
-    "hashes":[
-        { "name": "IBM Cloud docs", "hash": "", "url":"https://github.com/ibm-cloud-docs/overview", "extraction": "IBM github"}
+    "Hashes":[
+        { "name": "IBM Cloud docs", "hash": "864d1d49f5cc7f6c80d05f0ffd4e52a5de9fb297", "repoUrl":"https://github.com/ibm-cloud-docs/overview", "extraction": "github", "gitLink": "git://github.com/ibm-cloud-docs/overview.git", "fileUrls": [
+            { "name": "Overview  page", "url": "https://raw.githubusercontent.com/ibm-cloud-docs/overview/master/fscloud.md" }
+        ]}
     ]
 }

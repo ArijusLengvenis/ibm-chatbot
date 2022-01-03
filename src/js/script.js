@@ -1,4 +1,3 @@
-const url = 'http://localhost:8081/send';
 let sessionId = null;
 let id = 0;
 let messages = {};
@@ -17,7 +16,7 @@ function sendMessage() {
 
     //isPending = true;
     document.querySelector('#textBox').value = "";
-    fetch(url, {
+    fetch("/send", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: message, sessionId: sessionId })
@@ -47,6 +46,14 @@ function generateHTML(message){
 }
 
 function insertAnswerMessage(messages) {
+    if (messages.some(message => message.text == "I searched my knowledge base, but did not find anything related to your query.")) {
+        return `<div id="message${id}" class="messageDiv messageDivLeft">
+                    <div class="messageBox messageBoxLeft">
+                        <p class="messageText">${messages[0].text}</p>
+                    </div>
+                    <img class="profilePicture" src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png">
+                </div>`
+    }
     if (messages.length == 1){
         return `<div id="message${id}" class="messageDiv messageDivLeft">
                     <img class="profilePicture" src="https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw=">
@@ -107,9 +114,8 @@ function loadMore(messageId) {
 }
 
 function rateAnswer(messageId, answerId, gradient) {
-    const url = 'http://localhost:8081/rate';
     const message = messages[messageId][answerId];
-    fetch(url, {
+    fetch("/rate", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
