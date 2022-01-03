@@ -49,17 +49,18 @@ function generateHTML(message){
 function insertAnswerMessage(messages) {
     if (messages.length == 1){
         return `<div id="message${id}" class="messageDiv messageDivLeft">
+                    <img class="profilePicture" src="https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw=">
                     <div class="messageBox messageBoxLeft">
                         <p class="messageText">Here is what I found:</p>
                         <p class="messageText">${messages[0].text}</p>
                         <button id="p${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${true})">Thumbs Up</button>
                         <button id="n${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${false})">Thumbs Down</button>
                     </div>
-                    <img class="profilePicture" src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png">
                 </div>`
     }
     else if (messages.length == 2) {
         return `<div id="message${id}" class="messageDiv messageDivLeft">
+                    <img class="profilePicture" src="https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw=">
                     <div class="messageBox messageBoxLeft">
                         <p class="messageText">Here is what I found:</p>
                         <p class="messageText">${messages[0].text}</p>
@@ -70,11 +71,11 @@ function insertAnswerMessage(messages) {
                         <button id="p${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${true})">Thumbs Up</button>
                         <button id="n${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${false})">Thumbs Down</button>
                     </div>
-                    <img class="profilePicture" src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png">
                 </div>`
     }
     
     return `<div id="message${id}" class="messageDiv messageDivLeft">
+                <img class="profilePicture" src="https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw=">
                 <div class="messageBox messageBoxLeft">
                     <p class="messageText">Here is what I found:</p>
                     <p class="messageText">${messages[0].text}</p>
@@ -86,7 +87,6 @@ function insertAnswerMessage(messages) {
                     <button id="n${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${false})">Thumbs Down</button>
                     <button id="loadMore" onclick="loadMore(${id})">Load More</button>
                 </div>
-                <img class="profilePicture" src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png">
             </div>`
 }
 
