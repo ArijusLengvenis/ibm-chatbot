@@ -60,3 +60,61 @@ module.exports = {
         }
     }
 }
+
+// Parser Functions
+const replacementDictionary = {
+    '{{site.data.keyword.attribute-definition-list}}': '',
+    '{{site.data.keyword.cloud_notm}}': 'IBM Cloud',
+    '{{site.data.keyword.cos_full_notm}}': 'IBM Cloud Object Storage',
+    '{{site.data.keyword.alb_full}}':'Application Load Balancer for VPC',
+    '{{site.data.keyword.vpc_full}}':'IBM Cloud® Virtual Private Cloud',
+    '{{site.data.keyword.iamlong}}':'IBM Cloud® Identity and Access Management',
+    '{{site.data.keyword.fl_full}}':'Flow Logs for VPC',
+    '{{site.data.keyword.block_storage_is_full}}':'IBM® Cloud Block Storage for Virtual Private Cloud',
+    '{{site.data.keyword.tg_full_notm}}':'IBM Cloud Transit Gateway',
+    '{{site.data.keyword.vpe_full}}':'Virtual Private Endpoint (VPE) for VPC',
+    '{{site.data.keyword.vpn_full}}':'Virtual Private Network (VPN) for VPC',
+    '{{site.data.keyword.dl_full_notm}}':'IBM Cloud Direct Link',
+    '{{site.data.keyword.IBM_notm}}':'IBM',
+    '{{site.data.keyword.hscrypto}}':'Hyper Protect Crypto Services',
+    '{{site.data.keyword.openshiftlong_notm}}':'Red Hat OpenShift on IBM Cloud',
+    '{{site.data.keyword.vsi_is_full}}':'IBM Cloud® Virtual Servers for Virtual Private Cloud'
+}
+
+function replaceString(string, pattern, replacement){
+    return string.replace(pattern, replacement)
+}
+
+function eliminateSingleHandleBars(string) {
+    const pattern = /{:.*}/
+    const replacement = ''
+    return replaceString(string, pattern, replacement)
+}
+
+// This one isn't finished, will do soon.
+function removeLinks(string){
+    return string
+}
+
+// def removeLinks(string):
+//     for x, y in zip(re.findall('\[.*\]\(.*\)', string), re.findall('\[(.*)\]\(.*\)', string)):
+//         string = string.replace(x, y)
+//     return string
+
+function removeSpaces(string){
+        while (string.includes('\n\n\n')) {
+            string = string.replace('\n\n\n', '\n\n')
+        }
+        return string
+}
+
+function parseString(string){
+        for (const x in string.matchAll(/{{[^{}]*}}/) ){
+            string = string.replace(x, replacementDictionary[x])
+        }
+        return string
+}
+
+function all(string){
+    return removeSpaces(parseString(removeLinks(eliminateSingleHandleBars(string)))).trim()
+}
