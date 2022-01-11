@@ -1,6 +1,10 @@
 const express = require("express");
 const path = require("path");
-const fs = require("fs/promises")
+const fs = require("fs/promises");
+const { Readable } = require("stream")
+const StreamZip = require("node-stream-zip")
+const XmlReader = require("xml-reader")
+const XmlQuery = require("xml-query");
 const app = express();
 const whiteList = [{ username: 'admin', password: 'admin' }];
 
@@ -452,5 +456,119 @@ function extractAnswers(answers) {
 
   return parsed;
 }
+
+// Upload JSON glossary
+async function uploadGlossary(filepath) {
+
+  // Extract xml from word document
+  function extractXML() {
+    return new Promise((resolve, reject) => {
+      const zip = new StreamZip({
+        file: filepath,
+        storeEntries: true
+      })
+      zip.on("ready", () => {
+        let chunks = []
+        let content = ""
+        zip.stream("word/document.xml", (err, stream) => {
+          if (err) {
+            reject(err)
+          } else {
+            stream.on("data", (chunk) => {
+              chunks.push(chunk)
+            })
+            stream.on("end", () => {
+              content = Buffer.concat(chunks)
+              zip.close()
+              resolve(content.toString())
+            })
+          }
+        })
+      })
+    })
+  }
+
+  function formatGlossaryText(text) {
+    text = text.trim() // Remove trailing whitespace
+    text = text.replace(/\s+/g, " ") // Remove duplicate spaces
+    text = text.replace(/&amp;/g, "&") // Replace HTML amp entity with actual character
+    text = text.replace(/\.(?=[A-Z])/g, ". ") // Make sure full stops have a space after them
+    return text
+  }
+
+  try {
+    const xml = await extractXML()
+
+    const parsedXml = XmlReader.parseSync(xml)
+    const query = XmlQuery(parsedXml)
+
+    // Get FAQ Table from the XML
+    const faqTable = query.find("w:tbl").last()
+
+    const GlossaryDocumentId = "ba1f5494-0884-42ad-8368-bd4dc86794a8"
+    const GlossaryPath = "src/json/Glossary.json"
+
+    // Get Current Glossary Document Count
+    const currentGlossary = await fs.readFile(GlossaryPath)
+    const glossaryJSON = JSON.parse(currentGlossary)
+    const documentCount = Object.keys(glossaryJSON).length;
+
+    let glossaries = {}
+
+    // Upload new documents 
+    let i = 0
+    faqTable.find("w:tr").each(row => {
+      row = XmlQuery(row)
+      const columns = row.find("w:tc")
+      const term = formatGlossaryText(columns.first().text())
+      if (term != "Term" && term != "") {
+        const definition = formatGlossaryText(columns.last().text())
+        const document = {
+          question: [term],
+          answer: [definition]
+        }
+        let documentId = GlossaryDocumentId + "_" + i.toString()
+        glossaries[documentId] = document
+
+        uploadDocument(documentId, "Glossary.json", Readable.from(JSON.stringify(document)), "application/json")
+        i += 1
+      }
+    })
+    
+    // Delete documents that are no longer needed
+    while (i < documentCount) {
+      let documentId = GlossaryDocumentId + "_" + i.toString()
+      adminDeleteDocument(documentId)
+      i += 1
+    }
+
+    // Record new documents in json file
+    await fs.writeFile(GlossaryPath, JSON.stringify(glossaries))
+  } catch (err) {
+    console.error(err)
+  }
+
+}
+
+// Upload Document to Discovery
+async function uploadDocument(documentId, name, buffer, mime) {
+  try {
+    const response = await discovery.updateDocument({
+      environmentId: DiscoveryEnvironmentId,
+      collectionId: DiscoveryCollectionId,
+      documentId: documentId,
+      file: buffer,
+      filename: name,
+      fileContentType: mime
+    })
+    const documentAccepted = response.result
+  } catch (err) {
+    throw err
+  }
+}
+
+
+// Upload Glossary on Server Start
+uploadGlossary(path.join(__dirname, "src", "data", "Cloud for FS FAQ & Field Guide.docx"))
 
 module.exports = app;
