@@ -6,7 +6,7 @@ const exec = require('child_process').exec;
 
 function CheckHash(updateData, cb)
 {
-    exec(`git ls-remote ${updateData.gitLink}`,
+    exec(`git ls-remote ${updateData.repoUrl}`,
         function (error, stdout, stderr) {
             let arr = stdout.split('HEAD');
             cb(arr[0].trim());
@@ -46,7 +46,6 @@ module.exports = {
                             console.log(files);
                             if (!files)
                                 throw Error;
-                            console.log(files);
                             files.forEach(file => {
                                 //const parsedFile = Parser(file)
                                 //send to Disc
