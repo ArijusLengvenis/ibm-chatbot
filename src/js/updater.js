@@ -6,7 +6,7 @@ const exec = require('child_process').exec;
 
 function CheckHash(updateData, cb)
 {
-    exec(`git ls-remote ${updateData.gitLink}`,
+    exec(`git ls-remote ${updateData.repoUrl}`,
         function (error, stdout, stderr) {
             let arr = stdout.split('HEAD');
             cb(arr[0].trim());
@@ -46,7 +46,6 @@ module.exports = {
                             console.log(files);
                             if (!files)
                                 throw Error;
-                            console.log(files);
                             files.forEach(file => {
                                 //const parsedFile = Parser(file)
                                 //send to Disc
@@ -62,6 +61,37 @@ module.exports = {
 }
 
 // Parser Functions
+const testString = x = `{{site.data.keyword.attribute-definition-list}}
+
+# What is {{site.data.keyword.cloud_notm}} for Financial Services?
+    {: #what-is-fscloud}
+
+{{site.data.keyword.cloud_notm}} for Financial Services is a solution platform and ecosystem program built on an industry-informed framework of controls, architectures, and operations that mitigates systemic risk in using public cloud for mission-critical workloads with client-sensitive data.
+{: shortdesc}
+
+To view all services that are Financial Services Validated in {{site.data.keyword.cloud_notm}}, go to the [catalog](https://cloud.ibm.com/catalog?search=label%3Afs_ready#services) and select the **Financial Services Validated** filter in the Compliance section.
+
+However, there are required services to use to maintain an {{site.data.keyword.cloud_notm}} for Financial Services solution. Others are optional. The following services are required for a validated architecture when using {{site.data.keyword.vpc_full}} services.
+
+* {{site.data.keyword.cloud_notm}} Activity Tracking (requires the use of {{site.data.keyword.cos_full_notm}})
+* {{site.data.keyword.cloud_notm}} {{site.data.keyword.alb_full}}
+* {{site.data.keyword.cloud_notm}} {{site.data.keyword.fl_full}}
+* {{site.data.keyword.iamlong}}
+* {{site.data.keyword.cos_full_notm}} or {{site.data.keyword.block_storage_is_full}}
+* {{site.data.keyword.tg_full_notm}}
+* {{site.data.keyword.vpc_full}}
+* {{site.data.keyword.cloud_notm}} {{site.data.keyword.vpe_full}}
+* {{site.data.keyword.cloud_notm}} {{site.data.keyword.vpn_full}} or {{site.data.keyword.dl_full_notm}} (Connect and Dedicated 2.0)
+* {{site.data.keyword.IBM_notm}} {{site.data.keyword.hscrypto}}
+* {{site.data.keyword.openshiftlong_notm}} or {{site.data.keyword.vsi_is_full}}
+
+For the most security, it's recommended that you use the {{site.data.keyword.cloud_notm}} CLI to create resources by using [private endpoints](/docs/cli?topic=cli-service-connection).
+{: tip}
+
+You can also set your team up to be alerted if they are creating a service that is not Financial Services Validated by enabling the Financial Services Validated setting in your account. For more information, see [Validate financial services for your account](/docs/account?topic=account-enabling-fs-validated).
+
+To learn more about {{site.data.keyword.cloud_notm}} for Financial Services, see the [product page](https://www.ibm.com/cloud/financial-services).`
+
 const replacementDictionary = {
     '{{site.data.keyword.attribute-definition-list}}': '',
     '{{site.data.keyword.cloud_notm}}': 'IBM Cloud',
@@ -80,41 +110,46 @@ const replacementDictionary = {
     '{{site.data.keyword.openshiftlong_notm}}':'Red Hat OpenShift on IBM Cloud',
     '{{site.data.keyword.vsi_is_full}}':'IBM Cloud® Virtual Servers for Virtual Private Cloud'
 }
-
+//Tested - Works
 function replaceString(string, pattern, replacement){
     return string.replace(pattern, replacement)
 }
 
-function eliminateSingleHandleBars(string) {
+
+function removeSingleHandlebars(string) {
     const pattern = /{:.*}/
     const replacement = ''
-    return replaceString(string, pattern, replacement)
-}
-
-// This one isn't finished, will do soon.
-function removeLinks(string){
+    while (string.match(pattern)){
+        string = replaceString(string, pattern, replacement)
+    }
     return string
 }
 
-// def removeLinks(string):
-//     for x, y in zip(re.findall('\[.*\]\(.*\)', string), re.findall('\[(.*)\]\(.*\)', string)):
-//         string = string.replace(x, y)
-//     return string
-
-function removeSpaces(string){
-        while (string.includes('\n\n\n')) {
-            string = string.replace('\n\n\n', '\n\n')
-        }
-        return string
+// Tested - Works
+function removeLinks(string){
+    for (const link of string.matchAll((/\[(.*)\]\(.*\)/g))){
+        string = string.replace(link[0], link[1])
+        console.log()
+    }
+    return string
 }
 
+//Tested - Works
+function removeSpaces(string){
+    while (string.includes('\n\n\n')) {
+        string = string.replace('\n\n\n', '\n\n')
+    }
+    return string
+}
+// Tested - Works
 function parseString(string){
-        for (const x in string.matchAll(/{{[^{}]*}}/) ){
-            string = string.replace(x, replacementDictionary[x])
-        }
-        return string
+    for (const x of [...string.matchAll(/{{[^{}]*}}/g)]){
+        console.log(x)
+        string = string.replace(x, replacementDictionary[x])
+    }
+    return string
 }
 
 function all(string){
-    return removeSpaces(parseString(removeLinks(eliminateSingleHandleBars(string)))).trim()
+    return removeSpaces(parseString(removeLinks(removeSingleHandlebars(string)))).trim()
 }
