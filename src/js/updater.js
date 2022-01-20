@@ -43,11 +43,12 @@ module.exports = {
                     if (!found)
                     {
                         GetFile(updateData, (files) => {
-                            console.log(files);
+                            // console.log(files);
                             if (!files)
                                 throw Error;
                             files.forEach(file => {
-                                //const parsedFile = Parser(file)
+                                const parsedFile = Parser(file)
+                                // console.log(parsedFile)
                                 //send to Disc
                                 updateData.hash = hash;
                             })
@@ -129,7 +130,6 @@ function removeSingleHandlebars(string) {
 function removeLinks(string){
     for (const link of string.matchAll((/\[(.*)\]\(.*\)/g))){
         string = string.replace(link[0], link[1])
-        console.log()
     }
     return string
 }
@@ -144,12 +144,11 @@ function removeSpaces(string){
 // Tested - Works
 function parseString(string){
     for (const x of [...string.matchAll(/{{[^{}]*}}/g)]){
-        console.log(x)
         string = string.replace(x, replacementDictionary[x])
     }
     return string
 }
 
-function all(string){
+function Parser(string){
     return removeSpaces(parseString(removeLinks(removeSingleHandlebars(string)))).trim()
 }

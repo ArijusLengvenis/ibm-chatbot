@@ -110,7 +110,8 @@ function loadMore(messageId) {
                                  <button id="n${message.id}" onclick="rateAnswer(${messageId}, ${id}, ${false})">Thumbs Down</button>`;
         id++;
     })
-    document.querySelector(`#message${messageId}`).innerHTML += `<img class="profilePicture" src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png"></img>`;   
+    temp = document.querySelector(`#message${messageId}`).innerHTML;
+    document.querySelector(`#message${messageId}`).innerHTML = `<img class="profilePicture" src="https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw="></img>`+temp;   
 }
 
 function rateAnswer(messageId, answerId, gradient) {
