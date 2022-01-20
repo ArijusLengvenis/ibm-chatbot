@@ -60,8 +60,10 @@ function insertAnswerMessage(messages) {
                     <div class="messageBox messageBoxLeft">
                         <p class="messageText">Here is what I found:</p>
                         <p class="messageText">${messages[0].text}</p>
-                        <button id="p${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${true})">Thumbs Up</button>
-                        <button id="n${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${false})">Thumbs Down</button>
+                        <div>
+                            <button class="thumb-button" id="p${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${true})"><i class="fas fa-thumbs-up"></i></button>
+                            <button class="thumb-button" id="n${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${false})"><i class="fas fa-thumbs-down"></i></button>
+                        </div>
                     </div>
                 </div>`
     }
@@ -71,12 +73,16 @@ function insertAnswerMessage(messages) {
                     <div class="messageBox messageBoxLeft">
                         <p class="messageText">Here is what I found:</p>
                         <p class="messageText">${messages[0].text}</p>
-                        <button id="p${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${true})">Thumbs Up</button>
-                        <button id="n${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${false})">Thumbs Down</button>
+                        <div>
+                            <button class="thumb-button" id="p${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${true})"><i class="fas fa-thumbs-up"></i></button>
+                            <button class="thumb-button" id="n${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${false})"><i class="fas fa-thumbs-down"></i></button>
+                        </div>
                         <p class="messageText">This is something similar that I found:</p>
                         <p class="messageText">${messages[1].text}</p>
-                        <button id="p${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${true})">Thumbs Up</button>
-                        <button id="n${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${false})">Thumbs Down</button>
+                        <div>
+                            <button class="thumb-button" id="p${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${true})"><i class="fas fa-thumbs-up"></i></button>
+                            <button class="thumb-button" id="n${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${false})"><i class="fas fa-thumbs-down"></i></button>
+                        </div>
                     </div>
                 </div>`
     }
@@ -86,13 +92,17 @@ function insertAnswerMessage(messages) {
                 <div class="messageBox messageBoxLeft">
                     <p class="messageText">Here is what I found:</p>
                     <p class="messageText">${messages[0].text}</p>
-                    <button id="p${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${true})">Thumbs Up</button>
-                    <button id="n${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${false})">Thumbs Down</button>
+                    <div>
+                        <button class="thumb-button" id="p${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${true})"><i class="fas fa-thumbs-up"></i></button>
+                        <button class="thumb-button" id="n${messages[0].id}" onclick="rateAnswer(${id}, ${0}, ${false})"><i class="fas fa-thumbs-down"></i></button>
+                    </div>
                     <p class="messageText">This is something similar that I found:</p>
                     <p class="messageText">${messages[1].text}</p>
-                    <button id="p${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${true})">Thumbs Up</button>
-                    <button id="n${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${false})">Thumbs Down</button>
-                    <button id="loadMore" onclick="loadMore(${id})">Load More</button>
+                    <div>
+                        <button class="thumb-button" id="p${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${true})"><i class="fas fa-thumbs-up"></i></button>
+                        <button class="thumb-button" id="n${messages[1].id}" onclick="rateAnswer(${id}, ${1}, ${false})"><i class="fas fa-thumbs-down"></i></button>
+                        <button class="load-more-button" id="loadMore" onclick="loadMore(${id})">Load More</button>
+                    </div>                    
                 </div>
             </div>`
 }
@@ -106,8 +116,10 @@ function loadMore(messageId) {
     messageDiv.innerHTML += '<p class="messageText">Additional answers:</p>'
     messagesHere.forEach(message => {
         messageDiv.innerHTML += `<p class="messageText">${message.text}</p>
-                                 <button id="p${message.id}" onclick="rateAnswer(${messageId}, ${id}, ${true})">Thumbs Up</button>
-                                 <button id="n${message.id}" onclick="rateAnswer(${messageId}, ${id}, ${false})">Thumbs Down</button>`;
+                                 <div>
+                                     <button class="thumb-button" id="p${message.id}" onclick="rateAnswer(${messageId}, ${id}, ${true})"><i class="fas fa-thumbs-up"></i></button>
+                                     <button class="thumb-button" id="n${message.id}" onclick="rateAnswer(${messageId}, ${id}, ${false})"><i class="fas fa-thumbs-down"></i></button>
+                                 </div>`;
         id++;
     })
     temp = document.querySelector(`#message${messageId}`).innerHTML;
