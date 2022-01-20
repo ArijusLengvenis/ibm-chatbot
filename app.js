@@ -135,6 +135,7 @@ app.post("/send", async (req, res) => {
 
 app.post("/rate", async (req, res) => {
   let query = req.body.query
+
   if (query == null) {
     res.status(500).send("Query is missing");
     return;
@@ -213,7 +214,7 @@ async function getUpdatedRating(queryId, documentId, newRating) {
 
   async function updateExistingRatings(ratingsJson) {
     try {
-      console.log(JSON.stringify(ratingsJson))
+      // console.log(JSON.stringify(ratingsJson))
       await fs.writeFile("src/json/Ratings.json", JSON.stringify(ratingsJson))
     } catch (err) {
       console.error(err)
@@ -382,7 +383,7 @@ async function getAnswersToQuery(sessionId, query) {
         text: query,
       },
     })
-    console.log(JSON.stringify(response, null, 2))
+    // console.log(JSON.stringify(response, null, 2))
     const rawAnswers = response.result.output.generic ?? [];
     const extractedAnswers = extractAnswers(rawAnswers)
     return extractedAnswers
