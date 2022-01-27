@@ -170,28 +170,6 @@ app.post("/rate", async (req, res) => {
   }
 })
 
-app.post("/authenticate", (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  /*
-    IMPLEMENT LATER:
-
-    Send username and password to WA through an encrypted channel;
-    If positive authentication token received, then reroute,
-    else throw error.
-
-    Eliminate whitelist from server.
-  */
-  if (username && password) {
-    if (whiteList.some(member => member.username === username && member.password === password)) {
-        res.status(200).redirect('https://eu-gb.discovery.watson.cloud.ibm.com/regions/eu-gb/services/crn%3Av1%3Abluemix%3Apublic%3Adiscovery%3Aeu-gb%3Aa%2Fe249219992a043ae9bbf3a2d3997ce9d%3A0827ccfe-7eb7-4648-b371-a836867b4ba5%3A%3A')
-    }
-    else {
-        res.status(500).json("Wrong credentials")
-    }
-  }
-})
-
 // Add new rating to JSON file and return new average rating for the document
 async function getUpdatedRating(queryId, documentId, newRating) {
 
