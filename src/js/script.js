@@ -64,12 +64,15 @@ function generateChatbotMessageBlock(messages) {
 
     // Cycle through each message
     showMessages.forEach((message, i) => {
+        let messageWrapper = document.createElement('div');
+        messageWrapper.setAttribute('class', 'messageBackgroundDiv');
+
         // First message intro
         if (i == 0 && message !== "I searched my knowledge base, but did not find anything related to your query.") {
             let introMessage = document.createElement('p');
             introMessage.setAttribute('class', 'messageText');
             introMessage.innerText = 'Here is what I found:';
-            messageBox.appendChild(introMessage);
+            messageWrapper.appendChild(introMessage);
         }
 
         // Second message intro
@@ -77,18 +80,19 @@ function generateChatbotMessageBlock(messages) {
             let introMessage = document.createElement('p');
             introMessage.setAttribute('class', 'messageText');
             introMessage.innerText = 'Here is something similar that I found:';
-            messageBox.appendChild(introMessage);
+            messageWrapper.appendChild(introMessage);
         }
 
         // Message text container
         let messageText = document.createElement('p');
         messageText.setAttribute('class', 'messageText');
         messageText.innerText = message.text;
-        messageBox.appendChild(messageText);
+        messageWrapper.appendChild(messageText);
         if (message.text !== "I searched my knowledge base, but did not find anything related to your query.") {
 
             // Ratings container
             let ratingsDiv = document.createElement('div');
+            ratingsDiv.setAttribute('id', `ratingId${i}`)
             let thumbsUp = document.createElement('button');
             thumbsUp.setAttribute('class', 'thumb-button fas fa-thumbs-up');
             thumbsUp.setAttribute('id', `p${message.id}`);
@@ -99,8 +103,9 @@ function generateChatbotMessageBlock(messages) {
             thumbsDown.setAttribute('onClick', `rateAnswer(${id}, ${i}, ${false})`);
             ratingsDiv.appendChild(thumbsUp);
             ratingsDiv.appendChild(thumbsDown);
-            messageBox.appendChild(ratingsDiv);
+            messageWrapper.appendChild(ratingsDiv);
         }
+        messageBox.appendChild(messageWrapper);
     });
     if (showMessages[0].text !== "I searched my knowledge base, but did not find anything related to your query.") {
 
@@ -151,23 +156,28 @@ function loadMore(messageId) {
     let messageBox = document.querySelector(`#message${messageId}`).querySelector('.messageBox');
     messageBox.removeChild(messageBox.querySelector('#loadMore'));
 
-    // Extra message intro
-    let introMessage = document.createElement('p');
-    introMessage.setAttribute('class', 'messageText');
-    introMessage.innerText = 'Additional answers:';
-    messageBox.appendChild(introMessage);
-
     // Cycle through each message
     messagesHere.forEach((message, i) => {
+
+        let messageWrapper = document.createElement('div')
+        messageWrapper.setAttribute('class', 'messageBackgroundDiv')
+        // Extra message intro
+        if (i == 0) {
+            let introMessage = document.createElement('p');
+            introMessage.setAttribute('class', 'messageText');
+            introMessage.innerText = 'Additional answers:';
+            messageWrapper.appendChild(introMessage);
+        }
 
         // Message text container
         let messageText = document.createElement('p');
         messageText.setAttribute('class', 'messageText');
         messageText.innerText = message.text;
-        messageBox.appendChild(messageText);
+        messageWrapper.appendChild(messageText);
 
         // Ratings container
         let ratingsDiv = document.createElement('div');
+        ratingsDiv.setAttribute('id', `ratingId${i+2}`)
         let thumbsUp = document.createElement('button');
         thumbsUp.setAttribute('class', 'thumb-button fas fa-thumbs-up');
         thumbsUp.setAttribute('id', `p${message.id}`);
@@ -178,7 +188,9 @@ function loadMore(messageId) {
         thumbsDown.setAttribute('onClick', `rateAnswer(${messageId}, ${i+2}, ${false})`);
         ratingsDiv.appendChild(thumbsUp);
         ratingsDiv.appendChild(thumbsDown);
-        messageBox.appendChild(ratingsDiv);
+        messageWrapper.appendChild(ratingsDiv);
+
+        messageBox.appendChild(messageWrapper)
     })
 }
 
@@ -187,7 +199,7 @@ function rateAnswer(messageId, answerId, gradient) {
 
     // Extract specific answer which was rated
     const message = messages[messageId][answerId];
-    console.log(message)
+    // console.log(message)
     fetch("/rate", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -200,10 +212,22 @@ function rateAnswer(messageId, answerId, gradient) {
         .then(() => {
 
             // Replace rating div with a "Thank you" message
-            let messageDiv = document.querySelector(`#message${messageId}`).querySelector('.messageBox');
+            console.log(`#message${messageId} #ratingId${answerId}`)
+            let messageDiv = document.querySelector(`#message${messageId} #ratingId${answerId}`);
+            // if (gradient) {
+            //     // Thumbs up
+            //     let thumbsUp = messageDiv.querySelector('.fa-thumbs-up')
+            //     // Add class to show activation
+            // }
+            // else {
+            //     // Thumbs down
+            //     let thumbsUp = messageDiv.querySelector('.fa-thumbs-up')
+            //     // Add class to show activation
+            // }
+            console.log(messageDiv)
             let feedback = document.createElement('p');
             feedback.innerText = 'Thank you for your answer.'
-            messageDiv.replaceChild(feedback, messageDiv.querySelector('div'));
+            messageDiv.parentNode.replaceChild(feedback, messageDiv);
         })
         .catch(error => {
             console.error(error);
