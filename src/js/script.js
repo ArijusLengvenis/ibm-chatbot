@@ -75,7 +75,7 @@ function generateChatbotMessageBlock(messages) {
             let introMessage = document.createElement('p');
             introMessage.setAttribute('class', 'messageText');
             introMessage.innerText = 'Here is what I found:';
-            messageWrapper.appendChild(introMessage);
+            messageBox.appendChild(introMessage);
         }
 
         // Second message intro
@@ -83,7 +83,7 @@ function generateChatbotMessageBlock(messages) {
             let introMessage = document.createElement('p');
             introMessage.setAttribute('class', 'messageText');
             introMessage.innerText = 'Here is something similar that I found:';
-            messageWrapper.appendChild(introMessage);
+            messageBox.appendChild(introMessage);
         }
 
         // Message text container
@@ -170,7 +170,7 @@ function loadMore(messageId) {
             let introMessage = document.createElement('p');
             introMessage.setAttribute('class', 'messageText');
             introMessage.innerText = 'Additional answers:';
-            messageWrapper.appendChild(introMessage);
+            messageBox.appendChild(introMessage);
         }
 
         // Message text container
