@@ -221,7 +221,7 @@ function rateAnswer(messageId, answerId, gradient) {
             // }
             // else {
             //     // Thumbs down
-            //     let thumbsUp = messageDiv.querySelector('.fa-thumbs-up')
+            //     let thumbsUp = messageDiv.querySelector('.fa-thumbs-down')
             //     // Add class to show activation
             // }
             console.log(messageDiv)
@@ -235,6 +235,33 @@ function rateAnswer(messageId, answerId, gradient) {
 }
 
 function initChatbotSession() {
+    let message = "..."
+    let chatBox = document.querySelector('.chatBox');
+
+    // Outer message wrapper
+    let messageDiv = document.createElement('div');
+    messageDiv.setAttribute('id', `message${id}`);
+    messageDiv.setAttribute('class', 'messageDiv messageDivLeft');
+
+    // Profile image
+    let profileImg = document.createElement('img');
+    profileImg.setAttribute('class', 'profilePicture');
+    profileImg.setAttribute('src', 'https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw=');
+    messageDiv.appendChild(profileImg);
+
+    // Container, which contains each answer
+    let messageBox = document.createElement('div');
+    messageBox.setAttribute('class', 'messageBox messageBoxLeft');
+
+    // Message text container
+    let messageText = document.createElement('p');
+    messageText.setAttribute('class', 'messageText');
+    messageText.innerText = message;
+    messageBox.appendChild(messageText);
+    messageDiv.appendChild(messageBox);
+
+    chatBox.appendChild(messageDiv)
+
     fetch("/createsession", {
         method: "POST",
         headers: { "Content-Type": "application/json" }
@@ -242,9 +269,63 @@ function initChatbotSession() {
     .then(res => res.json())
     .then(data => {
         sessionId = data.session_id
+        let message = "Hi I'm IBM's Chatbot, here to answer any of your questions about IBM Cloud and Cloud for Finance"
+        let chatBox = document.querySelector('.chatBox');
+
+        // Outer message wrapper
+        let messageDiv = document.createElement('div');
+        messageDiv.setAttribute('id', `message${id}`);
+        messageDiv.setAttribute('class', 'messageDiv messageDivLeft');
+
+        // Profile image
+        let profileImg = document.createElement('img');
+        profileImg.setAttribute('class', 'profilePicture');
+        profileImg.setAttribute('src', 'https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw=');
+        messageDiv.appendChild(profileImg);
+
+        // Container, which contains each answer
+        let messageBox = document.createElement('div');
+        messageBox.setAttribute('class', 'messageBox messageBoxLeft');
+
+        // Message text container
+        let messageText = document.createElement('p');
+        messageText.setAttribute('class', 'messageText');
+        messageText.innerText = message;
+        messageBox.appendChild(messageText);
+        messageDiv.appendChild(messageBox);
+
+        chatBox.replaceChild(messageDiv, chatBox.querySelector(`#message${id}`))
+        id++;
     })
     .catch(err => {
         console.error(err)
+        let message = "Sorry, an error occured while connecting to IBM. Try refreshing the page or contacting support!"
+        let chatBox = document.querySelector('.chatBox');
+
+        // Outer message wrapper
+        let messageDiv = document.createElement('div');
+        messageDiv.setAttribute('id', `message${id}`);
+        messageDiv.setAttribute('class', 'messageDiv messageDivLeft');
+
+        // Profile image
+        let profileImg = document.createElement('img');
+        profileImg.setAttribute('class', 'profilePicture');
+        profileImg.setAttribute('src', 'https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw=');
+        messageDiv.appendChild(profileImg);
+
+        // Container, which contains each answer
+        let messageBox = document.createElement('div');
+        messageBox.setAttribute('class', 'messageBox messageBoxLeft');
+
+        // Message text container
+        let messageText = document.createElement('p');
+        messageText.setAttribute('class', 'messageText');
+        messageText.innerText = message;
+        messageBox.appendChild(messageText);
+        messageDiv.appendChild(messageBox);
+
+        chatBox.replaceChild(messageDiv, chatBox.querySelector(`#message${id}`))
+        id++;
     })
 }
 
