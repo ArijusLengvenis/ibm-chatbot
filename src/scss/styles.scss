@@ -102,6 +102,11 @@ body{
     font-weight: 400;
 }
 
+.messageBackgroundDiv{
+    border-radius: 20px;
+    background-color: lightgrey;
+}
+
 .profilePicture{
     border-radius: 50%;
     height: 50px;
@@ -118,6 +123,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.load-more-button{
+    margin-top: 5px;
 }
 
 .textbox{
