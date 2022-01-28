@@ -166,6 +166,10 @@ body{
     background-color: lightgrey;
 }
 
+.thumb-pressed{
+    background-color: darkgrey;
+}
+
 @media only screen and (max-width: 1000px) {
     /* For mobile phones: */
     .generalBox {
