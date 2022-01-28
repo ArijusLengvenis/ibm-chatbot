@@ -13,6 +13,9 @@ function sendMessage() {
         return;
     }
 
+    let chatBox = document.querySelector('.chatBox');
+    chatBox.appendChild(chatbotSays('...'));
+
     //isPending = true;
     document.querySelector('#textBox').value = "";
     fetch("/send", {
@@ -25,7 +28,7 @@ function sendMessage() {
         if (data.length > 0) {
             data.query = message;
             messages[id]=data;
-            document.querySelector('.chatBox').appendChild(generateChatbotMessageBlock(data));
+            chatBox.replaceChild(generateChatbotMessageBlock(data), chatBox.querySelector(`#message${id}`));
             id++;
         }
         //isPending = false
@@ -234,10 +237,7 @@ function rateAnswer(messageId, answerId, gradient) {
         })
 }
 
-function initChatbotSession() {
-    let message = "..."
-    let chatBox = document.querySelector('.chatBox');
-
+function chatbotSays(message) {
     // Outer message wrapper
     let messageDiv = document.createElement('div');
     messageDiv.setAttribute('id', `message${id}`);
@@ -259,8 +259,12 @@ function initChatbotSession() {
     messageText.innerText = message;
     messageBox.appendChild(messageText);
     messageDiv.appendChild(messageBox);
+    return messageDiv
+}
 
-    chatBox.appendChild(messageDiv)
+function initChatbotSession() {
+    let chatBox = document.querySelector('.chatBox');
+    chatBox.appendChild(chatbotSays('...'))
 
     fetch("/createsession", {
         method: "POST",
@@ -269,62 +273,12 @@ function initChatbotSession() {
     .then(res => res.json())
     .then(data => {
         sessionId = data.session_id
-        let message = "Hi I'm IBM's Chatbot, here to answer any of your questions about IBM Cloud and Cloud for Finance"
-        let chatBox = document.querySelector('.chatBox');
-
-        // Outer message wrapper
-        let messageDiv = document.createElement('div');
-        messageDiv.setAttribute('id', `message${id}`);
-        messageDiv.setAttribute('class', 'messageDiv messageDivLeft');
-
-        // Profile image
-        let profileImg = document.createElement('img');
-        profileImg.setAttribute('class', 'profilePicture');
-        profileImg.setAttribute('src', 'https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw=');
-        messageDiv.appendChild(profileImg);
-
-        // Container, which contains each answer
-        let messageBox = document.createElement('div');
-        messageBox.setAttribute('class', 'messageBox messageBoxLeft');
-
-        // Message text container
-        let messageText = document.createElement('p');
-        messageText.setAttribute('class', 'messageText');
-        messageText.innerText = message;
-        messageBox.appendChild(messageText);
-        messageDiv.appendChild(messageBox);
-
-        chatBox.replaceChild(messageDiv, chatBox.querySelector(`#message${id}`))
+        chatBox.replaceChild(chatbotSays("Hi I'm IBM's Chatbot, here to answer any of your questions about IBM Cloud and Cloud for Finance!"), chatBox.querySelector(`#message${id}`))
         id++;
     })
     .catch(err => {
         console.error(err)
-        let message = "Sorry, an error occured while connecting to IBM. Try refreshing the page or contacting support!"
-        let chatBox = document.querySelector('.chatBox');
-
-        // Outer message wrapper
-        let messageDiv = document.createElement('div');
-        messageDiv.setAttribute('id', `message${id}`);
-        messageDiv.setAttribute('class', 'messageDiv messageDivLeft');
-
-        // Profile image
-        let profileImg = document.createElement('img');
-        profileImg.setAttribute('class', 'profilePicture');
-        profileImg.setAttribute('src', 'https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw=');
-        messageDiv.appendChild(profileImg);
-
-        // Container, which contains each answer
-        let messageBox = document.createElement('div');
-        messageBox.setAttribute('class', 'messageBox messageBoxLeft');
-
-        // Message text container
-        let messageText = document.createElement('p');
-        messageText.setAttribute('class', 'messageText');
-        messageText.innerText = message;
-        messageBox.appendChild(messageText);
-        messageDiv.appendChild(messageBox);
-
-        chatBox.replaceChild(messageDiv, chatBox.querySelector(`#message${id}`))
+        chatBox.replaceChild(chatbotSays("Sorry, an error occured while connecting to IBM. Try refreshing the page or contacting support!"), chatBox.querySelector(`#message${id}`))
         id++;
     })
 }
