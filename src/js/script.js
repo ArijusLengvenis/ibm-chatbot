@@ -110,7 +110,8 @@ function generateChatbotMessageBlock(messages) {
         }
         messageBox.appendChild(messageWrapper);
     });
-    if (showMessages[0].text !== "I searched my knowledge base, but did not find anything related to your query.") {
+
+    if (showMessages[0].text !== "I searched my knowledge base, but did not find anything related to your query." && messages.length > 2) {
 
         // "Show More" button
         let showMore = document.createElement('button');
@@ -215,7 +216,6 @@ function rateAnswer(messageId, answerId, gradient) {
         .then(() => {
 
             // Replace rating div with a "Thank you" message
-            console.log(`#message${messageId} #ratingId${answerId}`)
             let messageDiv = document.querySelector(`#message${messageId} #ratingId${answerId}`);
             // if (gradient) {
             //     // Thumbs up
@@ -227,7 +227,6 @@ function rateAnswer(messageId, answerId, gradient) {
             //     let thumbsUp = messageDiv.querySelector('.fa-thumbs-down')
             //     // Add class to show activation
             // }
-            console.log(messageDiv)
             let feedback = document.createElement('p');
             feedback.innerText = 'Thank you for your answer.'
             messageDiv.parentNode.replaceChild(feedback, messageDiv);
