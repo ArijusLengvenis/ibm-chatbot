@@ -164,7 +164,7 @@ app.post("/rate", async (req, res) => {
       const queryId = await addNewTrainingQuery(query, documentId, newRelevance)
       await getUpdatedRating(queryId, documentId, getRelevance(isRelevant))
     }
-    res.sendStatus(201)
+    res.sendStatus(204)
   } catch(err) {
     res.status(500).send(err)
   }
@@ -541,8 +541,9 @@ async function uploadDocument(documentId, name, buffer, mime) {
       fileContentType: mime
     })
     const documentAccepted = response.result
+    return true
   } catch (err) {
-    throw err
+    return false
   }
 }
 

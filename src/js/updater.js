@@ -22,8 +22,11 @@ function GetFile(updateData, cb)
         const response = await fetch(url);
         const newData = await response.text();
         data.push(newData)
-        if (i == updateData.fileUrls.length-1)
+        if (i == updateData.fileUrls.length-1) {
             cb(data);
+        } else {
+            cb(null)
+        }
     });
 }
 
