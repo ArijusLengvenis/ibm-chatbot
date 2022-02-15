@@ -4,6 +4,7 @@ const TIME = 86400*1000;
 let { Hashes } = require('../json/Hashes.json');
 const exec = require('child_process').exec;
 
+// Get current commit hash in the GitHub repository
 function CheckHash(updateData, cb)
 {
     exec(`git ls-remote ${updateData.repoUrl}`,
