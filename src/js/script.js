@@ -16,7 +16,6 @@ function sendMessage() {
     let chatBox = document.querySelector('.chatBox');
     chatBox.appendChild(chatbotSays('...'));
 
-    //isPending = true;
     document.querySelector('#textBox').value = "";
     fetch("/send", {
         method: 'POST',
@@ -26,16 +25,31 @@ function sendMessage() {
     .then(res => res.json())
     .then(data => {
         if (data.length > 0) {
+            data = urlProcessing(data);
             data.query = message;
             messages[id]=data;
             chatBox.replaceChild(generateChatbotMessageBlock(data), chatBox.querySelector(`#message${id}`));
             id++;
         }
-        //isPending = false
     })
     .catch(error => {
         console.error(error);
     })
+}
+
+// Replace URL strings with anchor elements
+// Argument is the data array, containing output data fetched from the back-end
+function urlProcessing(data) {
+    const URLR = 'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)'
+    data.forEach((message, i) => {
+        let urlMatches = message.text.match(URLR);
+        if (urlMatches !== null){
+            urlMatches.forEach(url => {
+                data[i].text.replace(url, `<a href="${url}">${url}<a>`);
+            })
+        }
+    })
+    return data;
 }
 
 // Generate message window for Chatbot's response (left side of chat)
@@ -89,7 +103,7 @@ function generateChatbotMessageBlock(messages) {
         // Message text container
         let messageText = document.createElement('p');
         messageText.setAttribute('class', 'messageText');
-        messageText.innerText = message.text;
+        messageText.innerHTML = message.text;
         messageWrapper.appendChild(messageText);
         if (message.text !== "I searched my knowledge base, but did not find anything related to your query.") {
 
@@ -140,7 +154,7 @@ function generateUserMessageBlock(message){
     // Message text container
     let messageText = document.createElement('p');
     messageText.setAttribute('class', 'messageText');
-    messageText.innerText = message;
+    messageText.innerHTML = message;
     messageBox.appendChild(messageText);
     messageDiv.appendChild(messageBox);
 
@@ -176,7 +190,7 @@ function loadMore(messageId) {
         // Message text container
         let messageText = document.createElement('p');
         messageText.setAttribute('class', 'messageText');
-        messageText.innerText = message.text;
+        messageText.innerHTML = message.text;
         messageWrapper.appendChild(messageText);
 
         // Ratings container
@@ -255,7 +269,7 @@ function chatbotSays(message) {
     // Message text container
     let messageText = document.createElement('p');
     messageText.setAttribute('class', 'messageText');
-    messageText.innerText = message;
+    messageText.innerHTML = message;
     messageBox.appendChild(messageText);
     messageDiv.appendChild(messageBox);
     return messageDiv
