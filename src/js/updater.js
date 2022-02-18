@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+const { Readable } = require("stream")
 
 const TIME = 86400*1000;
 let { Hashes } = require('../json/Hashes.json');
@@ -63,13 +64,12 @@ module.exports = {
                     if (!found)
                     {
                         GetFile(updateData, (file, data) => {
-                            // console.log(files);
+                            // console.log(file, data);
                             if (!file)
                                 throw Error;
                             const parsedFile = Parser(file)
-                            // console.log(parsedFile)
                             // of the format [[q1, a1], [q2, a2], ...]
-                            // uploadDocument(data.documentId, data.name, Readable.from(parseFile), data.mime);
+                            uploadDocument(data.documentId, data.name, Readable.from(parseFile), data.mime);
                             updateData.hash = hash;
                         });
                     }
@@ -197,14 +197,13 @@ function parseString(string){
 }
 
 function Parser(string){
-    return removeSpaces(parseString(removeLinks(removeSingleHandlebars(string)))).trim()
+    return makeJSON(removeSpaces(parseString(removeLinks(removeSingleHandlebars(string)))).trim())
 }
 
 
 
 function makeJSON(string){
     textList = string.split('\n')
-    print(textList)
     finalList = []
     currentQ = -1
     for (const line of textList){
@@ -219,8 +218,8 @@ function makeJSON(string){
             }
         }
     }
-    for (item in finalList){
-        item[1] = item[1].trim()
+    for (let i = 0; i < finalList.length; i++){
+        finalList[i][1] = finalList[i][1].trim();
     }
 
     return finalList
