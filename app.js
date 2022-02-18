@@ -149,20 +149,25 @@ app.post("/rate", async (req, res) => {
   }
 
   const isRelevant = req.body.relevant
-  if (isRelevant == null) {
-    res.status(500).send("Is Relevant is missing");
-    return;
-  }
+
+  const oldIsRelevant = req.body.oldRelevant
 
   try {
     const existingQueryId = await getTrainingQueryId(query)
-    const updatedRatings = await getUpdatedRating(existingQueryId, documentId, getRelevance(isRelevant))
-    const newRelevance = Math.round(updatedRatings.updatedRating) * 10
-    if (existingQueryId) {
-      await addExampleToTrainingQuery(existingQueryId, documentId, newRelevance, updatedRatings.existingDocument)
+    const updatedRatings = await getUpdatedRating(existingQueryId, documentId, isRelevant != null ? getRelevance(isRelevant) : null, oldIsRelevant != null ? getRelevance(oldIsRelevant) : null)
+    if (updatedRatings != null) {
+      const newRelevance = Math.round(updatedRatings.updatedRating) * 10
+      if (existingQueryId) {
+        await addExampleToTrainingQuery(existingQueryId, documentId, newRelevance, updatedRatings.existingDocument)
+      } else {
+        const queryId = await addNewTrainingQuery(query, documentId, newRelevance)
+        await getUpdatedRating(queryId, documentId, isRelevant != null ? getRelevance(isRelevant) : null, null)
+      }
     } else {
-      const queryId = await addNewTrainingQuery(query, documentId, newRelevance)
-      await getUpdatedRating(queryId, documentId, getRelevance(isRelevant))
+      if (existingQueryId) {
+        await deleteTrainingQueryExample(existingQueryId, documentId)
+        await getUpdatedRating(existingQueryId, documentId, null, oldIsRelevant != null ? getRelevance(oldIsRelevant) : null)
+      }
     }
     res.sendStatus(204)
   } catch(err) {
@@ -171,7 +176,7 @@ app.post("/rate", async (req, res) => {
 })
 
 // Add new rating to JSON file and return new average rating for the document
-async function getUpdatedRating(queryId, documentId, newRating) {
+async function getUpdatedRating(queryId, documentId, newRating, oldRating) {
 
   if (!queryId) {
     return {
@@ -209,10 +214,16 @@ async function getUpdatedRating(queryId, documentId, newRating) {
           // Document has already been given a rating
           const documentRating = ratedDocuments[documentId]
           const sumOfRatings = documentRating.avgRating * documentRating.ratingCount
-          const newAverageRating = (sumOfRatings + newRating) / (documentRating.ratingCount + 1)
+          const newRatingCount = documentRating.ratingCount + (newRating == null ? 0 : 1) - (oldRating == null ? 0 : 1)
+          if (newRatingCount == 0) {
+            delete ratedDocuments[documentId]
+            updateExistingRatings(ratingsJson)
+            return;
+          }
+          const newAverageRating = (sumOfRatings + (newRating == null ? 0 : newRating) - (oldRating == null ? 0 : oldRating)) / newRatingCount
           const newDocumentRating = {
             avgRating: newAverageRating,
-            ratingCount: documentRating.ratingCount + 1
+            ratingCount: newRatingCount
           }
           ratedDocuments[documentId] = newDocumentRating
           updateExistingRatings(ratingsJson)
@@ -220,7 +231,7 @@ async function getUpdatedRating(queryId, documentId, newRating) {
             existingDocument: true,
             updatedRating: newAverageRating
           }
-        } else {
+        } else if (newRating != null) {
           // Document has not been given a rating yet
           const newDocumentRating = {
             avgRating: newRating,
@@ -232,8 +243,10 @@ async function getUpdatedRating(queryId, documentId, newRating) {
             existingDocument: false,
             updatedRating: newRating
           }
+        } else {
+          return ratedDocuments[documentId]
         }
-      } else {
+      } else if (newRating != null) {
         // Query ID hasn't been given a rating yet
         const newDocumentRating = {
           avgRating: newRating,
@@ -248,6 +261,8 @@ async function getUpdatedRating(queryId, documentId, newRating) {
           existingDocument: false,
           updatedRating: newRating
         }
+      } else {
+        throw new Error("Document has no rating to remove")
       }
     }
   } catch (err) {
@@ -345,6 +360,20 @@ async function addExampleToTrainingQuery(queryId, documentId, relevance, isDocum
     } else {
       await addNewTrainingExample(relevance)
     }
+  } catch (err) {
+    throw err
+  }
+}
+
+// Delete example from training query
+async function deleteTrainingQueryExample(queryId, documentId) {
+  try {
+    await discovery.deleteTrainingExample({
+      environmentId: DiscoveryEnvironmentId,
+      collectionId: DiscoveryCollectionId,
+      queryId: queryId,
+      exampleId: documentId
+    })
   } catch (err) {
     throw err
   }
