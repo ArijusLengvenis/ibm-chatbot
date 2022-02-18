@@ -219,5 +219,9 @@ function makeJSON(string){
             }
         }
     }
+    for (item in finalList){
+        item[1] = item[1].trim()
+    }
+
     return finalList
 }
