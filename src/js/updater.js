@@ -4,6 +4,25 @@ const TIME = 86400*1000;
 let { Hashes } = require('../json/Hashes.json');
 const exec = require('child_process').exec;
 
+async function uploadDocument(documentId, name, buffer, mime) 
+{
+    try 
+    {
+      const response = await discovery.updateDocument({
+        environmentId: DiscoveryEnvironmentId,
+        collectionId: DiscoveryCollectionId,
+        documentId: documentId,
+        file: buffer,
+        filename: name,
+        fileContentType: mime
+      })
+      const documentAccepted = response.result
+      return true
+    } catch (err) {
+      return false
+    }
+}
+
 // Get current commit hash in the GitHub repository
 function CheckHash(updateData, cb)
 {
@@ -14,26 +33,23 @@ function CheckHash(updateData, cb)
     });
 }
 
+// Get the file from the specific git repository
 function GetFile(updateData, cb)
 {
-    const data = [];
-    updateData.fileUrls.forEach(async (fileUrl, i) => {
-        const url = "https://raw.githubusercontent.com/ibm-cloud-docs/overview/master/fscloud.md";
+    updateData.fileUrls.forEach(async (fileUrl) => {
+        const url = fileUrl.url;
         const response = await fetch(url);
         const newData = await response.text();
-        data.push(newData)
-        if (i == updateData.fileUrls.length-1) {
-            cb(data);
-        } else {
-            cb(null)
-        }
+        cb(newData, fileUrl);
     });
 }
 
+// Timer function to pause the program for a set amount of time
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// Entry point
 module.exports = {
     AutoUpdater: async function ()
     {
@@ -46,16 +62,15 @@ module.exports = {
                     const found = (updateData.hash === hash);
                     if (!found)
                     {
-                        GetFile(updateData, (files) => {
+                        GetFile(updateData, (file, data) => {
                             // console.log(files);
-                            if (!files)
+                            if (!file)
                                 throw Error;
-                            files.forEach(file => {
-                                const parsedFile = Parser(file)
-                                // console.log(parsedFile)
-                                //send to Disc
-                                updateData.hash = hash;
-                            })
+                            const parsedFile = Parser(file)
+                            // console.log(parsedFile)
+                            // of the format [[q1, a1], [q2, a2], ...]
+                            // uploadDocument(data.documentId, data.name, Readable.from(parseFile), data.mime);
+                            updateData.hash = hash;
                         });
                     }
                 });
