@@ -27,8 +27,8 @@
             <hr class="HR">
 
             <div class="submitDiv">
-                <input class="textbox" type="text" id="textBox" name="textBox" placeholder="Ask question here">
-                <button class="submitButton" onclick="sendMessage()"><i class="fas fa-paper-plane fa-lg"></i></button>
+                <textarea class="textbox" type="text" id="textBox" name="textBox" placeholder="Ask question here" maxlength="2500"></textarea>
+                <button class="submitButton" id="submitButton" onclick="sendMessage(); textResize();"><i class="fas fa-paper-plane fa-lg"></i></button>
             </div>
 
 
