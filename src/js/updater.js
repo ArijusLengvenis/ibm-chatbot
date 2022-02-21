@@ -4,6 +4,25 @@ const TIME = 86400*1000;
 let { Hashes } = require('../json/Hashes.json');
 const exec = require('child_process').exec;
 
+async function uploadDocument(documentId, name, buffer, mime) 
+{
+    try 
+    {
+      const response = await discovery.updateDocument({
+        environmentId: DiscoveryEnvironmentId,
+        collectionId: DiscoveryCollectionId,
+        documentId: documentId,
+        file: buffer,
+        filename: name,
+        fileContentType: mime
+      })
+      const documentAccepted = response.result
+      return true
+    } catch (err) {
+      return false
+    }
+}
+
 // Get current commit hash in the GitHub repository
 function CheckHash(updateData, cb)
 {
@@ -14,26 +33,23 @@ function CheckHash(updateData, cb)
     });
 }
 
+// Get the file from the specific git repository
 function GetFile(updateData, cb)
 {
-    const data = [];
-    updateData.fileUrls.forEach(async (fileUrl, i) => {
-        const url = "https://raw.githubusercontent.com/ibm-cloud-docs/overview/master/fscloud.md";
+    updateData.fileUrls.forEach(async (fileUrl) => {
+        const url = fileUrl.url;
         const response = await fetch(url);
         const newData = await response.text();
-        data.push(newData)
-        if (i == updateData.fileUrls.length-1) {
-            cb(data);
-        } else {
-            cb(null)
-        }
+        cb(newData, fileUrl);
     });
 }
 
+// Timer function to pause the program for a set amount of time
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// Entry point
 module.exports = {
     AutoUpdater: async function ()
     {
@@ -46,16 +62,15 @@ module.exports = {
                     const found = (updateData.hash === hash);
                     if (!found)
                     {
-                        GetFile(updateData, (files) => {
+                        GetFile(updateData, (file, data) => {
                             // console.log(files);
-                            if (!files)
+                            if (!file)
                                 throw Error;
-                            files.forEach(file => {
-                                const parsedFile = Parser(file)
-                                // console.log(parsedFile)
-                                //send to Disc
-                                updateData.hash = hash;
-                            })
+                            const parsedFile = Parser(file)
+                            // console.log(parsedFile)
+                            // of the format [[q1, a1], [q2, a2], ...]
+                            // uploadDocument(data.documentId, data.name, Readable.from(parseFile), data.mime);
+                            updateData.hash = hash;
                         });
                     }
                 });
@@ -66,7 +81,7 @@ module.exports = {
 }
 
 // Parser Functions
-const testString = x = `{{site.data.keyword.attribute-definition-list}}
+const testString = `{{site.data.keyword.attribute-definition-list}}
 
 # What is {{site.data.keyword.cloud_notm}} for Financial Services?
     {: #what-is-fscloud}
@@ -96,6 +111,34 @@ For the most security, it's recommended that you use the {{site.data.keyword.clo
 You can also set your team up to be alerted if they are creating a service that is not Financial Services Validated by enabling the Financial Services Validated setting in your account. For more information, see [Validate financial services for your account](/docs/account?topic=account-enabling-fs-validated).
 
 To learn more about {{site.data.keyword.cloud_notm}} for Financial Services, see the [product page](https://www.ibm.com/cloud/financial-services).`
+
+const testString2 = `# What is IBM Cloud for Financial Services?
+    
+
+IBM Cloud for Financial Services is a solution platform and ecosystem program built on an industry-informed framework of controls, architectures, and operations that mitigates systemic risk in using public cloud for mission-critical workloads with client-sensitive data.
+
+To view all services that are Financial Services Validated in IBM Cloud, go to the catalog and select the **Financial Services Validated** filter in the Compliance section.
+
+However, there are required services to use to maintain an IBM Cloud for Financial Services solution. Others are optional. The following services are required for a validated architecture when using IBM Cloud® Virtual Private Cloud services.
+
+* IBM Cloud Activity Tracking (requires the use of IBM Cloud Object Storage)
+* IBM Cloud Application Load Balancer for VPC
+* IBM Cloud Flow Logs for VPC
+* IBM Cloud® Identity and Access Management
+* IBM Cloud Object Storage or IBM® Cloud Block Storage for Virtual Private Cloud
+* IBM Cloud Transit Gateway
+* IBM Cloud® Virtual Private Cloud
+* IBM Cloud Virtual Private Endpoint (VPE) for VPC
+* IBM Cloud Virtual Private Network (VPN) for VPC or IBM Cloud Direct Link (Connect and Dedicated 2.0)
+* IBM Hyper Protect Crypto Services
+* Red Hat OpenShift on IBM Cloud or IBM Cloud® Virtual Servers for Virtual Private Cloud
+
+For the most security, it's recommended that you use the IBM Cloud CLI to create resources by using private endpoints.
+
+You can also set your team up to be alerted if they are creating a service that is not Financial Services Validated by enabling the Financial Services Validated setting in your account. For more information, see Validate financial services for your account.
+
+To learn more about IBM Cloud for Financial Services, see the product page.`
+
 
 const replacementDictionary = {
     '{{site.data.keyword.attribute-definition-list}}': '',
@@ -155,4 +198,30 @@ function parseString(string){
 
 function Parser(string){
     return removeSpaces(parseString(removeLinks(removeSingleHandlebars(string)))).trim()
+}
+
+
+
+function makeJSON(string){
+    textList = string.split('\n')
+    print(textList)
+    finalList = []
+    currentQ = -1
+    for (const line of textList){
+        if (line[line.length-1] === '?'){
+            currentQ++
+            finalList.push([line, ''])
+        }else{
+            if (currentQ === -1){
+                continue
+            }else{
+                finalList[currentQ][1] = finalList[currentQ][1] + '\n' + line
+            }
+        }
+    }
+    for (item in finalList){
+        item[1] = item[1].trim()
+    }
+
+    return finalList
 }
