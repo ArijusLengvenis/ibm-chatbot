@@ -1,4 +1,32 @@
-const express = require("express");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: app.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: app.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const express = require("express");
 const path = require("path");
 const fs = require("fs/promises");
 const { Readable } = require("stream")
@@ -224,7 +252,7 @@ class APIResponse {
  * @param {string} documentId 
  * @param {number} newRating 
  * @param {number} oldRating 
- * @returns {Promise<?RatingUpdateResult>} 
+ * @returns {Promise&lt;?RatingUpdateResult>} 
  */
 async function updateRating(queryId, documentId, newRating, oldRating) {
 
@@ -235,7 +263,7 @@ async function updateRating(queryId, documentId, newRating, oldRating) {
 
   /**
    * Get the existing ratings stored in the local json file
-   * @returns {Promise<any?>} Existing ratings
+   * @returns {Promise&lt;any?>} Existing ratings
    */
   async function getExisitingRatings() {
     try {
@@ -355,7 +383,7 @@ function boolToInt(value) {
 
 /**
  * 
- * @param {number} avgRelevance Average relevance. Must be between 0 (not relevant) & 1 (relevant).
+ * @param {number} avgRelevance Average relevance. Must be between 0 (not relevant) &amp; 1 (relevant).
  * @returns {number} Relevance score
  */
 function getRelevanceScore(avgRelevance) {
@@ -364,7 +392,7 @@ function getRelevanceScore(avgRelevance) {
 
 /**
  * Get all training queries from Discovery
- * @returns {Promise<DiscoveryV2.TrainingQuery[]>}
+ * @returns {Promise&lt;DiscoveryV2.TrainingQuery[]>}
  */
 async function getTrainingQueries() {
   try {
@@ -381,7 +409,7 @@ async function getTrainingQueries() {
 /**
  * Retrieves the queryId for a given plain english query. Returns null if no relevancy training has been applied to the query before.
  * @param {string} query The plain english query
- * @returns {Promise<?string>} The query id
+ * @returns {Promise&lt;?string>} The query id
  */
 async function getTrainingQueryId(query) {
   try {
@@ -409,7 +437,7 @@ async function getTrainingQueryId(query) {
  * @param {string} query Plain text english query
  * @param {string} documentId Document id
  * @param {number} relevance Relevance score of the {@link documentId document} for the {@link query}
- * @returns {Promise<string>} Newly created query id corresponding to the {@link query}
+ * @returns {Promise&lt;string>} Newly created query id corresponding to the {@link query}
  */
 async function createTrainingQuery(query, documentId, relevance) {
   try {
@@ -490,7 +518,7 @@ async function deleteTrainingQueryExample(queryId, documentId) {
  * Retrieve answers to a plain text query using Assistant
  * @param {string} sessionId Chatbot session id
  * @param {string} query Plain text english query
- * @returns {Promise<APIResponse[]>} List of answers
+ * @returns {Promise&lt;APIResponse[]>} List of answers
  */
 async function getAnswersToQuery(sessionId, query) {
   try {
@@ -601,7 +629,7 @@ async function uploadGlossary(filepath) {
 
   /**
    * Extracts the XML document from the DOCX file found at the given {@link filepath file path}
-   * @returns {Promise<string>} XML document
+   * @returns {Promise&lt;string>} XML document
   */
   function extractXML() {
     return new Promise((resolve, reject) => {
@@ -642,7 +670,7 @@ async function uploadGlossary(filepath) {
     text = text.replace(/\s+/g, " ")
 
     // Replace HTML amp entity with actual character
-    text = text.replace(/&amp;/g, "&")
+    text = text.replace(/&amp;amp;/g, "&amp;")
 
     // Make sure full stops have a space after them
     text = text.replace(/\.(?=[A-Z])/g, ". ")
@@ -693,7 +721,7 @@ async function uploadGlossary(filepath) {
     })
     
     // Delete documents that no longer exist in the glossary
-    while (i < documentCount) {
+    while (i &lt; documentCount) {
       const glossaryEntryDocumentId = GlossaryDocumentId + "_" + i.toString()
       deleteDocument(glossaryEntryDocumentId)
       i += 1
@@ -713,7 +741,7 @@ async function uploadGlossary(filepath) {
  * @param  {string} name The name of the document
  * @param  {(NodeJS.ReadableStream|Buffer)} buffer The content of the document
  * @param  {string} mime The content type of the uploaded document
- * @returns {Promise<boolean>} Document successfully uploaded
+ * @returns {Promise&lt;boolean>} Document successfully uploaded
  */
 async function uploadDocument(documentId, name, buffer, mime) {
   try {
@@ -748,6 +776,29 @@ async function uploadDocument(documentId, name, buffer, mime) {
 }
 
 // Upload Glossary on Server Start
-uploadGlossary(path.join(__dirname, "src", "data", "Cloud for FS FAQ & Field Guide.docx"))
+uploadGlossary(path.join(__dirname, "src", "data", "Cloud for FS FAQ &amp; Field Guide.docx"))
 
 module.exports = app;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="APIResponse.html">APIResponse</a></li></ul><h3>Global</h3><ul><li><a href="global.html#boolToInt">boolToInt</a></li><li><a href="global.html#createTrainingQuery">createTrainingQuery</a></li><li><a href="global.html#createTrainingQueryDocument">createTrainingQueryDocument</a></li><li><a href="global.html#deleteDocument">deleteDocument</a></li><li><a href="global.html#deleteTrainingQueryExample">deleteTrainingQueryExample</a></li><li><a href="global.html#extractAnswers">extractAnswers</a></li><li><a href="global.html#getAnswersToQuery">getAnswersToQuery</a></li><li><a href="global.html#getRelevanceScore">getRelevanceScore</a></li><li><a href="global.html#getTrainingQueries">getTrainingQueries</a></li><li><a href="global.html#getTrainingQueryId">getTrainingQueryId</a></li><li><a href="global.html#updateRating">updateRating</a></li><li><a href="global.html#updateTrainingQueryDocument">updateTrainingQueryDocument</a></li><li><a href="global.html#uploadDocument">uploadDocument</a></li><li><a href="global.html#uploadGlossary">uploadGlossary</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Sat Feb 19 2022 19:11:15 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

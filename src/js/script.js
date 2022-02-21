@@ -71,7 +71,7 @@ function generateChatbotMessageBlock(messages) {
     messageBox.setAttribute('class', 'messageBox messageBoxLeft');
 
     // Extract first 2 messages
-    showMessages = [];
+    let showMessages = [];
     if (messages.length > 2) {
         showMessages = messages.slice(0,2);
     }
