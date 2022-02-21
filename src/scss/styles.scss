@@ -13,7 +13,7 @@ $IBM-Grey-100: #161616;
 
 body{
     width: 100vw;
-    height: 100vh;
+    height: 98vh;
     background-color: white;
     display:flex;
     flex-direction: column;
@@ -124,6 +124,8 @@ p{
 
 .HR{
     width: 80%;
+    position: relative;
+    bottom: 10px;
 }
 
 .submitDiv{
@@ -137,13 +139,19 @@ p{
     margin-top: 5px;
 }
 
+
 .textbox{
-    height: 4vh;
-    width: 90%;
+    height: 38px;
+    overflow-y: hidden;
+    width: 58%;
+    bottom: 0;
+    position: fixed;
+    resize: none;
     border: solid, 2px, $IBM-Grey-90;
     border-radius: 15px;
     margin: 0 10px 0 10px;
     padding: 10px;
+    margin-bottom: 15px;
 }
 
 .submitButton{
@@ -151,6 +159,9 @@ p{
     width: 4vh;
     border-radius: 20px;
     padding: 0 5px 0 0;
+    position: fixed;
+    margin-left: 61%;
+    margin-bottom: 15px;
     border: none;
     display: flex;
     justify-content: center;
