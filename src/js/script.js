@@ -28,7 +28,11 @@ function sendMessage() {
             data = urlProcessing(data);
             data.query = message;
             messages[id]=data;
-            chatBox.replaceChild(generateChatbotMessageBlock(data), chatBox.querySelector(`#message${id}`));
+            if (data[0].id) {
+                chatBox.replaceChild(generateChatbotMessageBlock(data), chatBox.querySelector(`#message${id}`));
+            } else {
+                chatBox.replaceChild(chatbotSays(data[0].text), chatBox.querySelector(`#message${id}`));
+            }
             id++;
         }
     })
