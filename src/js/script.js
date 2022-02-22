@@ -284,7 +284,7 @@ function rateAnswer(messageId, answerId, relevant) {
             })
         })
         .then(() => {
-            messages[messageId][answerId] = relevant;
+            messages[messageId][answerId].oldRelevant = relevant;
         })
         .catch(error => {
             console.error(error);
