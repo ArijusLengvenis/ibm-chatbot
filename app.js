@@ -141,7 +141,7 @@ app.post("/rate", async (req, res) => {
     if (updatedRatings != null) {
       // Update existing training query
       const newRelevanceScore = getRelevanceScore(updatedRatings.newRelevance)
-      if (updatedRatings.existingDocument) {
+      if (!updatedRatings.existingDocument) {
         await createTrainingQueryDocument(existingQueryId, documentId, newRelevanceScore)
       } else {
         await updateTrainingQueryDocument(existingQueryId, documentId, newRelevanceScore)
