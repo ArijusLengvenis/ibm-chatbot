@@ -13,6 +13,9 @@ function sendMessage() {
         return;
     }
 
+    let submitButton = document.querySelector('#submit');
+    submitButton.setAttribute('disabled', "true");
+
     let chatBox = document.querySelector('.chatBox');
     chatBox.appendChild(chatbotSays('...'));
 
@@ -24,6 +27,7 @@ function sendMessage() {
         })
     .then(res => res.json())
     .then(data => {
+        submitButton.removeAttribute('disabled');
         if (data.length > 0) {
             data = urlProcessing(data);
             data.query = message;
@@ -33,6 +37,7 @@ function sendMessage() {
         }
     })
     .catch(error => {
+        submitButton.removeAttribute('disabled');
         console.error(error);
     })
 }
@@ -213,37 +218,54 @@ function loadMore(messageId) {
 }
 
 // Rate answer function (once thumbs up/down is clicked)
-function rateAnswer(messageId, answerId, gradient) {
+function rateAnswer(messageId, answerId, relevant) {
 
     // Extract specific answer which was rated
-    const message = messages[messageId][answerId];
+    let message = messages[messageId][answerId];
     // console.log(message)
+
+    let messageDiv = document.querySelector(`#message${messageId} #ratingId${answerId}`);
+    let thumbsUp = messageDiv.querySelector('.fa-thumbs-up')
+    let thumbsDown = messageDiv.querySelector('.fa-thumbs-down')
+    if (relevant) {
+        // Thumbs up
+        // Add class to show activation
+        if (thumbsUp.classList.contains('greeniconcolor'))
+        {
+            thumbsUp.classList.remove('greeniconcolor');
+            message.relevant = null;
+        }
+        else
+        {
+            thumbsUp.classList.add('greeniconcolor');
+        }        
+        thumbsDown.classList.remove('rediconcolor');
+
+    }
+    else {
+        // Thumbs down
+        // Add class to show activation
+        if (thumbsDown.classList.contains('rediconcolor'))
+        {
+            thumbsDown.classList.remove('rediconcolor');
+            message.relevant = null;
+        }
+        else
+        {
+            thumbsDown.classList.add('rediconcolor');
+        }        
+        thumbsUp.classList.remove('greeniconcolor');
+    }
+    messages[messageId][answerId] = message;
     fetch("/rate", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 query: messages[messageId].query,
                 documentId: message.id,
-                relevant: gradient
+                relevant: relevant,
+                oldIsRelevant: message.oldIsRelevant
             })
-        })
-        .then(() => {
-
-            // Replace rating div with a "Thank you" message
-            let messageDiv = document.querySelector(`#message${messageId} #ratingId${answerId}`);
-            // if (gradient) {
-            //     // Thumbs up
-            //     let thumbsUp = messageDiv.querySelector('.fa-thumbs-up')
-            //     // Add class to show activation
-            // }
-            // else {
-            //     // Thumbs down
-            //     let thumbsUp = messageDiv.querySelector('.fa-thumbs-down')
-            //     // Add class to show activation
-            // }
-            let feedback = document.createElement('p');
-            feedback.innerText = 'Thank you for your answer.'
-            messageDiv.parentNode.replaceChild(feedback, messageDiv);
         })
         .catch(error => {
             console.error(error);

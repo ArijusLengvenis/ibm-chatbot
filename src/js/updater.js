@@ -69,7 +69,7 @@ module.exports = {
                                 throw Error;
                             const parsedFile = Parser(file)
                             // of the format [[q1, a1], [q2, a2], ...]
-                            uploadDocument(data.documentId, data.name, Readable.from(parseFile), data.mime);
+                            // uploadDocument(data.documentId, data.name, Readable.from(parseFile), data.mime);
                             updateData.hash = hash;
                         });
                     }
