@@ -32,7 +32,11 @@ function sendMessage() {
             data = urlProcessing(data);
             data.query = message;
             messages[id]=data;
-            chatBox.replaceChild(generateChatbotMessageBlock(data), chatBox.querySelector(`#message${id}`));
+            if (data[0].id) {
+                chatBox.replaceChild(generateChatbotMessageBlock(data), chatBox.querySelector(`#message${id}`));
+            } else {
+                chatBox.replaceChild(chatbotSays(data[0].text), chatBox.querySelector(`#message${id}`));
+            }
             id++;
         }
     })
@@ -57,6 +61,14 @@ function urlProcessing(data) {
     return data;
 }
 
+// Control expansion size of input area to match user input length
+const box = document.getElementById('textBox');
+box.addEventListener("input", textResize, false);
+function textResize() {
+    box.style.height = "5vh";
+    box.style.height = (box.scrollHeight) + "px";
+}
+
 // Generate message window for Chatbot's response (left side of chat)
 function generateChatbotMessageBlock(messages) {
 
@@ -76,7 +88,7 @@ function generateChatbotMessageBlock(messages) {
     messageBox.setAttribute('class', 'messageBox messageBoxLeft');
 
     // Extract first 2 messages
-    showMessages = [];
+    let showMessages = [];
     if (messages.length > 2) {
         showMessages = messages.slice(0,2);
     }
