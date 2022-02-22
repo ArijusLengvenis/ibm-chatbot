@@ -246,6 +246,7 @@ function rateAnswer(messageId, answerId, relevant) {
         {
             thumbsUp.classList.remove('greeniconcolor');
             message.relevant = null;
+            relevant = null;
         }
         else
         {
@@ -261,6 +262,7 @@ function rateAnswer(messageId, answerId, relevant) {
         {
             thumbsDown.classList.remove('rediconcolor');
             message.relevant = null;
+            relevant = null;
         }
         else
         {
@@ -268,7 +270,9 @@ function rateAnswer(messageId, answerId, relevant) {
         }        
         thumbsUp.classList.remove('greeniconcolor');
     }
-    messages[messageId][answerId] = message;
+    if (message.oldIsRelevant === undefined)
+        message.oldIsRelevant = null;
+    console.log(message.oldIsRelevant, relevant)
     fetch("/rate", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -278,6 +282,9 @@ function rateAnswer(messageId, answerId, relevant) {
                 relevant: relevant,
                 oldIsRelevant: message.oldIsRelevant
             })
+        })
+        .then(() => {
+            messages[messageId][answerId] = relevant;
         })
         .catch(error => {
             console.error(error);
