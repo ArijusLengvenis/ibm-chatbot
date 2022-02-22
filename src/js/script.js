@@ -270,9 +270,9 @@ function rateAnswer(messageId, answerId, relevant) {
         }        
         thumbsUp.classList.remove('greeniconcolor');
     }
-    if (message.oldIsRelevant === undefined)
-        message.oldIsRelevant = null;
-    console.log(message.oldIsRelevant, relevant)
+    if (message.oldRelevant === undefined)
+        message.oldRelevant = null;
+    console.log(message.oldRelevant, relevant)
     fetch("/rate", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -280,7 +280,7 @@ function rateAnswer(messageId, answerId, relevant) {
                 query: messages[messageId].query,
                 documentId: message.id,
                 relevant: relevant,
-                oldIsRelevant: message.oldIsRelevant
+                oldRelevant: message.oldRelevant
             })
         })
         .then(() => {
