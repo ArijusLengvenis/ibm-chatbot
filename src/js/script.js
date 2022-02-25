@@ -61,14 +61,6 @@ function urlProcessing(data) {
     return data;
 }
 
-// Control expansion size of input area to match user input length
-const box = document.getElementById('textBox');
-box.addEventListener("input", textResize, false);
-function textResize() {
-    box.style.height = "5vh";
-    box.style.height = (box.scrollHeight) + "px";
-}
-
 // Generate message window for Chatbot's response (left side of chat)
 function generateChatbotMessageBlock(messages) {
 
