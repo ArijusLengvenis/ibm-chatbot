@@ -18,7 +18,7 @@
     <body>
         <header class="navbarHeader">
             <p class="navbarTitle">IBM Chatbot</p>
-            <button class="navbarButton">Sign In</button>
+            <button onclick="location.href='https://cloud.ibm.com/login'" class="navbarButton">Dashboard</button>
         </header>
 
         <div class="generalBox">
@@ -27,7 +27,7 @@
             <hr class="HR">
 
             <div class="submitDiv">
-                <input class="textbox" type="text" id="textBox" name="textBox" placeholder="Ask question here">
+                <textarea class="textbox" type="text" id="textBox" name="textBox" placeholder="Ask question here"></textarea>
                 <button class="submitButton" id="submit" onclick="sendMessage()"><i class="fas fa-paper-plane fa-lg"></i></button>
             </div>
 
