@@ -148,6 +148,9 @@ p{
     border-radius: 15px;
     margin: 0 10px 0 10px;
     padding: 10px;
+    resize: none;
+    overflow: hidden;
+    bottom: 0;
 }
 
 .submitButton{
