@@ -2,9 +2,12 @@ let sessionId = null;
 let id = 0;
 let messages = {};
 
+// Processes input message and sends it to the back-end
 function sendMessage() {
     const message = document.querySelector('#textBox').value;
     if (!message) return;
+
+    // Generates user message block
     document.querySelector('.chatBox').appendChild(generateUserMessageBlock(message));
     id++;
 
@@ -13,13 +16,18 @@ function sendMessage() {
         return;
     }
 
+    // Disables submit button to cancel requests until the answers to the query
+    // are retrieved from the back-end
     let submitButton = document.querySelector('#submit');
     submitButton.setAttribute('disabled', "true");
 
+    // Notifies user, that question is being processed
     let chatBox = document.querySelector('.chatBox');
     chatBox.appendChild(chatbotSays('...'));
 
     document.querySelector('#textBox').value = "";
+
+    // Send message fetch request
     fetch("/send", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
@@ -29,8 +37,12 @@ function sendMessage() {
     .then(data => {
         submitButton.removeAttribute('disabled');
         if (data.length > 0) {
+
+            // Processes any urls such that they are clickable by the user
             data = urlProcessing(data);
             data.query = message;
+
+            // Save and output data to the user
             messages[id]=data;
             if (data[0].id) {
                 chatBox.replaceChild(generateChatbotMessageBlock(data), chatBox.querySelector(`#message${id}`));
@@ -48,6 +60,7 @@ function sendMessage() {
 
 // Replace URL strings with anchor elements
 // Argument is the data array, containing output data fetched from the back-end
+// Return is the data with the URL elements replaced with anchor elements with the link
 function urlProcessing(data) {
     const URLR = 'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)'
     data.forEach((message, i) => {
@@ -234,7 +247,6 @@ function rateAnswer(messageId, answerId, relevant) {
 
     // Extract specific answer which was rated
     let message = messages[messageId][answerId];
-    // console.log(message)
 
     let messageDiv = document.querySelector(`#message${messageId} #ratingId${answerId}`);
     let thumbsUp = messageDiv.querySelector('.fa-thumbs-up')
@@ -272,7 +284,6 @@ function rateAnswer(messageId, answerId, relevant) {
     }
     if (message.oldRelevant === undefined)
         message.oldRelevant = null;
-    console.log(message.oldRelevant, relevant)
     fetch("/rate", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -316,6 +327,7 @@ function chatbotSays(message) {
     return messageDiv
 }
 
+// Initialise chatbot session
 function initChatbotSession() {
     let chatBox = document.querySelector('.chatBox');
     chatBox.appendChild(chatbotSays('...'))
