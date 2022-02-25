@@ -2,6 +2,7 @@
 
 const fetch = require('node-fetch')
 const { Readable } = require("stream")
+const { uploadSplitDocument } = require("./uploader")
 
 const TIME = 86400*1000;
 let { Hashes } = require('../json/Hashes.json');
@@ -26,26 +27,6 @@ const exec = require('child_process').exec;
  * @property {string} documentId Document id
  * @property {string} mime MIME type of file
  */
-
-
-async function uploadDocument(documentId, name, buffer, mime) 
-{
-    try 
-    {
-      const response = await discovery.updateDocument({
-        environmentId: DiscoveryEnvironmentId,
-        collectionId: DiscoveryCollectionId,
-        documentId: documentId,
-        file: buffer,
-        filename: name,
-        fileContentType: mime
-      })
-      const documentAccepted = response.result
-      return true
-    } catch (err) {
-      return false
-    }
-}
 
 /**
  * @callback CheckHashCallback
@@ -117,12 +98,11 @@ module.exports = {
                     if (!found)
                     {
                         getFile(updateData, (file, data) => {
-                            // console.log(file, data);
                             if (!file)
                                 throw Error;
                             const parsedFile = Parser(file)
-                            // of the format [[q1, a1], [q2, a2], ...]
-                            // uploadDocument(data.documentId, data.name, Readable.from(parseFile), data.mime);
+                            const DocumentId = "ff5a9263-9377-39ea-2840-dbad819362f8"
+                            uploadSplitDocument(DocumentId, data.name, parsedFile)
                             updateData.hash = hash;
                         });
                     }
@@ -275,5 +255,11 @@ function makeJSON(string){
         finalList[i][1] = finalList[i][1].trim();
     }
 
-    return finalList
+    let formattedJson = {}
+
+    for (let [question, answer] of finalList) {
+        formattedJson[question] = answer
+    }
+
+    return formattedJson
 }
