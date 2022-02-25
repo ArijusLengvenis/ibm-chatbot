@@ -1,7 +1,8 @@
+/** @module app */
+
 const express = require("express");
 const path = require("path");
 const fs = require("fs/promises");
-const { Readable } = require("stream")
 const StreamZip = require("node-stream-zip")
 const XmlReader = require("xml-reader")
 const XmlQuery = require("xml-query");
@@ -9,6 +10,7 @@ const app = express();
 const AssistantV2 = require("ibm-watson/assistant/v2");
 const DiscoveryV2 = require("ibm-watson/discovery/v1");
 const { IamAuthenticator } = require("ibm-watson/auth");
+const { uploadSplitDocument } = require("./src/js/uploader")
 
 // Initialize middleware
 app.use(require("morgan")("combined"));
@@ -49,10 +51,16 @@ const discovery = new DiscoveryV2({
 
 // Initialize API endpoints
 
+/**
+ * Get main page html file
+ */
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
+/**
+ * 
+ */
 app.post("/createsession", async (req, res) => {
   try {
     let response = await assistant.createSession({
@@ -169,13 +177,15 @@ app.post("/rate", async (req, res) => {
 // Define server functions
 
 /**
- * @typedef {Object} RatingUpdateResult
+ * @typedef {object} RatingUpdateResult
+ * @instance
  * @property {boolean} existingDocument Has the document previously been given a rating
  * @property {number} newRelevance The new average relevance given to the document
  */
 
 /** 
  * Class representing a response from Watson Assistant
+ * @static
 */
 class APIResponse {
 
@@ -220,6 +230,7 @@ class APIResponse {
 
 /**
  * Update the ratings stored in the local json file. A return value of `null` signifies that the query doesn't exist or the document no longer has a rating.
+ * @instance
  * @param {string} queryId 
  * @param {string} documentId 
  * @param {number} newRating 
@@ -235,6 +246,7 @@ async function updateRating(queryId, documentId, newRating, oldRating) {
 
   /**
    * Get the existing ratings stored in the local json file
+   * @inner
    * @returns {Promise<any?>} Existing ratings
    */
   async function getExisitingRatings() {
@@ -251,6 +263,7 @@ async function updateRating(queryId, documentId, newRating, oldRating) {
 
   /**
    * Update contents of local ratings json file
+   * @inner
    * @param {any} ratingsJson Updated ratings json
    */
   async function updateExistingRatings(ratingsJson) {
@@ -342,6 +355,7 @@ async function updateRating(queryId, documentId, newRating, oldRating) {
 
 /**
  * Converts a boolean to an integer
+ * @instance
  * @param {boolean} value Boolean value
  * @returns {number} Integer value
  */
@@ -354,7 +368,8 @@ function boolToInt(value) {
 }
 
 /**
- * 
+ * Converts the average relevance into the Discovery relevance score
+ * @instance
  * @param {number} avgRelevance Average relevance. Must be between 0 (not relevant) & 1 (relevant).
  * @returns {number} Relevance score
  */
@@ -364,6 +379,7 @@ function getRelevanceScore(avgRelevance) {
 
 /**
  * Get all training queries from Discovery
+ * @instance
  * @returns {Promise<DiscoveryV2.TrainingQuery[]>}
  */
 async function getTrainingQueries() {
@@ -380,6 +396,7 @@ async function getTrainingQueries() {
 
 /**
  * Retrieves the queryId for a given plain english query. Returns null if no relevancy training has been applied to the query before.
+ * @instance
  * @param {string} query The plain english query
  * @returns {Promise<?string>} The query id
  */
@@ -406,6 +423,7 @@ async function getTrainingQueryId(query) {
 
 /**
  * Create a new training query
+ * @instance
  * @param {string} query Plain text english query
  * @param {string} documentId Document id
  * @param {number} relevance Relevance score of the {@link documentId document} for the {@link query}
@@ -430,6 +448,7 @@ async function createTrainingQuery(query, documentId, relevance) {
 
 /**
  * Add a document rating to an existing training query
+ * @instance
  * @param {string} queryId Query id
  * @param {string} documentId Document id
  * @param {number} relevance Relevance score of the {@link documentId document} for the {@link queryId query}
@@ -450,6 +469,7 @@ async function createTrainingQueryDocument(queryId, documentId, relevance) {
 
 /**
  * Update a document rating to an existing training query
+ * @instance
  * @param {string} queryId Query id
  * @param {string} documentId Document id
  * @param {number} relevance Relevance score of the {@link documentId document} for the {@link queryId query}
@@ -470,6 +490,7 @@ async function updateTrainingQueryDocument(queryId, documentId, relevance) {
 
 /**
  * Delete a document from a training query
+ * @instance
  * @param {string} queryId The query id
  * @param {string} documentId The document id
  */
@@ -488,6 +509,7 @@ async function deleteTrainingQueryExample(queryId, documentId) {
 
 /**
  * Retrieve answers to a plain text query using Assistant
+ * @instance
  * @param {string} sessionId Chatbot session id
  * @param {string} query Plain text english query
  * @returns {Promise<APIResponse[]>} List of answers
@@ -516,6 +538,7 @@ async function getAnswersToQuery(sessionId, query) {
 
 /**
  * Convert raw answers from Assistant to the {@link APIResponse} class
+ * @instance
  * @param {AssistantV2.RuntimeResponseGeneric[]} answers Raw answers
  * @returns {APIResponse[]} Formatted answers
  */
@@ -523,6 +546,7 @@ function extractAnswers(answers) {
 
   /**
    * Convert raw text answers from Assistant to the {@link APIResponse} class
+   * @inner
    * @param {AssistantV2.RuntimeResponseGenericRuntimeResponseTypeText} answer Raw text answer
    * @returns {APIResponse[]} Formatted answers
    */
@@ -534,6 +558,7 @@ function extractAnswers(answers) {
 
   /**
    * Convert raw search answers from Assistant to the {@link APIResponse} class
+   * @inner
    * @param {AssistantV2.RuntimeResponseGenericRuntimeResponseTypeSearch} answer Raw text answer
    * @returns {APIResponse[]} Formatted answers
    */
@@ -595,12 +620,14 @@ function extractAnswers(answers) {
 
 /**
  * Uploads the glossary to Discovery
+ * @instance
  * @param {string} filepath File path pointing to the DOCX file containing the glossary
 */
 async function uploadGlossary(filepath) {
 
   /**
    * Extracts the XML document from the DOCX file found at the given {@link filepath file path}
+   * @inner
    * @returns {Promise<string>} XML document
   */
   function extractXML() {
@@ -631,6 +658,7 @@ async function uploadGlossary(filepath) {
 
   /**
    * Formatter for glossary entries
+   * @inner
    * @param {string} text Glossary entry
    * @returns {string} Formatted text
    */
@@ -659,20 +687,8 @@ async function uploadGlossary(filepath) {
     // Get FAQ Table from the XML
     const faqTable = query.find("w:tbl").last()
 
-    const GlossaryDocumentId = "ba1f5494-0884-42ad-8368-bd4dc86794a8"
-    const GlossaryPath = "src/json/Glossary.json"
-
-    // Get Current Glossary Document Count
-    const currentGlossary = await fs.readFile(GlossaryPath, {
-      encoding: "utf-8"
-    })
-    const glossaryJSON = JSON.parse(currentGlossary)
-    const documentCount = Object.keys(glossaryJSON).length;
-
+    // Get question-answer pairs 
     let glossaries = {}
-
-    // Upload glossary entries 
-    let i = 0
     faqTable.find("w:tr").each(row => {
       row = XmlQuery(row)
       const columns = row.find("w:tc")
@@ -680,71 +696,17 @@ async function uploadGlossary(filepath) {
       const ignoredTerms = ["Term", ""]
       if (!ignoredTerms.includes(term)) {
         const definition = formatGlossaryText(columns.last().text())
-        const document = {
-          question: [term],
-          answer: [definition]
-        }
-        const glossaryEntryDocumentId = GlossaryDocumentId + "_" + i.toString()
-        glossaries[glossaryEntryDocumentId] = document
-
-        uploadDocument(glossaryEntryDocumentId, "Glossary.json", Readable.from(JSON.stringify(document)), "application/json")
-        i += 1
+        glossaries[term] = definition
       }
     })
-    
-    // Delete documents that no longer exist in the glossary
-    while (i < documentCount) {
-      const glossaryEntryDocumentId = GlossaryDocumentId + "_" + i.toString()
-      deleteDocument(glossaryEntryDocumentId)
-      i += 1
-    }
 
-    // Record new documents in json file
-    await fs.writeFile(GlossaryPath, JSON.stringify(glossaries))
+    // Upload the glossary
+    const GlossaryDocumentId = "ba1f5494-0884-42ad-8368-bd4dc86794a8"
+    uploadSplitDocument(GlossaryDocumentId, "Glossary.json", glossaries)
   } catch (err) {
     console.error(err)
   }
 
-}
-
-/**
- * Upload a file or document to Discovery
- * @param  {string} documentId The id of the document
- * @param  {string} name The name of the document
- * @param  {(NodeJS.ReadableStream|Buffer)} buffer The content of the document
- * @param  {string} mime The content type of the uploaded document
- * @returns {Promise<boolean>} Document successfully uploaded
- */
-async function uploadDocument(documentId, name, buffer, mime) {
-  try {
-    await discovery.updateDocument({
-      environmentId: DiscoveryEnvironmentId,
-      collectionId: DiscoveryCollectionId,
-      documentId: documentId,
-      file: buffer,
-      filename: name,
-      fileContentType: mime
-    })
-    return true
-  } catch (err) {
-    return false
-  }
-}
-
-/**
- * Delete a document from Discovery
- * @param {string} documentId The id of the document to delete
- */
- async function deleteDocument(documentId) {
-   try {
-    discovery.deleteDocument({
-      environmentId: DiscoveryEnvironmentId,
-      collectionId: DiscoveryCollectionId,
-      documentId: documentId
-    })
-   } catch (err) {
-     console.error(err)
-   }
 }
 
 // Upload Glossary on Server Start

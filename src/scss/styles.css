@@ -1,0 +1,243 @@
+body {
+  width: 100vw;
+  height: 98vh;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbarHeader {
+  width: 100vw;
+  height: 5vh;
+  background-color: #262626;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px 3%;
+}
+
+.navbarTitle {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  color: white;
+}
+
+.navbarButton {
+  height: 4vh;
+  width: 100px;
+  background-color: #606fee;
+  border: none;
+  border-radius: 50px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+}
+
+.generalBox {
+  width: 1000px;
+  height: 95vh;
+  background-color: #f4f4f4;
+}
+
+.chatBox {
+  overflow: auto;
+  height: 85vh;
+  padding-top: 5px;
+}
+
+.messageDiv {
+  width: 100%;
+  padding: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.messageDivLeft {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.messageDivRight {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.messageBox {
+  height: auto;
+  max-width: 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px 15px 5px 15px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.messageBoxRight {
+  background-color: #606FEE;
+  color: white;
+  border-radius: 30px 30px 0px 30px;
+}
+
+.messageBoxLeft {
+  background-color: #FEFEFE;
+  border-radius: 30px 30px 30px 0px;
+}
+
+.messageText {
+  height: auto;
+  margin: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.5vh;
+}
+
+p {
+  font-size: 1.5vh;
+}
+
+.messageBackgroundDiv {
+  border-radius: 20px;
+  background-color: #f4f4f4;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.profilePicture {
+  border-radius: 50%;
+  height: 50px;
+  width: auto;
+  margin-top: auto;
+}
+
+.HR {
+  width: 80%;
+  position: relative;
+  bottom: 10px;
+}
+
+.submitDiv {
+  height: 5vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.load-more-button {
+  margin-top: 5px;
+}
+
+.textbox {
+  height: 38px;
+  overflow-y: hidden;
+  width: 58%;
+  bottom: 0;
+  position: fixed;
+  resize: none;
+  border: solid, 2px, #262626;
+  border-radius: 15px;
+  margin: 0 10px 0 10px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.submitButton {
+  height: 4vh;
+  width: 4vh;
+  border-radius: 20px;
+  padding: 0 5px 0 0;
+  position: fixed;
+  margin-left: 61%;
+  margin-bottom: 15px;
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: blue;
+}
+
+.fa-paper-plane {
+  color: white;
+  margin-right: 2px;
+}
+
+.thumb-button {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  border: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: lightgrey;
+}
+
+.thumb-pressed {
+  background-color: darkgrey;
+}
+
+.greeniconcolor {
+  color: green;
+}
+
+.rediconcolor {
+  color: red;
+}
+
+@media only screen and (max-width: 1000px) {
+  /* For mobile phones: */
+  .generalBox {
+    width: 100%;
+  }
+  .messageBox {
+    max-width: 350px;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
