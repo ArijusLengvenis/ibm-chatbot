@@ -96,16 +96,17 @@ app.post("/deletesession", async (req, res) => {
 
 app.post("/send", async (req, res) => {
   // Ensure sessionId isn't missing
+
   const sessionId = req.body.sessionId;
   if (sessionId == null) {
-    res.status(500).send("Session Id is missing");
+    res.status(500).send({ err: "Session Id is missing" });
     return;
   }
 
   // Ensure message isn't missing
   const message = req.body.message;
-  if (message == null) {
-    res.status(500).send("Message is missing");
+  if (message == null || message === '') {
+    res.status(500).send({ err: "Message is missing" });
     return;
   }
 

@@ -80,37 +80,41 @@ function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Entry point
-module.exports = {
-    /**
-     * Starts the auto updater
-     * @instance
-     */
-    AutoUpdater: async function () 
+/**
+ * Starts the auto updater
+ * @instance
+ */
+async function AutoUpdater() 
+{
+    while (true)
     {
-        while (true)
-        {
-            Hashes.forEach(updateData => {
-                checkHash(updateData, (hash) => {
-                    if (!hash)
-                        throw Error;
-                    const found = (updateData.hash === hash);
-                    if (!found)
-                    {
-                        getFile(updateData, (file, data) => {
-                            if (!file)
-                                throw Error;
-                            const parsedFile = Parser(file)
-                            const DocumentId = "ff5a9263-9377-39ea-2840-dbad819362f8"
-                            uploadSplitDocument(DocumentId, data.name, parsedFile)
-                            updateData.hash = hash;
-                        });
-                    }
-                });
-            })
-            await timeout(TIME);
-        }
+        Hashes.forEach((updateData, hashIndex) => {
+            checkHash(updateData, (hash) => {
+                if (!hash)
+                    throw Error;
+                const found = (updateData.hash === hash);
+                if (!found)
+                {
+                    getFile(updateData, async(file, data) => {
+                        if (!file)
+                            throw Error;
+                        const parsedFile = Parser(file)
+                        const DocumentId = "ff5a9263-9377-39ea-2840-dbad819362f8"
+                        uploadSplitDocument(DocumentId, data.name, parsedFile)
+                        // Hashes[hashIndex].hash = hash;
+                        // await fs.writeFile('../json/Hashes.json', JSON.stringify(Hashes));
+                    });
+                }
+            });
+        })
+        await timeout(TIME);
     }
+}
+
+module.exports = {
+    checkHash: checkHash,
+    getFile: getFile,
+    AutoUpdater: AutoUpdater
 }
 
 // Parser Functions

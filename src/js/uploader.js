@@ -25,6 +25,12 @@ const discovery = new DiscoveryV2({
  * @param {object} data The data to upload in JSON form. Each key-value pair will be uploaded as a seperate document.
  */
  async function uploadSplitDocument(baseDocumentId, baseDocumentName, data) {
+   if (data == null || baseDocumentId == null || baseDocumentName == null) {
+     return false;
+   }
+   if (data == "" || baseDocumentId == "" || baseDocumentName == "") {
+    return false;
+  }
     try {
       // Get info from last time the document was uploaded
       const CurrentDocumentPath = `src/json/${baseDocumentName}`
@@ -60,8 +66,10 @@ const discovery = new DiscoveryV2({
   
       // Update the info stored locally on the uploaded documents
       await fs.writeFile(CurrentDocumentPath, JSON.stringify(newDocument))
+      return true;
     } catch (err) {
       console.error(err)
+      return false;
     }
   }
   
@@ -96,6 +104,8 @@ const discovery = new DiscoveryV2({
    * @param {string} documentId The id of the document to delete
    */
   async function deleteDocument(documentId) {
+    if (!documentId)
+      return
      try {
       discovery.deleteDocument({
         environmentId: DiscoveryEnvironmentId,
