@@ -7,7 +7,8 @@
     "prefix": "postcss src/css/styles.min.css --use autoprefixer -d src/css/",
     "sass": "sass src/scss/styles.scss src/css/styles.min.css --style compressed && npm run prefix",
     "start": "nodemon server.js",
-    "docs": "jsdoc app.js src/js/updater.js src/js/uploader.js"
+    "docs": "jsdoc app.js src/js/updater.js src/js/uploader.js",
+    "test": "jest --config jest.config.js"
   },
   "browserslist": "last 4 versions",
   "repository": {
@@ -24,8 +25,12 @@
   ],
   "homepage": "https://github.com/ArijusLengvenis/SE-Assignment-IBM-ChatBot#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
     "eslint": "^7.17.0",
-    "nodemon": "^2.0.15"
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   },
   "dependencies": {
     "autoprefixer": "^10.4.0",
@@ -42,6 +47,7 @@
     "node-stream-zip": "^1.15.0",
     "postcss": "^8.4.4",
     "postcss-cli": "^9.0.2",
+    "regenerator-runtime": "^0.13.9",
     "sass": "^1.44.0",
     "xml-query": "^1.5.0",
     "xml-reader": "^2.4.3"
