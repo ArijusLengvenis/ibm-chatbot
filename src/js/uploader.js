@@ -104,17 +104,16 @@ const discovery = new DiscoveryV2({
    * @param {string} documentId The id of the document to delete
    */
   async function deleteDocument(documentId) {
-    if (!documentId)
-      return
-     try {
-      discovery.deleteDocument({
+    try {
+      await discovery.deleteDocument({
         environmentId: DiscoveryEnvironmentId,
         collectionId: DiscoveryCollectionId,
         documentId: documentId
       })
-     } catch (err) {
-       console.error(err)
-     }
+      return true
+    } catch (err) {
+      return false
+    }
   }
 
 module.exports = {
