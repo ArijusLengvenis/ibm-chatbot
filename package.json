@@ -1,55 +1,57 @@
 {
-  "name": "ibm-chatbot",
-  "version": "0.5.0",
-  "description": "IBM Chatbot for IBM Cloud for Financial Services",
-  "main": "app.js",
-  "scripts": {
-    "prefix": "postcss src/css/styles.min.css --use autoprefixer -d src/css/",
-    "sass": "sass src/scss/styles.scss src/css/styles.min.css --style compressed && npm run prefix",
-    "start": "nodemon server.js",
-    "docs": "jsdoc app.js src/js/updater.js src/js/uploader.js",
-    "test": "jest --config jest.config.js"
-  },
-  "browserslist": "last 4 versions",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ArijusLengvenis/SE-Assignment-IBM-ChatBot.git"
-  },
-  "author": "Arijus Lengvenis",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ArijusLengvenis/SE-Assignment-IBM-ChatBot/issues"
-  },
-  "files": [
-    "dist/"
-  ],
-  "homepage": "https://github.com/ArijusLengvenis/SE-Assignment-IBM-ChatBot#readme",
-  "devDependencies": {
-    "@babel/preset-env": "^7.16.11",
-    "babel-jest": "^27.5.1",
-    "eslint": "^7.17.0",
-    "jest": "^27.5.1",
-    "nodemon": "^2.0.15",
-    "supertest": "^6.2.2"
-  },
-  "dependencies": {
-    "autoprefixer": "^10.4.0",
-    "body-parser": "^1.19.0",
-    "bootstrap": "^5.0.0-beta1",
-    "bootstrap-icons": "^1.2.2",
-    "carbon-components": "^10.48.0",
-    "express": "^4.17.1",
-    "express-session": "^1.17.2",
-    "ibm-watson": "^6.2.1",
-    "jquery": ">=3.4.1",
-    "morgan": "^1.10.0",
-    "node-fetch": "^2.6.6",
-    "node-stream-zip": "^1.15.0",
-    "postcss": "^8.4.4",
-    "postcss-cli": "^9.0.2",
-    "regenerator-runtime": "^0.13.9",
-    "sass": "^1.44.0",
-    "xml-query": "^1.5.0",
-    "xml-reader": "^2.4.3"
-  }
+    "name": "ibm-chatbot",
+    "version": "0.5.0",
+    "description": "IBM Chatbot for IBM Cloud for Financial Services",
+    "main": "app.js",
+    "scripts": {
+        "prefix": "postcss src/css/styles.min.css --use autoprefixer -d src/css/",
+        "sass": "sass src/scss/styles.scss src/css/styles.min.css --style compressed && npm run prefix",
+        "start": "nodemon server.js",
+        "docs": "jsdoc app.js src/js/updater.js src/js/uploader.js",
+        "test": "jest --config jest.config.js",
+        "format": "npx prettier --write ."
+    },
+    "browserslist": "last 4 versions",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ArijusLengvenis/SE-Assignment-IBM-ChatBot.git"
+    },
+    "author": "Arijus Lengvenis",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ArijusLengvenis/SE-Assignment-IBM-ChatBot/issues"
+    },
+    "files": [
+        "dist/"
+    ],
+    "homepage": "https://github.com/ArijusLengvenis/SE-Assignment-IBM-ChatBot#readme",
+    "devDependencies": {
+        "@babel/preset-env": "^7.16.11",
+        "babel-jest": "^27.5.1",
+        "eslint": "^7.17.0",
+        "jest": "^27.5.1",
+        "nodemon": "^2.0.15",
+        "prettier": "2.5.1",
+        "supertest": "^6.2.2"
+    },
+    "dependencies": {
+        "autoprefixer": "^10.4.0",
+        "body-parser": "^1.19.0",
+        "bootstrap": "^5.0.0-beta1",
+        "bootstrap-icons": "^1.2.2",
+        "carbon-components": "^10.48.0",
+        "express": "^4.17.1",
+        "express-session": "^1.17.2",
+        "ibm-watson": "^6.2.1",
+        "jquery": ">=3.4.1",
+        "morgan": "^1.10.0",
+        "node-fetch": "^2.6.6",
+        "node-stream-zip": "^1.15.0",
+        "postcss": "^8.4.4",
+        "postcss-cli": "^9.0.2",
+        "regenerator-runtime": "^0.13.9",
+        "sass": "^1.44.0",
+        "xml-query": "^1.5.0",
+        "xml-reader": "^2.4.3"
+    }
 }
