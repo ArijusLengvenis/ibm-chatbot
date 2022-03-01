@@ -10,7 +10,7 @@ const app = express();
 const AssistantV2 = require("ibm-watson/assistant/v2");
 const DiscoveryV2 = require("ibm-watson/discovery/v1");
 const { IamAuthenticator } = require("ibm-watson/auth");
-const { uploadSplitDocument } = require("./src/js/uploader")
+const { uploadSplitDocument, deleteDocument } = require("./src/js/uploader")
 
 // Initialize middleware
 app.use(require("morgan")("combined"));
