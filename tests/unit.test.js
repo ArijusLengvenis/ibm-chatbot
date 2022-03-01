@@ -113,7 +113,7 @@ describe('Unit test suite', () => {
             const result = await uploader.uploadSplitDocument(DocumentId, name, testFile);
             expect(result).toEqual(true);
             await uploader.deleteDocument(DocumentId)
-        });
+        },100000);
 
         test('tests uploadSplitDocument function with missing file data', async() => {
             const testFile = "";
@@ -122,7 +122,7 @@ describe('Unit test suite', () => {
             const result = await uploader.uploadSplitDocument(DocumentId, name, testFile);
             expect(result).toEqual(false);
             await uploader.deleteDocument(DocumentId)        
-        });
+        },20000);
 
         test('tests uploadSplitDocument function with missing document ID', async() => {
             const testFile = testStrings.testStringFormatted;
@@ -130,7 +130,7 @@ describe('Unit test suite', () => {
             const name = "Overview_page.json";
             const result = await uploader.uploadSplitDocument(DocumentId, name, testFile);
             await uploader.deleteDocument(DocumentId)
-        });
+        },20000);
 
         test('tests uploadSplitDocument function with missing name', async() => {
             const testFile = testStrings.testStringFormatted;
@@ -139,7 +139,7 @@ describe('Unit test suite', () => {
             const result = await uploader.uploadSplitDocument(DocumentId, name, testFile);
             expect(result).toEqual(false);
             await uploader.deleteDocument(DocumentId)
-        });
+        },20000);
     })
 
     describe('unit_test_06', () => {
@@ -158,7 +158,7 @@ describe('Unit test suite', () => {
             })
             expect(response.statusCode).toBe(204);
 
-        }, 10000);
+        },20000);
 
         it('tests sending a rating to a query to Watson Discovery when the query is irrelevant', async() => {
             const query = testStrings.testQuery;
@@ -229,6 +229,22 @@ describe('Unit test suite', () => {
             const DocumentId = testStrings.testQueryId;
             const relevant = true;
             const oldRelevant = true;
+
+            const response = await request(app).post("/rate")
+            .send({
+                query: query,
+                documentId: DocumentId,
+                relevant: relevant,
+                oldRelevant: oldRelevant
+            })
+            expect(response.statusCode).toBe(204);
+        });
+
+        it('tests sending a rating to a query to Watson Discovery (reset)', async() => {
+            const query = testStrings.testQuery;
+            const DocumentId = testStrings.testQueryId;
+            const relevant = null;
+            const oldRelevant = null;
 
             const response = await request(app).post("/rate")
             .send({
