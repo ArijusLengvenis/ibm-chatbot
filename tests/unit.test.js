@@ -244,6 +244,21 @@ describe("Unit test suite", () => {
             })
             expect(response.statusCode).toBe(204)
         })
+
+        it("tests sending a rating to a query to Watson Discovery (reset)", async () => {
+            const query = testStrings.testQuery
+            const DocumentId = testStrings.testQueryId
+            const relevant = null
+            const oldRelevant = null
+
+            const response = await request(app).post("/rate").send({
+                query: query,
+                documentId: DocumentId,
+                relevant: relevant,
+                oldRelevant: oldRelevant
+            })
+            expect(response.statusCode).toBe(204)
+        })
     })
 
     // Insert other tests below this line
