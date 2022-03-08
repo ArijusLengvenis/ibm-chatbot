@@ -784,7 +784,7 @@ async function uploadGlossary(filepath) {
 
 // Upload Glossary on Server Start
 uploadGlossary(
-    path.join(__dirname, "src", "data", "Cloud for FS FAQ & Field Guide.docx")
+    path.join(__dirname, "src", "data", "Cloud for FS Glossary.docx")
 )
 
 module.exports = app
