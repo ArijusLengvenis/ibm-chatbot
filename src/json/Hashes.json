@@ -1,7 +1,19 @@
 {
-    "Hashes":[
-        { "name": "IBM Cloud docs", "hash": "864d1d49f5cc7f6c80d05f0ffd4e52a5de9fb297", "repoUrl":"https://github.com/ibm-cloud-docs/overview", "extraction": "github", "gitLink": "git://github.com/ibm-cloud-docs/overview.git", "fileUrls": [
-            { "name": "Overview_page.json", "url": "https://raw.githubusercontent.com/ibm-cloud-docs/overview/master/fscloud.md", "documentId": "za1f5455-0884-42ad-8368-bd4dc86794z9", "mime": "application/json"}
-        ]}
+    "Hashes": [
+        {
+            "name": "IBM Cloud docs",
+            "hash": "864d1d49f5cc7f6c80d05f0ffd4e52a5de9fb297",
+            "repoUrl": "https://github.com/ibm-cloud-docs/overview",
+            "extraction": "github",
+            "gitLink": "git://github.com/ibm-cloud-docs/overview.git",
+            "fileUrls": [
+                {
+                    "name": "Overview_page.json",
+                    "url": "https://raw.githubusercontent.com/ibm-cloud-docs/overview/master/fscloud.md",
+                    "documentId": "za1f5455-0884-42ad-8368-bd4dc86794z9",
+                    "mime": "application/json"
+                }
+            ]
+        }
     ]
 }

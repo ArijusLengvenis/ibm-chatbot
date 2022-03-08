@@ -28,13 +28,13 @@
         <article>
             <pre class="prettyprint source linenums"><code>/** @module updater */
 
-const fetch = require('node-fetch')
+const fetch = require("node-fetch")
 const { Readable } = require("stream")
 const { uploadSplitDocument } = require("./uploader")
 
-const TIME = 86400*1000;
-let { Hashes } = require('../json/Hashes.json');
-const exec = require('child_process').exec;
+const TIME = 86400 * 1000
+let { Hashes } = require("../json/Hashes.json")
+const exec = require("child_process").exec
 
 /**
  * @typedef {object} GithubRepositoryInfo
@@ -67,13 +67,14 @@ const exec = require('child_process').exec;
  * @param {GithubRepositoryInfo} updateData Github repository info
  * @param {CheckHashCallback} cb Callback function
  */
-function checkHash(updateData, cb)
-{
-    exec(`git ls-remote ${updateData.repoUrl}`,
+function checkHash(updateData, cb) {
+    exec(
+        `git ls-remote ${updateData.repoUrl}`,
         function (error, stdout, stderr) {
-            let arr = stdout.split('HEAD');
-            cb(arr[0].trim());
-    });
+            let arr = stdout.split("HEAD")
+            cb(arr[0].trim())
+        }
+    )
 }
 
 /**
@@ -88,14 +89,13 @@ function checkHash(updateData, cb)
  * @param {GithubRepositoryInfo} updateData Github repository info
  * @param {GetFileCallback} cb Callback function
  */
-function getFile(updateData, cb)
-{
+function getFile(updateData, cb) {
     updateData.fileUrls.forEach(async (fileUrl) => {
-        const url = fileUrl.url;
-        const response = await fetch(url);
-        const newData = await response.text();
-        cb(newData, fileUrl);
-    });
+        const url = fileUrl.url
+        const response = await fetch(url)
+        const newData = await response.text()
+        cb(newData, fileUrl)
+    })
 }
 
 /**
@@ -105,40 +105,40 @@ function getFile(updateData, cb)
  * @returns {Promise&lt;null>} Promise that resolves when the timeout has finished
  */
 function timeout(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-// Entry point
-module.exports = {
-    /**
-     * Starts the auto updater
-     * @instance
-     */
-    AutoUpdater: async function () 
-    {
-        while (true)
-        {
-            Hashes.forEach(updateData => {
-                checkHash(updateData, (hash) => {
-                    if (!hash)
-                        throw Error;
-                    const found = (updateData.hash === hash);
-                    if (!found)
-                    {
-                        getFile(updateData, (file, data) => {
-                            if (!file)
-                                throw Error;
-                            const parsedFile = Parser(file)
-                            const DocumentId = "ff5a9263-9377-39ea-2840-dbad819362f8"
-                            uploadSplitDocument(DocumentId, data.name, parsedFile)
-                            updateData.hash = hash;
-                        });
-                    }
-                });
+/**
+ * Starts the auto updater
+ * @instance
+ */
+async function AutoUpdater() {
+    while (true) {
+        Hashes.forEach((updateData, hashIndex) => {
+            checkHash(updateData, (hash) => {
+                if (!hash) throw Error
+                const found = updateData.hash === hash
+                if (!found) {
+                    getFile(updateData, async (file, data) => {
+                        if (!file) throw Error
+                        const parsedFile = Parser(file)
+                        const DocumentId =
+                            "ff5a9263-9377-39ea-2840-dbad819362f8"
+                        uploadSplitDocument(DocumentId, data.name, parsedFile)
+                        // Hashes[hashIndex].hash = hash;
+                        // await fs.writeFile('../json/Hashes.json', JSON.stringify(Hashes));
+                    })
+                }
             })
-            await timeout(TIME);
-        }
+        })
+        await timeout(TIME)
     }
+}
+
+module.exports = {
+    checkHash: checkHash,
+    getFile: getFile,
+    AutoUpdater: AutoUpdater
 }
 
 // Parser Functions
@@ -200,87 +200,91 @@ You can also set your team up to be alerted if they are creating a service that 
 
 To learn more about IBM Cloud for Financial Services, see the product page.`
 
-
 const replacementDictionary = {
-    '{{site.data.keyword.attribute-definition-list}}': '',
-    '{{site.data.keyword.cloud_notm}}': 'IBM Cloud',
-    '{{site.data.keyword.cos_full_notm}}': 'IBM Cloud Object Storage',
-    '{{site.data.keyword.alb_full}}':'Application Load Balancer for VPC',
-    '{{site.data.keyword.vpc_full}}':'IBM Cloud® Virtual Private Cloud',
-    '{{site.data.keyword.iamlong}}':'IBM Cloud® Identity and Access Management',
-    '{{site.data.keyword.fl_full}}':'Flow Logs for VPC',
-    '{{site.data.keyword.block_storage_is_full}}':'IBM® Cloud Block Storage for Virtual Private Cloud',
-    '{{site.data.keyword.tg_full_notm}}':'IBM Cloud Transit Gateway',
-    '{{site.data.keyword.vpe_full}}':'Virtual Private Endpoint (VPE) for VPC',
-    '{{site.data.keyword.vpn_full}}':'Virtual Private Network (VPN) for VPC',
-    '{{site.data.keyword.dl_full_notm}}':'IBM Cloud Direct Link',
-    '{{site.data.keyword.IBM_notm}}':'IBM',
-    '{{site.data.keyword.hscrypto}}':'Hyper Protect Crypto Services',
-    '{{site.data.keyword.openshiftlong_notm}}':'Red Hat OpenShift on IBM Cloud',
-    '{{site.data.keyword.vsi_is_full}}':'IBM Cloud® Virtual Servers for Virtual Private Cloud'
+    "{{site.data.keyword.attribute-definition-list}}": "",
+    "{{site.data.keyword.cloud_notm}}": "IBM Cloud",
+    "{{site.data.keyword.cos_full_notm}}": "IBM Cloud Object Storage",
+    "{{site.data.keyword.alb_full}}": "Application Load Balancer for VPC",
+    "{{site.data.keyword.vpc_full}}": "IBM Cloud® Virtual Private Cloud",
+    "{{site.data.keyword.iamlong}}":
+        "IBM Cloud® Identity and Access Management",
+    "{{site.data.keyword.fl_full}}": "Flow Logs for VPC",
+    "{{site.data.keyword.block_storage_is_full}}":
+        "IBM® Cloud Block Storage for Virtual Private Cloud",
+    "{{site.data.keyword.tg_full_notm}}": "IBM Cloud Transit Gateway",
+    "{{site.data.keyword.vpe_full}}": "Virtual Private Endpoint (VPE) for VPC",
+    "{{site.data.keyword.vpn_full}}": "Virtual Private Network (VPN) for VPC",
+    "{{site.data.keyword.dl_full_notm}}": "IBM Cloud Direct Link",
+    "{{site.data.keyword.IBM_notm}}": "IBM",
+    "{{site.data.keyword.hscrypto}}": "Hyper Protect Crypto Services",
+    "{{site.data.keyword.openshiftlong_notm}}":
+        "Red Hat OpenShift on IBM Cloud",
+    "{{site.data.keyword.vsi_is_full}}":
+        "IBM Cloud® Virtual Servers for Virtual Private Cloud"
 }
 //Tested - Works
-function replaceString(string, pattern, replacement){
+function replaceString(string, pattern, replacement) {
     return string.replace(pattern, replacement)
 }
 
-
 function removeSingleHandlebars(string) {
     const pattern = /{:.*}/
-    const replacement = ''
-    while (string.match(pattern)){
+    const replacement = ""
+    while (string.match(pattern)) {
         string = replaceString(string, pattern, replacement)
     }
     return string
 }
 
 // Tested - Works
-function removeLinks(string){
-    for (const link of string.matchAll((/\[(.*)\]\(.*\)/g))){
+function removeLinks(string) {
+    for (const link of string.matchAll(/\[(.*)\]\(.*\)/g)) {
         string = string.replace(link[0], link[1])
     }
     return string
 }
 
 //Tested - Works
-function removeSpaces(string){
-    while (string.includes('\n\n\n')) {
-        string = string.replace('\n\n\n', '\n\n')
+function removeSpaces(string) {
+    while (string.includes("\n\n\n")) {
+        string = string.replace("\n\n\n", "\n\n")
     }
     return string
 }
 // Tested - Works
-function parseString(string){
-    for (const x of [...string.matchAll(/{{[^{}]*}}/g)]){
+function parseString(string) {
+    for (const x of [...string.matchAll(/{{[^{}]*}}/g)]) {
         string = string.replace(x, replacementDictionary[x])
     }
     return string
 }
 
-function Parser(string){
-    return makeJSON(removeSpaces(parseString(removeLinks(removeSingleHandlebars(string)))).trim())
+function Parser(string) {
+    return makeJSON(
+        removeSpaces(
+            parseString(removeLinks(removeSingleHandlebars(string)))
+        ).trim()
+    )
 }
 
-
-
-function makeJSON(string){
-    textList = string.split('\n')
+function makeJSON(string) {
+    textList = string.split("\n")
     finalList = []
     currentQ = -1
-    for (const line of textList){
-        if (line[line.length-1] === '?'){
+    for (const line of textList) {
+        if (line[line.length - 1] === "?") {
             currentQ++
-            finalList.push([line, ''])
-        }else{
-            if (currentQ === -1){
+            finalList.push([line, ""])
+        } else {
+            if (currentQ === -1) {
                 continue
-            }else{
-                finalList[currentQ][1] = finalList[currentQ][1] + '\n' + line
+            } else {
+                finalList[currentQ][1] = finalList[currentQ][1] + "\n" + line
             }
         }
     }
-    for (let i = 0; i &lt; finalList.length; i++){
-        finalList[i][1] = finalList[i][1].trim();
+    for (let i = 0; i &lt; finalList.length; i++) {
+        finalList[i][1] = finalList[i][1].trim()
     }
 
     let formattedJson = {}
@@ -290,7 +294,8 @@ function makeJSON(string){
     }
 
     return formattedJson
-}</code></pre>
+}
+</code></pre>
         </article>
     </section>
 
@@ -306,7 +311,7 @@ function makeJSON(string){
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri Feb 25 2022 11:08:25 GMT+0000 (Greenwich Mean Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Mar 08 2022 01:34:00 GMT+0000 (Greenwich Mean Time)
 </footer>
 
 <script> prettyPrint(); </script>

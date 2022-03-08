@@ -7,7 +7,7 @@
         "prefix": "postcss src/css/styles.min.css --use autoprefixer -d src/css/",
         "sass": "sass src/scss/styles.scss src/css/styles.min.css --style compressed && npm run prefix",
         "start": "nodemon server.js",
-        "docs": "jsdoc app.js src/js/updater.js src/js/uploader.js",
+        "codedocs": "jsdoc app.js src/js/updater.js src/js/uploader.js -d out/code/",
         "test": "jest --config jest.config.js",
         "format": "npx prettier --write ."
     },

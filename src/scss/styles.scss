@@ -1,6 +1,6 @@
 $chatbot-bg-color: white;
-$user-msg-color: #606FEE;
-$chatbot-msg-color: #FEFEFE;
+$user-msg-color: #606fee;
+$chatbot-msg-color: #fefefe;
 $IBM-Grey-10: #f4f4f4;
 $IBM-Grey-90: #262626;
 $IBM-Grey-100: #161616;
@@ -10,18 +10,17 @@ $IBM-Grey-100: #161616;
 //    src: url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&display=swap)
 //}
 
-
-body{
+body {
     width: 100vw;
     height: 98vh;
     background-color: white;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.navbarHeader{
+.navbarHeader {
     width: 100vw;
     height: 5vh;
     background-color: $IBM-Grey-90;
@@ -31,49 +30,49 @@ body{
     padding: 30px 3%;
 }
 
-.navbarTitle{
-    font-family: 'IBM Plex Sans', sans-serif;
+.navbarTitle {
+    font-family: "IBM Plex Sans", sans-serif;
     font-weight: 700;
     color: white;
 }
 
-.navbarButton{
+.navbarButton {
     height: 4vh;
     width: 100px;
     background-color: #606fee;
     border: none;
     border-radius: 50px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-weight: 500;
 }
 
-.generalBox{
+.generalBox {
     width: 1000px;
     height: 95vh;
     background-color: $IBM-Grey-10;
 }
 
-.chatBox{
+.chatBox {
     overflow: auto;
     height: 85vh;
     padding-top: 5px;
 }
 
-.messageDiv{
+.messageDiv {
     width: 100%;
     padding: 2px;
     display: flex;
 }
 
-.messageDivLeft{
+.messageDivLeft {
     justify-content: flex-start;
 }
 
-.messageDivRight{
+.messageDivRight {
     justify-content: flex-end;
 }
 
-.messageBox{
+.messageBox {
     height: auto;
     max-width: 700px;
     display: flex;
@@ -87,30 +86,30 @@ body{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.messageBoxRight{
+.messageBoxRight {
     background-color: $user-msg-color;
     color: white;
     border-radius: 30px 30px 0px 30px;
 }
 
-.messageBoxLeft{
+.messageBoxLeft {
     background-color: $chatbot-msg-color;
     border-radius: 30px 30px 30px 0px;
 }
 
-.messageText{
+.messageText {
     height: auto;
     margin: 0;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-weight: 400;
     font-size: 1.5vh;
 }
 
-p{
+p {
     font-size: 1.5vh;
 }
 
-.messageBackgroundDiv{
+.messageBackgroundDiv {
     border-radius: 20px;
     background-color: $IBM-Grey-10;
     margin-top: 10px;
@@ -118,30 +117,29 @@ p{
     padding: 10px;
 }
 
-.profilePicture{
+.profilePicture {
     border-radius: 50%;
     height: 50px;
     width: auto;
     margin-top: auto;
 }
 
-.HR{
+.HR {
     width: 80%;
 }
 
-.submitDiv{
+.submitDiv {
     height: 5vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.load-more-button{
+.load-more-button {
     margin-top: 5px;
 }
 
-
-.textbox{
+.textbox {
     height: 4vh;
     width: 90%;
     border: solid, 2px, $IBM-Grey-90;
@@ -153,7 +151,7 @@ p{
     bottom: 0;
 }
 
-.submitButton{
+.submitButton {
     height: 4vh;
     width: 4vh;
     border-radius: 20px;
@@ -165,12 +163,12 @@ p{
     background-color: blue;
 }
 
-.fa-paper-plane{
+.fa-paper-plane {
     color: white;
     margin-right: 2px;
 }
 
-.thumb-button{
+.thumb-button {
     height: 30px;
     width: 30px;
     border-radius: 10px;
@@ -181,16 +179,16 @@ p{
     background-color: lightgrey;
 }
 
-.thumb-pressed{
+.thumb-pressed {
     background-color: darkgrey;
 }
 
-.greeniconcolor{
-    color:green;
+.greeniconcolor {
+    color: green;
 }
 
-.rediconcolor{
-    color:red;
+.rediconcolor {
+    color: red;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -202,5 +200,4 @@ p{
     .messageBox {
         max-width: 350px;
     }
-    
-  }
+}

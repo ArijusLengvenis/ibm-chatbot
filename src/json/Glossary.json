@@ -1,1 +1,964 @@
-{"ba1f5494-0884-42ad-8368-bd4dc86794a8_0":{"question":["1H"],"answer":["First Half (of the year noted)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_1":{"question":["2H"],"answer":["Second Half (of the year noted)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_2":{"question":["Accelerator"],"answer":["A tool, function, framework, defined process, industry / best practices that allow something of benefit to be delivered faster. Example: IBM Cloud for Financial Services™ with automated configurations allows the environment to be ready to accept data in two weeks which saves time and cost on the front-end and delivers business benefits sooner."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_3":{"question":["Access Group"],"answer":["A group of users and service IDs can be organized so that the same access can be assigned to all members within the group by using one or more policies. With access groups, clients can streamline the access assignment process so that they can manage a smaller number of policies and reduce the number of policies in an account, which in turn increases performance. After groups are set up, they can start assigning policies by selecting an access group as the subject of the policy. For more information, see “Setting up access groups”Reference: https://cloud.ibm.com/docs/account?topic=account-groups"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_4":{"question":["Access policies"],"answer":["Access policies are how users, service IDs, and access groups in the account are given permission to access and take actions on account resources. Policies include a subject, target, and role. The subject is the user, service ID, or access group that you are providing access. The target of the policy is the resource to which you want to provide access. And the IAM roles define the level of access or allowed actions on the target of the policy."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_5":{"question":["Account Resources"],"answer":["Account resources are the provisioned service offerings that are selected from the catalog or finer-grained resources within a service instance, such as an IBM® Cloud Object Storage bucket. IAM-enabled resources are added to a resource group when they are created from the catalog."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_6":{"question":["Adobe"],"answer":["IBM partner providing software support for the IBM Cloud for Financial Services™ capabilitiesHybrid cloud: Adobe Experience Manager will be certified and delivered on Red Hat OpenShift, giving enterprises flexibility to host, access, and leverage their client data in the cloud environment of their choice. For Regulated industries: IBM will enable Adobe Experience Manager (part of Adobe Experience Cloud) for professionals in the financial services market using the industry first IBM Cloud for Financial Services™. Reference: Adobe: https://www.adobe.com/Adobe & IBM Partnership: https://w3.ibm.com/w3publisher/behind-the-news/adobe-partnership"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_7":{"question":["Amberoon"],"answer":["IBM partner providing agile compliance for AML. Reference: https://www.amberoon.com/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_8":{"question":["API"],"answer":["Application programming interface"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_9":{"question":["Aseria"],"answer":["IBM partner providing AI cash flow advisor capabilities for SME for the IBM Cloud for Financial Services™ partner. Reference: https://www.asteria.ai/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_10":{"question":["Assima"],"answer":["IBM partner providing solutions for remote user adoption for the IBM Cloud for Financial Services™ Reference: https://assima.net/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_11":{"question":["ATracker"],"answer":["IBM Cloud Activity Tracker, sometimes referred to as ATracker. Activity Tracker is a service to monitor the activity of their IBM Cloud account. I can be used to investigate abnormal activity and critical actions, comply with regulatory audit requirements, and provide alerts on actions as they happen. Events collected comply with the Cloud Auditing Data Federation (CADF) standard. Reference: https://cloud.ibm.com/docs/Activity-Tracker-with-LogDNA?topic=Activity-Tracker-with-LogDNA-getting-started"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_12":{"question":["B2B"],"answer":["Business to Business"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_13":{"question":["B2C"],"answer":["Business to Consumer"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_14":{"question":["B2E"],"answer":["Business-to-Employee"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_15":{"question":["Bastion Host"],"answer":["A bastion host is a special-purpose computer on a network specifically designed and configured to withstand attacks. The computer generally hosts a single application, for example a proxy server, and all other services are removed or limited to reduce the threat to the computer."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_16":{"question":["BCM"],"answer":["Business Continuity Management"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_17":{"question":["BofA / BOA"],"answer":["Bank of America"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_18":{"question":["BYOK"],"answer":["Bring Your Own Key"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_19":{"question":["BYOL"],"answer":["Bring Your Own License"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_20":{"question":["C3.ai"],"answer":["IBM partner providing enterprise AI software provider for accelerating digital transformation. The proven C3 AI Suite provides comprehensive services to build enterprise-scale AI applications more efficiently and cost-effectively than alternative approaches. Reference: https://c3.ai/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_21":{"question":["CaaS"],"answer":["Container as a Service"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_22":{"question":["CAGR"],"answer":["Compound Annual Growth Rate"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_23":{"question":["CAS"],"answer":["Cloud Advisory Services (IBM)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_24":{"question":["CaveonixRiskForesight"],"answer":["Continuous detection, prediction, and action on cyberthreats and regulatory compliance risks on hybrid clouds. Reference: https://www.caveonix.com/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_25":{"question":["CCO"],"answer":["Chief Compliance Officer"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_26":{"question":["CEH"],"answer":["Cloud Engagement Hub. The IBM Cloud Engagement Hub is a dedicated high-performance technical team to support strategic enterprise opportunities and create significant client value using IBM Public Cloud, RedHat, and Cloud Paks. The Cloud Engagement Hub works with financial services clients to define their respective cloud journeys based on existing IT landscape and investments. The Cloud Engagement Hub leads the solutioning for new cloud model deals defining client value, cloud architectures, migration / modernization journeys, target operating models, and execution strategy."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_27":{"question":["CEO"],"answer":["Chief Executive Officer"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_28":{"question":["CIO"],"answer":["Chief Information Officer"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_29":{"question":["CISO"],"answer":["Chief Information Security Officer"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_30":{"question":["Cloud Foundry"],"answer":["Cloud Foundry ensures that the build and deploy aspects of coding remain carefully coordinated with any attached services — resulting in quick, consistent and reliable iterating of applications. As an industry-standard platform as a service (PaaS), Cloud Foundry ensures the fastest, easiest and most reliable deployment of cloud-native applications. IBM offers the Cloud Foundry PaaS in several hosting models, allowing clients to customize their PaaS experience and balance a range of considerations, including price, deployment speed and security. Reference: https://www.ibm.com/cloud/cloud-foundry?lnk=STW_US_STESCH&lnk2=learn_CloudFoundry&pexp=DEF&psrc=NONE&mhsrc=ibmsearch_a&mhq=cloud%20foundry"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_31":{"question":["Co-location or CoLo"],"answer":["A colocation (CoLo) is a data center facility in which a business can rent space for servers and other computing hardware. Typically, a CoLo provides the building, cooling, power, bandwidth and physical security while the client provides servers and storage."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_32":{"question":["Containers"],"answer":["Containers provide a standard way to package an application's code, configurations, and dependencies into a single unit that can run as a resource-isolated process on a compute server. To run an app in Kubernetes on Red Hat OpenShift on IBM Cloud, first containerize the app by creating a container image that is stored in a container registry."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_33":{"question":["ContinuityLogic"],"answer":["IBM partner providing a platform providing Business Continuity Management, Disaster Recovery Management, Incident Management, Crisis Management, Enterprise Risk Management, Vendor Risk Management, and CybersecurityReference: https://www.continuitylogic.com/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_34":{"question":["CRN"],"answer":["Cloud Resource Name:a Cloud Resource Name (CRN) uniquely identifies IBM Cloud® resources. A CRN is used to specify a resource in an unambiguous way that is guaranteed to be globally unique. A CRN is formed from a concatenation of \"segments\" that hierarchically identify the resource, its location, and the service it belongs to. The segment delimiter is set to a colon (:). All CRNs begin with the segment identifier crn."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_35":{"question":["CRO"],"answer":["Chief Risk Officer"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_36":{"question":["CSC"],"answer":["Cloud Service Client"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_37":{"question":["CSE"],"answer":["Cloud Service Endpoints (CSE) are automatically enabled for new VPCs, but VPCs that existed prior to the feature need to be updated to enable the feature. In a Virtual Private Cloud (VPC) on Classic created before 9 October 2019, the cloud service endpoints feature does not properly link endpoints."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_38":{"question":["CSP"],"answer":["Cloud Service Provider"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_39":{"question":["DC"],"answer":["Data Center"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_40":{"question":["Decision Focus"],"answer":["IBM partner providing governance, risk, and compliance (GRC) software. Reference: https://www.decisionfocus.com/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_41":{"question":["DEK"],"answer":["Data Encrypted Key; an encryption key is typically a random string of bits generated specifically to scramble and unscramble data. Encryption keys are created with algorithms designed to ensure that each key is unique and unpredictable. The longer the key constructed this way, the harder it is to break the encryption code."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_42":{"question":["Developer Tools"],"answer":["Products that support developing, testing, and debugging software."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_43":{"question":["DR"],"answer":["Disaster Recovery"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_44":{"question":["DRY"],"answer":["Don’t Repeat Yourself (DRY) is a principle of software development aimed at reducing repetition of software patterns, replacing it with abstractions or using data normalization to avoid redundancy."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_45":{"question":["Enghouse Interactive"],"answer":["Collaborative Contact Center software for Microsoft Teams. Reference: https://www.enghouseinteractive.com/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_46":{"question":["EU"],"answer":["European Union"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_47":{"question":["Focal"],"answer":["An IBM competency lead or subject matter expert (SME) able to provide deep support regarding a particular topic. A Focal may be able to provide resources to assist with projects or other efforts."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_48":{"question":["Finacle"],"answer":["Digital banking solution suite from EdgeVerve Systems, a subsidiary of Infosys. It provides frictionless client experiences, larger ecosystem play, insights-driven interactions and ubiquitous automation. Finacle solutions address the core banking, omnichannel banking, payments, treasury, origination, liquidity management, Islamic banking, wealth management, analytics, artificial intelligence, and blockchain requirements of financial institutions to drive business excellence. Reference: www.finacle.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_49":{"question":["FIPS 140-2 Level 4"],"answer":["Federal Information Processing Standard Publication 140-2. It is a U. S. government computer security standard used to approve cryptographic modules"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_50":{"question":["Fortinet"],"answer":["IBM partner providing cybersecurity products and services, such as firewalls, anti-virus, intrusion prevention and endpoint security. Reference: https://www.fortinet.com/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_51":{"question":["FS"],"answer":["Financial Services"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_52":{"question":["FS-ISAC"],"answer":["Financial Services Information Sharing and Analysis Center; the only global cyber intelligence sharing community solely focused on financial services. Serving financial institutions and in turn their clients, the organization leverages its intelligence platform, resiliency resources, and a trusted peer-to-peer network of experts to anticipate, mitigate and respond to cyber threats. Reference: https://www.fsisac.com/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_53":{"question":["FSS"],"answer":["Financial Service Sector (IBM usage)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_54":{"question":["GA"],"answer":["General Availability (software release in general production)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_55":{"question":["GBS"],"answer":["IBM Global Business Services"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_56":{"question":["GDPR"],"answer":["General Data Protection Regulation (EU)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_57":{"question":["Geva Group"],"answer":["Deep analytics in the field of chemistry. Reference: http://umich.edu/~gevalab/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_58":{"question":["GL"],"answer":["Guidelines"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_59":{"question":["GP VPN"],"answer":["Global Protect Virtual Private Network (GP VPN); the GlobalProtect VPN is a web browser-based VPN service, and should work with most browsers, operating systems, and mobile devices. All traffic on the browser tab that is used to log in to the service travels through an encrypted tunnel which terminates on the campus gateway."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_60":{"question":["GSI"],"answer":["Global Systems Integrator"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_61":{"question":["GTS"],"answer":["IBM Global Technology Services"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_62":{"question":["HA"],"answer":["High Availability"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_63":{"question":["Hamilton"],"answer":["IBM Cloud for Financial Services™"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_64":{"question":["HIPAA"],"answer":["Health Insurance Portability and Accountability Act (US)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_65":{"question":["HPCS"],"answer":["Hyper Protect Crypto Services"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_66":{"question":["HSM"],"answer":["Hardware Security Module"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_67":{"question":["Hybrid Cloud"],"answer":["Hybrid Cloud is a composition of a public cloud and a private environment, such as a private cloud or on-premises resources, that remain distinct entities but are bound together, offering the benefits of multiple deployment models. Hybrid cloud can also mean the ability to connect collocation, managed and/or dedicated services with cloud resources. Gartner defines a hybrid cloud service as a cloud computing service that is composed of some combination of private, public and community cloud services, from different service providers. A hybrid cloud service crosses isolation and provider boundaries so that it can't be simply put in one category of private, public, or community cloud service. It allows one to extend either the capacity or the capability of a cloud service, by aggregation, integration or customization with another cloud service. Varied use cases for hybrid cloud composition exist. For example, an organization may store sensitive client data in house on a private cloud application but interconnect that application to a business intelligence application provided on a public cloud as a software service. This example of hybrid cloud extends the capabilities of the enterprise to deliver a specific business service through the addition of externally available public cloud services. Hybrid cloud adoption depends on a number of factors such as data security and compliance requirements, level of control needed over data, and the applications an organization uses. Another example of hybrid cloud is one where IT organizations use public cloud computing resources to meet temporary capacity needs that cannot be met by the private cloud. This capability enables hybrid clouds to employ cloud bursting for scaling across clouds. Cloud bursting is an application deployment model in which an application runs in a private cloud or data center and \"bursts\" to a public cloud when the demand for computing capacity increases. A primary advantage of cloud bursting and a hybrid cloud model is that an organization pays for extra compute resources only when they are needed. Cloud bursting enables data centers to create an in-house IT infrastructure that supports average workloads, and use cloud resources from public or private clouds, during spikes in processing demands. The specialized model of hybrid cloud, which is built atop heterogeneous hardware, is called \"Cross-platform Hybrid Cloud\". A cross-platform hybrid cloud is usually powered by different CPU architectures, for example, x86-64 and ARM, underneath. Users can transparently deploy and scale applications without knowledge of the cloud's hardware diversity. This kind of cloud emerges from the rise of ARM-based system-on-chip for server-class computing. Hybrid cloud infrastructure essentially serves to eliminate limitations inherent to the multi-access relay characteristics of private cloud networking. The advantages include enhanced runtime flexibility and adaptive memory processing unique to virtualized interface models."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_68":{"question":["HyTrust Data Control w/HPCS"],"answer":["Strong encryption with integrated key management to secure workloads throughout their lifecycle. Reference: https://www.hytrust.com/datacontrol-ibm-cloud/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_69":{"question":["IaaS"],"answer":["Infrastructure as a service"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_70":{"question":["IBM"],"answer":["International Business Machines"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_71":{"question":["IBM Cloud for Financial Services™ Validated"],"answer":["Name is used to designate an IBM Cloud service or ecosystem (ISV, SaaS) partner service is IBM Cloud for Financial Services™ validated and has evidenced compliance to IBM Cloud Framework for Financial Services controls, architecture and operations requirements"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_72":{"question":["IBM Privacy Shield Policy for IBM Cloud Services"],"answer":["The IBM Privacy Shield Privacy Policy for Cloud Services (the “Policy”) applies to the IBM Infrastructure-as-a-Service, Platform-as-a-Service, Software-as-a-Service, and other hosted offerings that are Privacy Shield certified (“Privacy Shield-Certified Cloud Services”). A list of these offerings is provided below; if an offering is not on this list, it is not covered by the IBM Privacy Shield. As the Privacy Shield only applies to personal data transferred to the United States from those countries whose data protection laws recognize Privacy Shield as a valid mechanism for such cross-border transfers, this Statement only applies to:such personal data hosted in the United States through the Privacy Shield-Certified Cloud Services; andselect offerings when the data is hosted outside the United States but the Cloud Service processing is temporarily directed to a United States data center to enable continued availability and resiliency. This Policy does not otherwise apply when clients choose to have their offering content hosted in other countries. Reference: https://www.ibm.com/privacy/privacy-shield and To learn more about the Privacy Shield Program, or to view the certification applicable to certain IBM Cloud Services, please visit www.privacyshield.gov."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_73":{"question":["IBM Promontory"],"answer":["A subsidiary of IBM and global consulting firm advising clients on regulatory issues, compliance, risk management, liquidity, restructuring, acquisitions, due diligence, internal investigations and cyber security."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_74":{"question":["IBM Security"],"answer":["Supported by IBM X-Force research, the group offers enterprise security products and services monitoring 70 billion security events per day in more than 130 countries and has more than 10,000 security patents worldwide."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_75":{"question":["IBM Virtual Server Infrastructure (VSI) transient servers"],"answer":["Ideal for the development and testing of applications and other nonproduction workloads that don’t require constant uptime, transient servers are deprovisioned on a first-on, first-off basis."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_76":{"question":["IBM Virtual Server Infrastructure (VSI) dedicated hosts"],"answer":["Single tenant dedicated hosts help control workload placement and support network throughputs of up to 20 Gbps. View core, RAM and local storage consumption for maximum control of workload management."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_77":{"question":["IBM Virtual Server Infrastructure (VSI) dedicated servers"],"answer":["Take full advantage of our single tenant offering with rapid provisioning for further control and flexibility in VSI deployments, up to 56 cores and 484 GB RAM and monthly or hourly options."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_78":{"question":["IBM Virtual Server Infrastructure (VSI) public servers"],"answer":["Choose options for (1) a balance of performance and scale, (2) high I/O and low-latency performance, (3) CPU-intensive workloads, (4) memory-intensive workloads or (5) accelerated computing workloads."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_79":{"question":["IBM Virtual Server Infrastructure (VSI) reserved servers"],"answer":["Ideal for sustained workloads and enterprise-level challenges, a set of up to 20 VMs can be reserved in advance for guaranteed capacity in the data center of the clients choice. Choose a 1- or 3-year term."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_80":{"question":["IC4V"],"answer":["IBM Cloud for VMware Solutions"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_81":{"question":["IDP"],"answer":["Identity Provider (IDP)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_82":{"question":["IKS"],"answer":["IBM Cloud Kubernetes Service"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_83":{"question":["Integration"],"answer":["Products that facilitate the connection of data, apps, APIs, and devices across an organization to be more efficient, productive, and agile."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_84":{"question":["Intellect"],"answer":["IBM partner providing front, middle, and back-office platforms supporting corporate banking, retail banking, risk, treasury & capital, insurance, and digital solutions markets. Reference: https://www.intellectdesign.com/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_85":{"question":["Intercope"],"answer":["IBM partner providing platforms for interbank messaging including multi-network connectivity, SWIFT CSP compliance, ISO 20022 migration, T2 & T2S consolidation supporting ESMIG, SWIFT gpi, Instant Payments for multiple CSMs over multiple networks, to legacy SWIFT consolidation and replacement. Reference: www.intercope.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_86":{"question":["Internet of Things"],"answer":["Products that support receiving and transferring data over wireless networks without human intervention."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_87":{"question":["Internet Protocol Security (IPsec)"],"answer":["Internet Protocol Security is a secure network protocol suite that authenticates and encrypts the packets of data to provide secure encrypted communication between two computers over an Internet Protocol network. It is used in virtual private networks."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_88":{"question":["ISO 9001"],"answer":["ISO 9001 defines a Quality Management System (QMS) allowing evaluation of whether an organization’s quality management system is appropriate and effective, while directing them to identify and implement improvements. ISO 9001 is the only standard in the 9000 series that requires certificationReference: https://www.iso.org/iso-9001-quality-management.html"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_89":{"question":["ISO 27001"],"answer":["ISO 27001 is an international standard on how to manage information security. The standard was originally published jointly by the International Organization for Standardization and the International Electrotechnical Commission in 2005 and then revised in 2013. Reference: https://www.iso.org/standard/54534.html"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_90":{"question":["ISO 27017"],"answer":["ISO 27017 is a security standard developed for cloud service providers and users to make a safer cloud-based environment and reduce the risk of security problems. Reference: https://www.iso.org/standard/43757.html"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_91":{"question":["ISO 27018"],"answer":["ISO 27018 is a security standard and part of the ISO 27000 family of standards. It was the first international standard about the privacy in cloud computing services which was promoted by the industry. Created in 2014, it helps cloud service providers who process personally identifiable information (PII) to assess risk and implement controls for protecting PII. It was published by the International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC) under the joint ISO and IEC subcommittee. Reference: https://www.iso.org/standard/61498.html"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_92":{"question":["ISV"],"answer":["Independent Service Vendor"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_93":{"question":["IT"],"answer":["Information Technology"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_94":{"question":["Key Management Interoperability Protocol (KMIP)"],"answer":["The Key Management Interoperability Protocol (KMIP) is an extensible communication protocol that defines message formats for the manipulation of cryptographic keys on a key management server. This facilitates data encryption by simplifying encryption key management."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_95":{"question":["Knowis"],"answer":["IBM partner providing banks with pre-integrated independent technologies on shared, ontology-based domain models on IBM’s Smarter Process Technology. Reference: www.knowis.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_96":{"question":["Kubernetes"],"answer":["Kubernetes is an open-source platform for managing containerized workloads and services across multiple hosts, and offers management tools for deploying, automating, monitoring, and scaling containerized apps with minimal to no manual intervention."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_97":{"question":["KYOK"],"answer":["Keep Your Own Key"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_98":{"question":["Line of Shared Responsibility (LoSR)"],"answer":["Found within the Shared Responsibility Model, the Line of Shared Responsibility defines the border between security responsibilities in cloud environments. Those areas, domains, platforms, etc. above the Line of Shared responsibility are the responsibility of the client. Those areas, domains, platforms, etc. below the Line of Shared responsibility are the responsibility of the Cloud Service Provider."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_99":{"question":["Logging and Monitoring"],"answer":["Products that support storing, searching, analyzing, and monitoring log data and events. And products that support reviewing and managing the operational workflow and processes being logged."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_100":{"question":["Lumina"],"answer":["IBM partner providing development in partnership with IBM. Reference: www.luminacorp.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_101":{"question":["Mobile"],"answer":["Products with specific or special utility for users creating things to be used on mobile devices."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_102":{"question":["MQ"],"answer":["IBM MQ or IBM Message Queue; MQ (message queue) series, is an IBM standard for program-to-program messaging across multiple platforms. MQ is sometimes referred to as message-oriented middleware (MOM)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_103":{"question":["MTCS – Level 3"],"answer":["Multi-Tier Cloud Security (MTCS) is an information security standard, published by Singapore Standards. MTCS Singapore Standard (SS)584 is the world’s first cloud security standard that covers multiple tiers of cloud security. The standard was last revised in 2015. SS 584 specifies a Management system for Cloud Security, to three levels. Organizations that meet the requirements may be certified by an accredited certification body following successful completion of an audit. IBM is an MTCS Level-3 Certified Partner for IBM Cloud using IaaS model that spans across products such as bare metal servers, virtual servers (Private and Public), hardware security modules, and VMware vSphere on IBM Cloud."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_104":{"question":["MVP"],"answer":["Minimum Viable Product. It is a version of a product with just enough features to satisfy early clients and provide feedback for future product development."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_105":{"question":["MZR"],"answer":["Multi-Zone Region: if you create a cluster in a multizone metro location, the replicas of your highly available Kubernetes master are automatically spread across zones. You have the option to spread your worker nodes across zones to protect your apps from a zone failure. To determine whether a zone is multizone-capable, run ibmcloudks locations and look for the value in the Multizone Metro column. Reference: https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_106":{"question":["NCA"],"answer":["National Competent Authority. A medicines regulatory authority in a European Union Member State."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_107":{"question":["Networking"],"answer":["Products that support or augment the linking of computers so they can operate interactively."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_108":{"question":["Network Access Control List (NACL)"],"answer":["A network access control list (ACL) is an optional layer of security for a VPC that acts as a firewall for controlling traffic in and out of one or more subnets. A network ACL may be set up with rules similar to the security groups in order to add an additional layer of security to the Virtual Private Cloud (VPC)."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_109":{"question":["NexJ"],"answer":["IBM partner providing intelligent client management for financial services organizations. Reference: www.nexj.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_110":{"question":["OM"],"answer":["IBM Offering Management"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_111":{"question":["OS"],"answer":["Operating System or OpenShift (RedHat product)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_112":{"question":["P2B"],"answer":["Peer-to-Business"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_113":{"question":["P2P"],"answer":["Peer-to-Peer"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_114":{"question":["PaaS"],"answer":["Platform as a Service"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_115":{"question":["Para"],"answer":["Paragraph"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_116":{"question":["PCI / PCI-DSS"],"answer":["Payment Card Industry Data Security Standard. It is an information security standard for organizations that handle branded credit cards from the major card schemes. The PCI Standard is mandated by the card brands but administered by the Payment Card Industry Security Standards Council. Reference: https://www.pcisecuritystandards.org/pci_security/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_117":{"question":["Persistent"],"answer":["IBM partner providing software design and development platforms. Reference: www.persistent.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_118":{"question":["PING Identity"],"answer":["Ping Identity is and enterprise intelligent identity solution enabling Zero Trust identity-defined security and more personalized, streamlined user experiences. The Ping Intelligent Identity™ platform provides clients, workforce, and partners with access to cloud, mobile, SaaS and on-premises applications across the hybrid enterprise. PingIdentity provides flexible identity solutions that accelerate digital business initiatives, delight clients, and secure the enterprise through multi-factor authentication, single sign-on, access management, intelligent API security, directory, and data governance capabilities. URL: https://www.pingidentity.com/en.html"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_119":{"question":["POAP"],"answer":["Power On Auto Provisioning (POAP) automates the process of upgrading software images and installing configuration files on Cisco MDS and Nexus switches that are being deployed in the network. When a Cisco MDS switch with the POAP feature boots and does not find the startup configuration, the switch enters POAP mode, locates the DCNM DHCP server, and bootstraps itself with its interface IP address, gateway, and DCNM DNS server IP addresses. It also obtains the IP address of the DCNM server to download the configuration script that is run on the switch to download and install the appropriate software image and device configuration file."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_120":{"question":["Public Cloud"],"answer":["Cloud services are considered \"public\" when they are delivered over the public Internet, and they may be offered as a paid subscription, or free of charge.[100] Architecturally, there are few differences between public- and private-cloud services, but security concerns increase substantially when services (applications, storage, and other resources) are shared by multiple clients. Most public-cloud providers offer direct-connection services that allow clients to securely link their legacy data centers to their cloud-resident applications. Several factors like the functionality of the solutions, cost, integrational and organizational aspects as well as safety & security are influencing the decision of enterprises and organizations to choose a public cloud or on-premise solution."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_121":{"question":["Public-Private Hybrid Cloud"],"answer":["A hybrid cloud is a model in which a private cloud connects with public cloud infrastructure, allowing an organization to orchestrate workloads across the two environments. In this model, the public cloud effectively becomes an extension of the private cloud to form a single, uniform cloud."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_122":{"question":["Red Hat OpenShift AI/ML on OpenShift"],"answer":["Red Hat OpenShift capability providing better collaboration between data scientists and software developers and accelerates the roll out of intelligent applications across hybrid cloud."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_123":{"question":["Red Hat OpenShift Databases and data analytics"],"answer":["Red Hat OpenShift capability providing methods for ingesting, storing, processing, and analyzing datasets from a variety of sources for use cases such as mobile and ecommerce applications, AI/ML, business intelligence, and more."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_124":{"question":["Red Hat OpenShift Edge computing"],"answer":["Red Hat OpenShift capability providing 3-node clusters as well as remote worker nodes to provide organizations full Kubernetes capabilities in a smaller footprint."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_125":{"question":["Red Hat OpenShift on IBM Cloud"],"answer":["Red Hat OpenShift on IBM Cloud is a managed offering to create your own OpenShift cluster of compute hosts to deploy and manage containerized apps on IBM Cloud. Red Hat OpenShift on IBM Cloud provides intelligent scheduling, self-healing, horizontal scaling, service discovery and load balancing, automated rollouts and rollbacks, and secret and configuration management for your apps. Combined with an intuitive user experience, built-in security and isolation, and advanced tools to secure, manage, and monitor your cluster workloads, you can rapidly deliver highly available and secure containerized apps in the public cloud."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_126":{"question":["Red Hat OpenShift Operators"],"answer":["Red Hat OpenShift capability providing automated installation, upgrades, and life-cycle management for every part of your container stack, providing a more secure and up-to-date Kubernetes application platform with no downtime."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_127":{"question":["Red Hat OpenShift Pipelines"],"answer":["Red Hat OpenShift capability providing a streamlined user experience through the OpenShift console developer perspective, command-line interfaces (CLIs), and integrated development environments (IDEs)."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_128":{"question":["Red Hat OpenShift Serverless"],"answer":["Red Hat OpenShift capability providing a uniform way to manage, connect, and observe applications as managing and security between services becomes more difficult. an application to use compute resources and automatically scale up or down based on use, driven on-demand from a number of event sources."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_129":{"question":["Red Hat OpenShift Service Mesh"],"answer":["Red Hat OpenShift capability providing a uniform way to manage, connect, and observe applications as managing and security between services becomes more difficult."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_130":{"question":["Red Hat OpenShift Virtualization"],"answer":["Red Hat OpenShift capability providing virtual machines to OpenShift to modernize existing applications or run them alongside containers, and serverless, in a Kubernetes-native architecture."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_131":{"question":["Red Hat VPC Clusters"],"answer":["Red Hat VPC Clusters are created in your own Virtual Private Cloud providing the security of a private cloud environment with the dynamic scalability of a public cloud. Network access control lists are used to protect the subnets to which the worker nodes are connected. VPC clusters can be provisioned on shared virtual infrastructure only."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_132":{"question":["RH"],"answer":["Red Hat"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_133":{"question":["RHEL"],"answer":["Red Hat Enterprise Linux"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_134":{"question":["Ripe Hub"],"answer":["IBM partner providing frictionless payments ecosystem. Reference: www.ripehub.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_135":{"question":["Robust Intelligence"],"answer":["IBM partner providing secure deployment of Artificial Intelligence (AI) to financial institutions, online payment processors, and government agencies. Reference: robustintelligence.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_136":{"question":["ROKS"],"answer":["Red Hat OpenShift on IBM Cloud"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_137":{"question":["SaaS"],"answer":["Software as a Service"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_138":{"question":["Security"],"answer":["Products that provide the protection of stored data from theft, leakage, and deletion."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_139":{"question":["SIEM"],"answer":["Security Information and Event Management (SEIM) is within the field of computer security where software products and services combine security information management and security event management. They provide real-time analysis of security alerts generated by applications and network hardware."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_140":{"question":["Service ID"],"answer":["A service ID identifies a service or application similar to how a user ID identifies a user. A service ID that you create can be used to enable an application outside of IBM Cloud access to your IBM Cloud services. You can assign specific access policies to the service ID that restrict permissions for using specific services, or even combine permissions for accessing different services. Since service IDs are not tied to a specific user, if a user happens to leave an organization and is deleted from the account, the service ID remains ensuring that your application or service stays up and running."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_141":{"question":["Shared Responsibility Model"],"answer":["Found within the Shared Responsibility Model, theLine of Shared Responsibility defines the border defining the security responsibilities in cloud environments for the client or the Cloud Service Provider. Those areas, domains, platforms, etc. that are above the Line of Shared responsibility are owned by the client. Those areas, domains, platforms, etc. below the Line of Shared responsibility are owned by the Cloud Service Provider."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_142":{"question":["Shield"],"answer":["IBM partner providing anti-fraud solutions. Reference: www.shield.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_143":{"question":["SLA"],"answer":["Service Level Agreement"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_144":{"question":["SOA"],"answer":["Services Oriented Architecture"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_145":{"question":["SOC 1"],"answer":["SOC 1 is a report on controls at a service organization relevant to a user entity's internal control over financial reporting"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_146":{"question":["SOC 2"],"answer":["SOC 2 is a report on controls at a service organization relevant to security, availability, processing integrity, confidentiality, or privacy."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_147":{"question":["SOC 3"],"answer":["SOC 3 is a trust services report for service organizations."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_148":{"question":["SOCx"],"answer":["Service Organization Control (including all SOC reports / processes SOC 1, SOC 2, SOC 3)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_149":{"question":["Spanugo"],"answer":["IBM acquisition providing cybersecurity assurance for the hybrid cloud; spanugo.com;Reference: IBM acquisition announcement: https://newsroom.ibm.com/2020-06-15-IBM-Acquires-Assets-from-Spanugo"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_150":{"question":["SRE"],"answer":["Site Reliability Engineering (SRE) is a discipline that incorporates aspects of software engineering and applies them to infrastructure and operations problems. The main goals are to create scalable and highly reliable software systems."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_151":{"question":["Storage"],"answer":["Products that support data to be created, read, updated, and deleted."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_152":{"question":["SunTec"],"answer":["IBM partner providing open banking platforms. Reference: www.suntecgroup.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_153":{"question":["SZR"],"answer":["Single-Zone Region; If you create a cluster in a single zone (data center) location, you can create multiple worker nodes, but you cannot spread them across zones. The highly available master includes three replicas on separate hosts but is not spread across zones. Reference: https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_154":{"question":["TCA"],"answer":["Technology Compliance Advisor. It is an IBM subscription service providing regulatory updates, impact analysis, and alignment to a client’s regulatory technology controls. Reference:"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_155":{"question":["TCO"],"answer":["Total Cost of Ownership"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_156":{"question":["Tekton"],"answer":["Tekton is a flexible open-source framework for creating CI / CD systems, allowing developers to build, test, and deploy across cloud providers and on-premise systems. Reference: https://tekton.dev/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_157":{"question":["Temenos"],"answer":["IBM partner providing cloud-native, cloud-agnostic, API-first digital banking, core banking, payments, fund management, and wealth management software products. Reference: www.temenos.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_158":{"question":["Terraform"],"answer":["Terraform is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services. Terraform codifies cloud APIs into declarative configuration files. Reference: https://www.terraform.io/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_159":{"question":["Thought Machine"],"answer":["IBM partner providing cloud native core banking platforms. Reference: thoughtmachine.net"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_160":{"question":["TickTrade"],"answer":["IBM partner providing intelligent foreign exchange (FX) trading, payments and analytics platforms. Reference: www.ticktradesystems.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_161":{"question":["TLS"],"answer":["Transport Layer Security; a cryptographic protocol designed to provide communications security over a computer network"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_162":{"question":["UI"],"answer":["User Interface"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_163":{"question":["US"],"answer":["United States"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_164":{"question":["VCS"],"answer":["Veritas Cluster Server (rebranded as Veritas Infoscale Availability but also known as VCS) is a high-availability cluster software for Unix, Linux and Microsoft Windows computer systems, created by Veritas Technologies. It provides application cluster capabilities to systems running other applications, including databases, network file sharing, and electronic commerce websites."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_165":{"question":["Veeam"],"answer":["IBM partner providing backup and replication for cloud, virtual and physical workloads. Suggested for IBM Cloud for Financial Services™ backup. Reference: https://www.veeam.com/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_166":{"question":["Veeam Data Mover Services"],"answer":["Veeam Data Mover Service is a component that gives access to a host by enabling Veeam Data Movers – agents that are responsible for VM data processing and transfer. Reference: https://helpcenter.veeam.com/docs/backup/vsphere/veeam_transport_service.html?ver=110"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_167":{"question":["Vermeg"],"answer":["IBM partner providing financial software including securities processing software and fund administration systems. Reference: www.vermeg.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_168":{"question":["Virtual Private Cloud (VPC)"],"answer":["A virtual private cloud is an on-demand configurable pool of shared resources allocated within a public cloud environment, providing a certain level of isolation between the different organizations using the resources."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_169":{"question":["VMS"],"answer":["Virtual Machine System; a virtual machine that provides a complete system platform and supports the execution of a complete operating system (OS)"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_170":{"question":["VMW"],"answer":["VMware. Reference: https://www.vmware.com/"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_171":{"question":["VPC"],"answer":["Virtual Private Cloud"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_172":{"question":["vRealize Network Insight"],"answer":["VMware offering; an optimized, highly available and secure network infrastructure across hybrid and multicloud environments"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_173":{"question":["vSAN"],"answer":["Enterprise-class, storage virtualization software creating a virtual storage area network, a collection of ports from a set of connected fibre channel switches, that form a virtual fabric. Ports within a single switch can be partitioned into multiple VSANs, despite sharing hardware resources."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_174":{"question":["VSI"],"answer":["Virtual Server Infrastructure"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_175":{"question":["WW"],"answer":["World-wide"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_176":{"question":["WDEK"],"answer":["Wrapped Data Encryption Key; Key Wrap constructions are a class of symmetric encryption algorithms designed to encapsulate (encrypt) cryptographic key material. The Key Wrap algorithms are intended for applications such as protecting keys while in untrusted storage or transmitting keys over untrusted communications networks. The constructions are typically built from standard primitives such as block ciphers and cryptographic hash functions."]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_177":{"question":["Z"],"answer":["IBM mainframe enterprise platform for mission-critical applications"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_178":{"question":["Zafin"],"answer":["IBM partner providing relationship-based pricing to banks and financial institutions. Reference: www.zafin.com"]},"ba1f5494-0884-42ad-8368-bd4dc86794a8_179":{"question":["Zerto"],"answer":["An IT resilience platform, converging disaster recovery, backup and cloud mobility in one simple, scalable platform. Recommended for disaster recovery for IBM Cloud for Financial Services™Reference: https://www.zerto.com/"]}}
+{
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_0": {
+        "question": ["1H"],
+        "answer": ["First Half (of the year noted)"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_1": {
+        "question": ["2H"],
+        "answer": ["Second Half (of the year noted)"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_2": {
+        "question": ["Accelerator"],
+        "answer": [
+            "A tool, function, framework, defined process, industry / best practices that allow something of benefit to be delivered faster. Example: IBM Cloud for Financial Services™ with automated configurations allows the environment to be ready to accept data in two weeks which saves time and cost on the front-end and delivers business benefits sooner."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_3": {
+        "question": ["Access Group"],
+        "answer": [
+            "A group of users and service IDs can be organized so that the same access can be assigned to all members within the group by using one or more policies. With access groups, clients can streamline the access assignment process so that they can manage a smaller number of policies and reduce the number of policies in an account, which in turn increases performance. After groups are set up, they can start assigning policies by selecting an access group as the subject of the policy. For more information, see “Setting up access groups”Reference: https://cloud.ibm.com/docs/account?topic=account-groups"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_4": {
+        "question": ["Access policies"],
+        "answer": [
+            "Access policies are how users, service IDs, and access groups in the account are given permission to access and take actions on account resources. Policies include a subject, target, and role. The subject is the user, service ID, or access group that you are providing access. The target of the policy is the resource to which you want to provide access. And the IAM roles define the level of access or allowed actions on the target of the policy."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_5": {
+        "question": ["Account Resources"],
+        "answer": [
+            "Account resources are the provisioned service offerings that are selected from the catalog or finer-grained resources within a service instance, such as an IBM® Cloud Object Storage bucket. IAM-enabled resources are added to a resource group when they are created from the catalog."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_6": {
+        "question": ["Adobe"],
+        "answer": [
+            "IBM partner providing software support for the IBM Cloud for Financial Services™ capabilitiesHybrid cloud: Adobe Experience Manager will be certified and delivered on Red Hat OpenShift, giving enterprises flexibility to host, access, and leverage their client data in the cloud environment of their choice. For Regulated industries: IBM will enable Adobe Experience Manager (part of Adobe Experience Cloud) for professionals in the financial services market using the industry first IBM Cloud for Financial Services™. Reference: Adobe: https://www.adobe.com/Adobe & IBM Partnership: https://w3.ibm.com/w3publisher/behind-the-news/adobe-partnership"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_7": {
+        "question": ["Amberoon"],
+        "answer": [
+            "IBM partner providing agile compliance for AML. Reference: https://www.amberoon.com/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_8": {
+        "question": ["API"],
+        "answer": ["Application programming interface"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_9": {
+        "question": ["Aseria"],
+        "answer": [
+            "IBM partner providing AI cash flow advisor capabilities for SME for the IBM Cloud for Financial Services™ partner. Reference: https://www.asteria.ai/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_10": {
+        "question": ["Assima"],
+        "answer": [
+            "IBM partner providing solutions for remote user adoption for the IBM Cloud for Financial Services™ Reference: https://assima.net/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_11": {
+        "question": ["ATracker"],
+        "answer": [
+            "IBM Cloud Activity Tracker, sometimes referred to as ATracker. Activity Tracker is a service to monitor the activity of their IBM Cloud account. I can be used to investigate abnormal activity and critical actions, comply with regulatory audit requirements, and provide alerts on actions as they happen. Events collected comply with the Cloud Auditing Data Federation (CADF) standard. Reference: https://cloud.ibm.com/docs/Activity-Tracker-with-LogDNA?topic=Activity-Tracker-with-LogDNA-getting-started"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_12": {
+        "question": ["B2B"],
+        "answer": ["Business to Business"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_13": {
+        "question": ["B2C"],
+        "answer": ["Business to Consumer"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_14": {
+        "question": ["B2E"],
+        "answer": ["Business-to-Employee"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_15": {
+        "question": ["Bastion Host"],
+        "answer": [
+            "A bastion host is a special-purpose computer on a network specifically designed and configured to withstand attacks. The computer generally hosts a single application, for example a proxy server, and all other services are removed or limited to reduce the threat to the computer."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_16": {
+        "question": ["BCM"],
+        "answer": ["Business Continuity Management"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_17": {
+        "question": ["BofA / BOA"],
+        "answer": ["Bank of America"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_18": {
+        "question": ["BYOK"],
+        "answer": ["Bring Your Own Key"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_19": {
+        "question": ["BYOL"],
+        "answer": ["Bring Your Own License"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_20": {
+        "question": ["C3.ai"],
+        "answer": [
+            "IBM partner providing enterprise AI software provider for accelerating digital transformation. The proven C3 AI Suite provides comprehensive services to build enterprise-scale AI applications more efficiently and cost-effectively than alternative approaches. Reference: https://c3.ai/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_21": {
+        "question": ["CaaS"],
+        "answer": ["Container as a Service"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_22": {
+        "question": ["CAGR"],
+        "answer": ["Compound Annual Growth Rate"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_23": {
+        "question": ["CAS"],
+        "answer": ["Cloud Advisory Services (IBM)"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_24": {
+        "question": ["CaveonixRiskForesight"],
+        "answer": [
+            "Continuous detection, prediction, and action on cyberthreats and regulatory compliance risks on hybrid clouds. Reference: https://www.caveonix.com/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_25": {
+        "question": ["CCO"],
+        "answer": ["Chief Compliance Officer"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_26": {
+        "question": ["CEH"],
+        "answer": [
+            "Cloud Engagement Hub. The IBM Cloud Engagement Hub is a dedicated high-performance technical team to support strategic enterprise opportunities and create significant client value using IBM Public Cloud, RedHat, and Cloud Paks. The Cloud Engagement Hub works with financial services clients to define their respective cloud journeys based on existing IT landscape and investments. The Cloud Engagement Hub leads the solutioning for new cloud model deals defining client value, cloud architectures, migration / modernization journeys, target operating models, and execution strategy."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_27": {
+        "question": ["CEO"],
+        "answer": ["Chief Executive Officer"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_28": {
+        "question": ["CIO"],
+        "answer": ["Chief Information Officer"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_29": {
+        "question": ["CISO"],
+        "answer": ["Chief Information Security Officer"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_30": {
+        "question": ["Cloud Foundry"],
+        "answer": [
+            "Cloud Foundry ensures that the build and deploy aspects of coding remain carefully coordinated with any attached services — resulting in quick, consistent and reliable iterating of applications. As an industry-standard platform as a service (PaaS), Cloud Foundry ensures the fastest, easiest and most reliable deployment of cloud-native applications. IBM offers the Cloud Foundry PaaS in several hosting models, allowing clients to customize their PaaS experience and balance a range of considerations, including price, deployment speed and security. Reference: https://www.ibm.com/cloud/cloud-foundry?lnk=STW_US_STESCH&lnk2=learn_CloudFoundry&pexp=DEF&psrc=NONE&mhsrc=ibmsearch_a&mhq=cloud%20foundry"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_31": {
+        "question": ["Co-location or CoLo"],
+        "answer": [
+            "A colocation (CoLo) is a data center facility in which a business can rent space for servers and other computing hardware. Typically, a CoLo provides the building, cooling, power, bandwidth and physical security while the client provides servers and storage."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_32": {
+        "question": ["Containers"],
+        "answer": [
+            "Containers provide a standard way to package an application's code, configurations, and dependencies into a single unit that can run as a resource-isolated process on a compute server. To run an app in Kubernetes on Red Hat OpenShift on IBM Cloud, first containerize the app by creating a container image that is stored in a container registry."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_33": {
+        "question": ["ContinuityLogic"],
+        "answer": [
+            "IBM partner providing a platform providing Business Continuity Management, Disaster Recovery Management, Incident Management, Crisis Management, Enterprise Risk Management, Vendor Risk Management, and CybersecurityReference: https://www.continuitylogic.com/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_34": {
+        "question": ["CRN"],
+        "answer": [
+            "Cloud Resource Name:a Cloud Resource Name (CRN) uniquely identifies IBM Cloud® resources. A CRN is used to specify a resource in an unambiguous way that is guaranteed to be globally unique. A CRN is formed from a concatenation of \"segments\" that hierarchically identify the resource, its location, and the service it belongs to. The segment delimiter is set to a colon (:). All CRNs begin with the segment identifier crn."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_35": {
+        "question": ["CRO"],
+        "answer": ["Chief Risk Officer"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_36": {
+        "question": ["CSC"],
+        "answer": ["Cloud Service Client"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_37": {
+        "question": ["CSE"],
+        "answer": [
+            "Cloud Service Endpoints (CSE) are automatically enabled for new VPCs, but VPCs that existed prior to the feature need to be updated to enable the feature. In a Virtual Private Cloud (VPC) on Classic created before 9 October 2019, the cloud service endpoints feature does not properly link endpoints."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_38": {
+        "question": ["CSP"],
+        "answer": ["Cloud Service Provider"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_39": {
+        "question": ["DC"],
+        "answer": ["Data Center"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_40": {
+        "question": ["Decision Focus"],
+        "answer": [
+            "IBM partner providing governance, risk, and compliance (GRC) software. Reference: https://www.decisionfocus.com/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_41": {
+        "question": ["DEK"],
+        "answer": [
+            "Data Encrypted Key; an encryption key is typically a random string of bits generated specifically to scramble and unscramble data. Encryption keys are created with algorithms designed to ensure that each key is unique and unpredictable. The longer the key constructed this way, the harder it is to break the encryption code."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_42": {
+        "question": ["Developer Tools"],
+        "answer": [
+            "Products that support developing, testing, and debugging software."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_43": {
+        "question": ["DR"],
+        "answer": ["Disaster Recovery"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_44": {
+        "question": ["DRY"],
+        "answer": [
+            "Don’t Repeat Yourself (DRY) is a principle of software development aimed at reducing repetition of software patterns, replacing it with abstractions or using data normalization to avoid redundancy."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_45": {
+        "question": ["Enghouse Interactive"],
+        "answer": [
+            "Collaborative Contact Center software for Microsoft Teams. Reference: https://www.enghouseinteractive.com/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_46": {
+        "question": ["EU"],
+        "answer": ["European Union"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_47": {
+        "question": ["Focal"],
+        "answer": [
+            "An IBM competency lead or subject matter expert (SME) able to provide deep support regarding a particular topic. A Focal may be able to provide resources to assist with projects or other efforts."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_48": {
+        "question": ["Finacle"],
+        "answer": [
+            "Digital banking solution suite from EdgeVerve Systems, a subsidiary of Infosys. It provides frictionless client experiences, larger ecosystem play, insights-driven interactions and ubiquitous automation. Finacle solutions address the core banking, omnichannel banking, payments, treasury, origination, liquidity management, Islamic banking, wealth management, analytics, artificial intelligence, and blockchain requirements of financial institutions to drive business excellence. Reference: www.finacle.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_49": {
+        "question": ["FIPS 140-2 Level 4"],
+        "answer": [
+            "Federal Information Processing Standard Publication 140-2. It is a U. S. government computer security standard used to approve cryptographic modules"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_50": {
+        "question": ["Fortinet"],
+        "answer": [
+            "IBM partner providing cybersecurity products and services, such as firewalls, anti-virus, intrusion prevention and endpoint security. Reference: https://www.fortinet.com/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_51": {
+        "question": ["FS"],
+        "answer": ["Financial Services"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_52": {
+        "question": ["FS-ISAC"],
+        "answer": [
+            "Financial Services Information Sharing and Analysis Center; the only global cyber intelligence sharing community solely focused on financial services. Serving financial institutions and in turn their clients, the organization leverages its intelligence platform, resiliency resources, and a trusted peer-to-peer network of experts to anticipate, mitigate and respond to cyber threats. Reference: https://www.fsisac.com/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_53": {
+        "question": ["FSS"],
+        "answer": ["Financial Service Sector (IBM usage)"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_54": {
+        "question": ["GA"],
+        "answer": [
+            "General Availability (software release in general production)"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_55": {
+        "question": ["GBS"],
+        "answer": ["IBM Global Business Services"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_56": {
+        "question": ["GDPR"],
+        "answer": ["General Data Protection Regulation (EU)"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_57": {
+        "question": ["Geva Group"],
+        "answer": [
+            "Deep analytics in the field of chemistry. Reference: http://umich.edu/~gevalab/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_58": {
+        "question": ["GL"],
+        "answer": ["Guidelines"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_59": {
+        "question": ["GP VPN"],
+        "answer": [
+            "Global Protect Virtual Private Network (GP VPN); the GlobalProtect VPN is a web browser-based VPN service, and should work with most browsers, operating systems, and mobile devices. All traffic on the browser tab that is used to log in to the service travels through an encrypted tunnel which terminates on the campus gateway."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_60": {
+        "question": ["GSI"],
+        "answer": ["Global Systems Integrator"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_61": {
+        "question": ["GTS"],
+        "answer": ["IBM Global Technology Services"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_62": {
+        "question": ["HA"],
+        "answer": ["High Availability"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_63": {
+        "question": ["Hamilton"],
+        "answer": ["IBM Cloud for Financial Services™"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_64": {
+        "question": ["HIPAA"],
+        "answer": ["Health Insurance Portability and Accountability Act (US)"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_65": {
+        "question": ["HPCS"],
+        "answer": ["Hyper Protect Crypto Services"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_66": {
+        "question": ["HSM"],
+        "answer": ["Hardware Security Module"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_67": {
+        "question": ["Hybrid Cloud"],
+        "answer": [
+            "Hybrid Cloud is a composition of a public cloud and a private environment, such as a private cloud or on-premises resources, that remain distinct entities but are bound together, offering the benefits of multiple deployment models. Hybrid cloud can also mean the ability to connect collocation, managed and/or dedicated services with cloud resources. Gartner defines a hybrid cloud service as a cloud computing service that is composed of some combination of private, public and community cloud services, from different service providers. A hybrid cloud service crosses isolation and provider boundaries so that it can't be simply put in one category of private, public, or community cloud service. It allows one to extend either the capacity or the capability of a cloud service, by aggregation, integration or customization with another cloud service. Varied use cases for hybrid cloud composition exist. For example, an organization may store sensitive client data in house on a private cloud application but interconnect that application to a business intelligence application provided on a public cloud as a software service. This example of hybrid cloud extends the capabilities of the enterprise to deliver a specific business service through the addition of externally available public cloud services. Hybrid cloud adoption depends on a number of factors such as data security and compliance requirements, level of control needed over data, and the applications an organization uses. Another example of hybrid cloud is one where IT organizations use public cloud computing resources to meet temporary capacity needs that cannot be met by the private cloud. This capability enables hybrid clouds to employ cloud bursting for scaling across clouds. Cloud bursting is an application deployment model in which an application runs in a private cloud or data center and \"bursts\" to a public cloud when the demand for computing capacity increases. A primary advantage of cloud bursting and a hybrid cloud model is that an organization pays for extra compute resources only when they are needed. Cloud bursting enables data centers to create an in-house IT infrastructure that supports average workloads, and use cloud resources from public or private clouds, during spikes in processing demands. The specialized model of hybrid cloud, which is built atop heterogeneous hardware, is called \"Cross-platform Hybrid Cloud\". A cross-platform hybrid cloud is usually powered by different CPU architectures, for example, x86-64 and ARM, underneath. Users can transparently deploy and scale applications without knowledge of the cloud's hardware diversity. This kind of cloud emerges from the rise of ARM-based system-on-chip for server-class computing. Hybrid cloud infrastructure essentially serves to eliminate limitations inherent to the multi-access relay characteristics of private cloud networking. The advantages include enhanced runtime flexibility and adaptive memory processing unique to virtualized interface models."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_68": {
+        "question": ["HyTrust Data Control w/HPCS"],
+        "answer": [
+            "Strong encryption with integrated key management to secure workloads throughout their lifecycle. Reference: https://www.hytrust.com/datacontrol-ibm-cloud/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_69": {
+        "question": ["IaaS"],
+        "answer": ["Infrastructure as a service"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_70": {
+        "question": ["IBM"],
+        "answer": ["International Business Machines"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_71": {
+        "question": ["IBM Cloud for Financial Services™ Validated"],
+        "answer": [
+            "Name is used to designate an IBM Cloud service or ecosystem (ISV, SaaS) partner service is IBM Cloud for Financial Services™ validated and has evidenced compliance to IBM Cloud Framework for Financial Services controls, architecture and operations requirements"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_72": {
+        "question": ["IBM Privacy Shield Policy for IBM Cloud Services"],
+        "answer": [
+            "The IBM Privacy Shield Privacy Policy for Cloud Services (the “Policy”) applies to the IBM Infrastructure-as-a-Service, Platform-as-a-Service, Software-as-a-Service, and other hosted offerings that are Privacy Shield certified (“Privacy Shield-Certified Cloud Services”). A list of these offerings is provided below; if an offering is not on this list, it is not covered by the IBM Privacy Shield. As the Privacy Shield only applies to personal data transferred to the United States from those countries whose data protection laws recognize Privacy Shield as a valid mechanism for such cross-border transfers, this Statement only applies to:such personal data hosted in the United States through the Privacy Shield-Certified Cloud Services; andselect offerings when the data is hosted outside the United States but the Cloud Service processing is temporarily directed to a United States data center to enable continued availability and resiliency. This Policy does not otherwise apply when clients choose to have their offering content hosted in other countries. Reference: https://www.ibm.com/privacy/privacy-shield and To learn more about the Privacy Shield Program, or to view the certification applicable to certain IBM Cloud Services, please visit www.privacyshield.gov."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_73": {
+        "question": ["IBM Promontory"],
+        "answer": [
+            "A subsidiary of IBM and global consulting firm advising clients on regulatory issues, compliance, risk management, liquidity, restructuring, acquisitions, due diligence, internal investigations and cyber security."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_74": {
+        "question": ["IBM Security"],
+        "answer": [
+            "Supported by IBM X-Force research, the group offers enterprise security products and services monitoring 70 billion security events per day in more than 130 countries and has more than 10,000 security patents worldwide."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_75": {
+        "question": [
+            "IBM Virtual Server Infrastructure (VSI) transient servers"
+        ],
+        "answer": [
+            "Ideal for the development and testing of applications and other nonproduction workloads that don’t require constant uptime, transient servers are deprovisioned on a first-on, first-off basis."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_76": {
+        "question": ["IBM Virtual Server Infrastructure (VSI) dedicated hosts"],
+        "answer": [
+            "Single tenant dedicated hosts help control workload placement and support network throughputs of up to 20 Gbps. View core, RAM and local storage consumption for maximum control of workload management."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_77": {
+        "question": [
+            "IBM Virtual Server Infrastructure (VSI) dedicated servers"
+        ],
+        "answer": [
+            "Take full advantage of our single tenant offering with rapid provisioning for further control and flexibility in VSI deployments, up to 56 cores and 484 GB RAM and monthly or hourly options."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_78": {
+        "question": ["IBM Virtual Server Infrastructure (VSI) public servers"],
+        "answer": [
+            "Choose options for (1) a balance of performance and scale, (2) high I/O and low-latency performance, (3) CPU-intensive workloads, (4) memory-intensive workloads or (5) accelerated computing workloads."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_79": {
+        "question": [
+            "IBM Virtual Server Infrastructure (VSI) reserved servers"
+        ],
+        "answer": [
+            "Ideal for sustained workloads and enterprise-level challenges, a set of up to 20 VMs can be reserved in advance for guaranteed capacity in the data center of the clients choice. Choose a 1- or 3-year term."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_80": {
+        "question": ["IC4V"],
+        "answer": ["IBM Cloud for VMware Solutions"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_81": {
+        "question": ["IDP"],
+        "answer": ["Identity Provider (IDP)"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_82": {
+        "question": ["IKS"],
+        "answer": ["IBM Cloud Kubernetes Service"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_83": {
+        "question": ["Integration"],
+        "answer": [
+            "Products that facilitate the connection of data, apps, APIs, and devices across an organization to be more efficient, productive, and agile."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_84": {
+        "question": ["Intellect"],
+        "answer": [
+            "IBM partner providing front, middle, and back-office platforms supporting corporate banking, retail banking, risk, treasury & capital, insurance, and digital solutions markets. Reference: https://www.intellectdesign.com/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_85": {
+        "question": ["Intercope"],
+        "answer": [
+            "IBM partner providing platforms for interbank messaging including multi-network connectivity, SWIFT CSP compliance, ISO 20022 migration, T2 & T2S consolidation supporting ESMIG, SWIFT gpi, Instant Payments for multiple CSMs over multiple networks, to legacy SWIFT consolidation and replacement. Reference: www.intercope.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_86": {
+        "question": ["Internet of Things"],
+        "answer": [
+            "Products that support receiving and transferring data over wireless networks without human intervention."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_87": {
+        "question": ["Internet Protocol Security (IPsec)"],
+        "answer": [
+            "Internet Protocol Security is a secure network protocol suite that authenticates and encrypts the packets of data to provide secure encrypted communication between two computers over an Internet Protocol network. It is used in virtual private networks."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_88": {
+        "question": ["ISO 9001"],
+        "answer": [
+            "ISO 9001 defines a Quality Management System (QMS) allowing evaluation of whether an organization’s quality management system is appropriate and effective, while directing them to identify and implement improvements. ISO 9001 is the only standard in the 9000 series that requires certificationReference: https://www.iso.org/iso-9001-quality-management.html"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_89": {
+        "question": ["ISO 27001"],
+        "answer": [
+            "ISO 27001 is an international standard on how to manage information security. The standard was originally published jointly by the International Organization for Standardization and the International Electrotechnical Commission in 2005 and then revised in 2013. Reference: https://www.iso.org/standard/54534.html"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_90": {
+        "question": ["ISO 27017"],
+        "answer": [
+            "ISO 27017 is a security standard developed for cloud service providers and users to make a safer cloud-based environment and reduce the risk of security problems. Reference: https://www.iso.org/standard/43757.html"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_91": {
+        "question": ["ISO 27018"],
+        "answer": [
+            "ISO 27018 is a security standard and part of the ISO 27000 family of standards. It was the first international standard about the privacy in cloud computing services which was promoted by the industry. Created in 2014, it helps cloud service providers who process personally identifiable information (PII) to assess risk and implement controls for protecting PII. It was published by the International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC) under the joint ISO and IEC subcommittee. Reference: https://www.iso.org/standard/61498.html"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_92": {
+        "question": ["ISV"],
+        "answer": ["Independent Service Vendor"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_93": {
+        "question": ["IT"],
+        "answer": ["Information Technology"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_94": {
+        "question": ["Key Management Interoperability Protocol (KMIP)"],
+        "answer": [
+            "The Key Management Interoperability Protocol (KMIP) is an extensible communication protocol that defines message formats for the manipulation of cryptographic keys on a key management server. This facilitates data encryption by simplifying encryption key management."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_95": {
+        "question": ["Knowis"],
+        "answer": [
+            "IBM partner providing banks with pre-integrated independent technologies on shared, ontology-based domain models on IBM’s Smarter Process Technology. Reference: www.knowis.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_96": {
+        "question": ["Kubernetes"],
+        "answer": [
+            "Kubernetes is an open-source platform for managing containerized workloads and services across multiple hosts, and offers management tools for deploying, automating, monitoring, and scaling containerized apps with minimal to no manual intervention."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_97": {
+        "question": ["KYOK"],
+        "answer": ["Keep Your Own Key"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_98": {
+        "question": ["Line of Shared Responsibility (LoSR)"],
+        "answer": [
+            "Found within the Shared Responsibility Model, the Line of Shared Responsibility defines the border between security responsibilities in cloud environments. Those areas, domains, platforms, etc. above the Line of Shared responsibility are the responsibility of the client. Those areas, domains, platforms, etc. below the Line of Shared responsibility are the responsibility of the Cloud Service Provider."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_99": {
+        "question": ["Logging and Monitoring"],
+        "answer": [
+            "Products that support storing, searching, analyzing, and monitoring log data and events. And products that support reviewing and managing the operational workflow and processes being logged."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_100": {
+        "question": ["Lumina"],
+        "answer": [
+            "IBM partner providing development in partnership with IBM. Reference: www.luminacorp.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_101": {
+        "question": ["Mobile"],
+        "answer": [
+            "Products with specific or special utility for users creating things to be used on mobile devices."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_102": {
+        "question": ["MQ"],
+        "answer": [
+            "IBM MQ or IBM Message Queue; MQ (message queue) series, is an IBM standard for program-to-program messaging across multiple platforms. MQ is sometimes referred to as message-oriented middleware (MOM)"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_103": {
+        "question": ["MTCS – Level 3"],
+        "answer": [
+            "Multi-Tier Cloud Security (MTCS) is an information security standard, published by Singapore Standards. MTCS Singapore Standard (SS)584 is the world’s first cloud security standard that covers multiple tiers of cloud security. The standard was last revised in 2015. SS 584 specifies a Management system for Cloud Security, to three levels. Organizations that meet the requirements may be certified by an accredited certification body following successful completion of an audit. IBM is an MTCS Level-3 Certified Partner for IBM Cloud using IaaS model that spans across products such as bare metal servers, virtual servers (Private and Public), hardware security modules, and VMware vSphere on IBM Cloud."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_104": {
+        "question": ["MVP"],
+        "answer": [
+            "Minimum Viable Product. It is a version of a product with just enough features to satisfy early clients and provide feedback for future product development."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_105": {
+        "question": ["MZR"],
+        "answer": [
+            "Multi-Zone Region: if you create a cluster in a multizone metro location, the replicas of your highly available Kubernetes master are automatically spread across zones. You have the option to spread your worker nodes across zones to protect your apps from a zone failure. To determine whether a zone is multizone-capable, run ibmcloudks locations and look for the value in the Multizone Metro column. Reference: https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_106": {
+        "question": ["NCA"],
+        "answer": [
+            "National Competent Authority. A medicines regulatory authority in a European Union Member State."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_107": {
+        "question": ["Networking"],
+        "answer": [
+            "Products that support or augment the linking of computers so they can operate interactively."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_108": {
+        "question": ["Network Access Control List (NACL)"],
+        "answer": [
+            "A network access control list (ACL) is an optional layer of security for a VPC that acts as a firewall for controlling traffic in and out of one or more subnets. A network ACL may be set up with rules similar to the security groups in order to add an additional layer of security to the Virtual Private Cloud (VPC)."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_109": {
+        "question": ["NexJ"],
+        "answer": [
+            "IBM partner providing intelligent client management for financial services organizations. Reference: www.nexj.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_110": {
+        "question": ["OM"],
+        "answer": ["IBM Offering Management"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_111": {
+        "question": ["OS"],
+        "answer": ["Operating System or OpenShift (RedHat product)"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_112": {
+        "question": ["P2B"],
+        "answer": ["Peer-to-Business"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_113": {
+        "question": ["P2P"],
+        "answer": ["Peer-to-Peer"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_114": {
+        "question": ["PaaS"],
+        "answer": ["Platform as a Service"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_115": {
+        "question": ["Para"],
+        "answer": ["Paragraph"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_116": {
+        "question": ["PCI / PCI-DSS"],
+        "answer": [
+            "Payment Card Industry Data Security Standard. It is an information security standard for organizations that handle branded credit cards from the major card schemes. The PCI Standard is mandated by the card brands but administered by the Payment Card Industry Security Standards Council. Reference: https://www.pcisecuritystandards.org/pci_security/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_117": {
+        "question": ["Persistent"],
+        "answer": [
+            "IBM partner providing software design and development platforms. Reference: www.persistent.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_118": {
+        "question": ["PING Identity"],
+        "answer": [
+            "Ping Identity is and enterprise intelligent identity solution enabling Zero Trust identity-defined security and more personalized, streamlined user experiences. The Ping Intelligent Identity™ platform provides clients, workforce, and partners with access to cloud, mobile, SaaS and on-premises applications across the hybrid enterprise. PingIdentity provides flexible identity solutions that accelerate digital business initiatives, delight clients, and secure the enterprise through multi-factor authentication, single sign-on, access management, intelligent API security, directory, and data governance capabilities. URL: https://www.pingidentity.com/en.html"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_119": {
+        "question": ["POAP"],
+        "answer": [
+            "Power On Auto Provisioning (POAP) automates the process of upgrading software images and installing configuration files on Cisco MDS and Nexus switches that are being deployed in the network. When a Cisco MDS switch with the POAP feature boots and does not find the startup configuration, the switch enters POAP mode, locates the DCNM DHCP server, and bootstraps itself with its interface IP address, gateway, and DCNM DNS server IP addresses. It also obtains the IP address of the DCNM server to download the configuration script that is run on the switch to download and install the appropriate software image and device configuration file."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_120": {
+        "question": ["Public Cloud"],
+        "answer": [
+            "Cloud services are considered \"public\" when they are delivered over the public Internet, and they may be offered as a paid subscription, or free of charge.[100] Architecturally, there are few differences between public- and private-cloud services, but security concerns increase substantially when services (applications, storage, and other resources) are shared by multiple clients. Most public-cloud providers offer direct-connection services that allow clients to securely link their legacy data centers to their cloud-resident applications. Several factors like the functionality of the solutions, cost, integrational and organizational aspects as well as safety & security are influencing the decision of enterprises and organizations to choose a public cloud or on-premise solution."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_121": {
+        "question": ["Public-Private Hybrid Cloud"],
+        "answer": [
+            "A hybrid cloud is a model in which a private cloud connects with public cloud infrastructure, allowing an organization to orchestrate workloads across the two environments. In this model, the public cloud effectively becomes an extension of the private cloud to form a single, uniform cloud."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_122": {
+        "question": ["Red Hat OpenShift AI/ML on OpenShift"],
+        "answer": [
+            "Red Hat OpenShift capability providing better collaboration between data scientists and software developers and accelerates the roll out of intelligent applications across hybrid cloud."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_123": {
+        "question": ["Red Hat OpenShift Databases and data analytics"],
+        "answer": [
+            "Red Hat OpenShift capability providing methods for ingesting, storing, processing, and analyzing datasets from a variety of sources for use cases such as mobile and ecommerce applications, AI/ML, business intelligence, and more."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_124": {
+        "question": ["Red Hat OpenShift Edge computing"],
+        "answer": [
+            "Red Hat OpenShift capability providing 3-node clusters as well as remote worker nodes to provide organizations full Kubernetes capabilities in a smaller footprint."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_125": {
+        "question": ["Red Hat OpenShift on IBM Cloud"],
+        "answer": [
+            "Red Hat OpenShift on IBM Cloud is a managed offering to create your own OpenShift cluster of compute hosts to deploy and manage containerized apps on IBM Cloud. Red Hat OpenShift on IBM Cloud provides intelligent scheduling, self-healing, horizontal scaling, service discovery and load balancing, automated rollouts and rollbacks, and secret and configuration management for your apps. Combined with an intuitive user experience, built-in security and isolation, and advanced tools to secure, manage, and monitor your cluster workloads, you can rapidly deliver highly available and secure containerized apps in the public cloud."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_126": {
+        "question": ["Red Hat OpenShift Operators"],
+        "answer": [
+            "Red Hat OpenShift capability providing automated installation, upgrades, and life-cycle management for every part of your container stack, providing a more secure and up-to-date Kubernetes application platform with no downtime."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_127": {
+        "question": ["Red Hat OpenShift Pipelines"],
+        "answer": [
+            "Red Hat OpenShift capability providing a streamlined user experience through the OpenShift console developer perspective, command-line interfaces (CLIs), and integrated development environments (IDEs)."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_128": {
+        "question": ["Red Hat OpenShift Serverless"],
+        "answer": [
+            "Red Hat OpenShift capability providing a uniform way to manage, connect, and observe applications as managing and security between services becomes more difficult. an application to use compute resources and automatically scale up or down based on use, driven on-demand from a number of event sources."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_129": {
+        "question": ["Red Hat OpenShift Service Mesh"],
+        "answer": [
+            "Red Hat OpenShift capability providing a uniform way to manage, connect, and observe applications as managing and security between services becomes more difficult."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_130": {
+        "question": ["Red Hat OpenShift Virtualization"],
+        "answer": [
+            "Red Hat OpenShift capability providing virtual machines to OpenShift to modernize existing applications or run them alongside containers, and serverless, in a Kubernetes-native architecture."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_131": {
+        "question": ["Red Hat VPC Clusters"],
+        "answer": [
+            "Red Hat VPC Clusters are created in your own Virtual Private Cloud providing the security of a private cloud environment with the dynamic scalability of a public cloud. Network access control lists are used to protect the subnets to which the worker nodes are connected. VPC clusters can be provisioned on shared virtual infrastructure only."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_132": {
+        "question": ["RH"],
+        "answer": ["Red Hat"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_133": {
+        "question": ["RHEL"],
+        "answer": ["Red Hat Enterprise Linux"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_134": {
+        "question": ["Ripe Hub"],
+        "answer": [
+            "IBM partner providing frictionless payments ecosystem. Reference: www.ripehub.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_135": {
+        "question": ["Robust Intelligence"],
+        "answer": [
+            "IBM partner providing secure deployment of Artificial Intelligence (AI) to financial institutions, online payment processors, and government agencies. Reference: robustintelligence.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_136": {
+        "question": ["ROKS"],
+        "answer": ["Red Hat OpenShift on IBM Cloud"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_137": {
+        "question": ["SaaS"],
+        "answer": ["Software as a Service"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_138": {
+        "question": ["Security"],
+        "answer": [
+            "Products that provide the protection of stored data from theft, leakage, and deletion."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_139": {
+        "question": ["SIEM"],
+        "answer": [
+            "Security Information and Event Management (SEIM) is within the field of computer security where software products and services combine security information management and security event management. They provide real-time analysis of security alerts generated by applications and network hardware."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_140": {
+        "question": ["Service ID"],
+        "answer": [
+            "A service ID identifies a service or application similar to how a user ID identifies a user. A service ID that you create can be used to enable an application outside of IBM Cloud access to your IBM Cloud services. You can assign specific access policies to the service ID that restrict permissions for using specific services, or even combine permissions for accessing different services. Since service IDs are not tied to a specific user, if a user happens to leave an organization and is deleted from the account, the service ID remains ensuring that your application or service stays up and running."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_141": {
+        "question": ["Shared Responsibility Model"],
+        "answer": [
+            "Found within the Shared Responsibility Model, theLine of Shared Responsibility defines the border defining the security responsibilities in cloud environments for the client or the Cloud Service Provider. Those areas, domains, platforms, etc. that are above the Line of Shared responsibility are owned by the client. Those areas, domains, platforms, etc. below the Line of Shared responsibility are owned by the Cloud Service Provider."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_142": {
+        "question": ["Shield"],
+        "answer": [
+            "IBM partner providing anti-fraud solutions. Reference: www.shield.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_143": {
+        "question": ["SLA"],
+        "answer": ["Service Level Agreement"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_144": {
+        "question": ["SOA"],
+        "answer": ["Services Oriented Architecture"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_145": {
+        "question": ["SOC 1"],
+        "answer": [
+            "SOC 1 is a report on controls at a service organization relevant to a user entity's internal control over financial reporting"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_146": {
+        "question": ["SOC 2"],
+        "answer": [
+            "SOC 2 is a report on controls at a service organization relevant to security, availability, processing integrity, confidentiality, or privacy."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_147": {
+        "question": ["SOC 3"],
+        "answer": [
+            "SOC 3 is a trust services report for service organizations."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_148": {
+        "question": ["SOCx"],
+        "answer": [
+            "Service Organization Control (including all SOC reports / processes SOC 1, SOC 2, SOC 3)"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_149": {
+        "question": ["Spanugo"],
+        "answer": [
+            "IBM acquisition providing cybersecurity assurance for the hybrid cloud; spanugo.com;Reference: IBM acquisition announcement: https://newsroom.ibm.com/2020-06-15-IBM-Acquires-Assets-from-Spanugo"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_150": {
+        "question": ["SRE"],
+        "answer": [
+            "Site Reliability Engineering (SRE) is a discipline that incorporates aspects of software engineering and applies them to infrastructure and operations problems. The main goals are to create scalable and highly reliable software systems."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_151": {
+        "question": ["Storage"],
+        "answer": [
+            "Products that support data to be created, read, updated, and deleted."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_152": {
+        "question": ["SunTec"],
+        "answer": [
+            "IBM partner providing open banking platforms. Reference: www.suntecgroup.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_153": {
+        "question": ["SZR"],
+        "answer": [
+            "Single-Zone Region; If you create a cluster in a single zone (data center) location, you can create multiple worker nodes, but you cannot spread them across zones. The highly available master includes three replicas on separate hosts but is not spread across zones. Reference: https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_154": {
+        "question": ["TCA"],
+        "answer": [
+            "Technology Compliance Advisor. It is an IBM subscription service providing regulatory updates, impact analysis, and alignment to a client’s regulatory technology controls. Reference:"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_155": {
+        "question": ["TCO"],
+        "answer": ["Total Cost of Ownership"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_156": {
+        "question": ["Tekton"],
+        "answer": [
+            "Tekton is a flexible open-source framework for creating CI / CD systems, allowing developers to build, test, and deploy across cloud providers and on-premise systems. Reference: https://tekton.dev/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_157": {
+        "question": ["Temenos"],
+        "answer": [
+            "IBM partner providing cloud-native, cloud-agnostic, API-first digital banking, core banking, payments, fund management, and wealth management software products. Reference: www.temenos.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_158": {
+        "question": ["Terraform"],
+        "answer": [
+            "Terraform is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services. Terraform codifies cloud APIs into declarative configuration files. Reference: https://www.terraform.io/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_159": {
+        "question": ["Thought Machine"],
+        "answer": [
+            "IBM partner providing cloud native core banking platforms. Reference: thoughtmachine.net"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_160": {
+        "question": ["TickTrade"],
+        "answer": [
+            "IBM partner providing intelligent foreign exchange (FX) trading, payments and analytics platforms. Reference: www.ticktradesystems.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_161": {
+        "question": ["TLS"],
+        "answer": [
+            "Transport Layer Security; a cryptographic protocol designed to provide communications security over a computer network"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_162": {
+        "question": ["UI"],
+        "answer": ["User Interface"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_163": {
+        "question": ["US"],
+        "answer": ["United States"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_164": {
+        "question": ["VCS"],
+        "answer": [
+            "Veritas Cluster Server (rebranded as Veritas Infoscale Availability but also known as VCS) is a high-availability cluster software for Unix, Linux and Microsoft Windows computer systems, created by Veritas Technologies. It provides application cluster capabilities to systems running other applications, including databases, network file sharing, and electronic commerce websites."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_165": {
+        "question": ["Veeam"],
+        "answer": [
+            "IBM partner providing backup and replication for cloud, virtual and physical workloads. Suggested for IBM Cloud for Financial Services™ backup. Reference: https://www.veeam.com/"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_166": {
+        "question": ["Veeam Data Mover Services"],
+        "answer": [
+            "Veeam Data Mover Service is a component that gives access to a host by enabling Veeam Data Movers – agents that are responsible for VM data processing and transfer. Reference: https://helpcenter.veeam.com/docs/backup/vsphere/veeam_transport_service.html?ver=110"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_167": {
+        "question": ["Vermeg"],
+        "answer": [
+            "IBM partner providing financial software including securities processing software and fund administration systems. Reference: www.vermeg.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_168": {
+        "question": ["Virtual Private Cloud (VPC)"],
+        "answer": [
+            "A virtual private cloud is an on-demand configurable pool of shared resources allocated within a public cloud environment, providing a certain level of isolation between the different organizations using the resources."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_169": {
+        "question": ["VMS"],
+        "answer": [
+            "Virtual Machine System; a virtual machine that provides a complete system platform and supports the execution of a complete operating system (OS)"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_170": {
+        "question": ["VMW"],
+        "answer": ["VMware. Reference: https://www.vmware.com/"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_171": {
+        "question": ["VPC"],
+        "answer": ["Virtual Private Cloud"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_172": {
+        "question": ["vRealize Network Insight"],
+        "answer": [
+            "VMware offering; an optimized, highly available and secure network infrastructure across hybrid and multicloud environments"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_173": {
+        "question": ["vSAN"],
+        "answer": [
+            "Enterprise-class, storage virtualization software creating a virtual storage area network, a collection of ports from a set of connected fibre channel switches, that form a virtual fabric. Ports within a single switch can be partitioned into multiple VSANs, despite sharing hardware resources."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_174": {
+        "question": ["VSI"],
+        "answer": ["Virtual Server Infrastructure"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_175": {
+        "question": ["WW"],
+        "answer": ["World-wide"]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_176": {
+        "question": ["WDEK"],
+        "answer": [
+            "Wrapped Data Encryption Key; Key Wrap constructions are a class of symmetric encryption algorithms designed to encapsulate (encrypt) cryptographic key material. The Key Wrap algorithms are intended for applications such as protecting keys while in untrusted storage or transmitting keys over untrusted communications networks. The constructions are typically built from standard primitives such as block ciphers and cryptographic hash functions."
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_177": {
+        "question": ["Z"],
+        "answer": [
+            "IBM mainframe enterprise platform for mission-critical applications"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_178": {
+        "question": ["Zafin"],
+        "answer": [
+            "IBM partner providing relationship-based pricing to banks and financial institutions. Reference: www.zafin.com"
+        ]
+    },
+    "ba1f5494-0884-42ad-8368-bd4dc86794a8_179": {
+        "question": ["Zerto"],
+        "answer": [
+            "An IT resilience platform, converging disaster recovery, backup and cloud mobility in one simple, scalable platform. Recommended for disaster recovery for IBM Cloud for Financial Services™Reference: https://www.zerto.com/"
+        ]
+    }
+}

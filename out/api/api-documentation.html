@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>API Documentation</title>
+
+        <script src="scripts/prettify/prettify.js"></script>
+        <script src="scripts/prettify/lang-css.js"></script>
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link
+            type="text/css"
+            rel="stylesheet"
+            href="styles/prettify-tomorrow.css"
+        />
+        <link
+            type="text/css"
+            rel="stylesheet"
+            href="styles/jsdoc-default.css"
+        />
+    </head>
+
+    <body>
+        <div id="main">
+            <h1 class="page-title">Chatbot API</h1>
+
+            <section>
+                <header></header>
+
+                <article>
+                    <div class="container-overview"></div>
+
+                    <h3 class="subsection-title">API Endpoints</h3>
+
+                    <h4 class="name" id="createsession">
+                        Create Session
+                        <span class="type-signature"> /createsession</span>
+                    </h4>
+
+                    <div class="description">
+                        Create a chatbot session. A chatbot session should be
+                        initialised for each individual user.
+                    </div>
+
+                    <h5>Example Request:</h5>
+
+                    <pre
+                        class="prettyprint source"
+                    ><code>fetch("/createsession", {
+    method: "POST"
+})
+.then(response => response.json())
+.then(result => {
+    console.log(result)
+})
+.catch(err => {
+    console.error(err)
+})</code></pre>
+
+                    <dl class="details"></dl>
+
+                    <h5>Response:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>sessionId</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">string</span>
+                                </td>
+
+                                <td class="description last">
+                                    The IBM Watson Assistant session id
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <dl class="details"></dl>
+
+                    <h5>Example Response:</h5>
+
+                    <div class="description" style="margin-bottom: 0em">
+                        HTTP Status 201:
+                    </div>
+                    <pre
+                        class="prettyprint source"
+                        style="margin-top: 0.5em"
+                    ><code>{
+    sessionId: "af11c111-860d-4071-b6d2-550bf20c016e"
+}</code></pre>
+
+                    <dl class="details"></dl>
+
+                    <h5>Error Codes:</h5>
+
+                    <dl class="details">
+                        <dt class="tag-source">HTTP Status 500:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>Failed to initialise session</li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id="deletesession">
+                        Delete Session
+                        <span class="type-signature"> /deletesession</span>
+                    </h4>
+
+                    <div class="description">
+                        Delete a chatbot session before it times out. The
+                        chatbot session will automatically be deleted after 1
+                        hour of inactivity.
+                    </div>
+
+                    <h5>Request Body:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>sessionId</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">string</span>
+                                </td>
+
+                                <td class="description last">
+                                    The id of the IBM Watson Assistant session
+                                    to delete
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <dl class="details"></dl>
+
+                    <h5>Example Request:</h5>
+
+                    <pre
+                        class="prettyprint source"
+                    ><code>fetch("/deletesession", {
+    method: "POST",
+    header: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        sessionId: "af11c111-860d-4071-b6d2-550bf20c016e"
+    })
+})
+.then(() => {
+    // Success
+})
+.catch(err => {
+    console.error(err)
+})</code></pre>
+
+                    <dl class="details"></dl>
+
+                    <h5>Example Response:</h5>
+
+                    <div class="description" style="margin-bottom: 0em">
+                        HTTP Status 204:
+                    </div>
+                    <pre
+                        class="prettyprint source"
+                        style="margin-top: 0.5em"
+                    ><code>"No Content"</code></pre>
+
+                    <dl class="details"></dl>
+
+                    <h5>Error Codes:</h5>
+
+                    <dl class="details">
+                        <dt class="tag-source">HTTP Status 400:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    Missing <code>sessionId</code> parameter
+                                </li>
+                            </ul>
+                        </dd>
+                        <dt class="tag-source">HTTP Status 500:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>Failed to delete session</li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id="querychatbot">
+                        Query Chatbot
+                        <span class="type-signature"> /send</span>
+                    </h4>
+
+                    <div class="description">
+                        Request an answer from the chatbot for a given query.
+                    </div>
+
+                    <h5>Request Body:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>sessionId</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">string</span>
+                                </td>
+
+                                <td class="description last">
+                                    The id of the IBM Watson Assistant session
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="name"><code>query</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">string</span>
+                                </td>
+
+                                <td class="description last">
+                                    The query to ask the chatbot
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <dl class="details"></dl>
+
+                    <h5>Example Request:</h5>
+
+                    <pre class="prettyprint source"><code>fetch("/send", {
+    method: "POST",
+    header: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        sessionId: "af11c111-860d-4071-b6d2-550bf20c016e",
+        query: "What is IBM Cloud for Financial Services?"
+    })
+})
+.then(response => response.json())
+.then(result => {
+    console.log(result)
+})
+.catch(err => {
+    console.error(err)
+})</code></pre>
+
+                    <dl class="details"></dl>
+
+                    <h5>Response:</h5>
+
+                    <div class="description" style="margin-bottom: 0.5em">
+                        A list of answers, each with the following parameters:
+                    </div>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name">
+                                    <code
+                                        >documentId<span class="type-signature">
+                                            (optional)</span
+                                        ></code
+                                    >
+                                </td>
+
+                                <td class="type">
+                                    <span class="param-type">string</span>
+                                </td>
+
+                                <td class="description last">
+                                    The id of the document that the answer comes
+                                    from. Only set if answer originates from
+                                    Watson Discovery.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="name">
+                                    <code
+                                        >header<span class="type-signature">
+                                            (optional)</span
+                                        ></code
+                                    >
+                                </td>
+
+                                <td class="type">
+                                    <span class="param-type">string</span>
+                                </td>
+
+                                <td class="description last">
+                                    The answer's header. Only set if answer
+                                    originates from Watson Discovery.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="name"><code>text</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">string</span>
+                                </td>
+
+                                <td class="description last">
+                                    The answer's main body
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="name"><code>confidence</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">number</span>
+                                </td>
+
+                                <td class="description last">
+                                    The answer's confidence. Ranges from 0 to 1.
+                                    Defaults to 1.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <dl class="details"></dl>
+
+                    <h5>Example Response:</h5>
+
+                    <div class="description" style="margin-bottom: 0em">
+                        HTTP Status 200:
+                    </div>
+                    <pre
+                        class="prettyprint source"
+                        style="margin-top: 0.5em"
+                    ><code>// Answers from Watson Discovery
+[
+    {
+        documentId: "55cd47b1-3847-430b-ba28-1739e0654576",
+        header: "Cloud for Financial Services",
+        text: "IBM Cloud for Financial Services is a ...",
+        confidence: 0.12
+    },
+    {
+        ...
+    },
+]</code></pre>
+
+                    <div class="description">OR</div>
+
+                    <div class="description" style="margin-bottom: 0em">
+                        HTTP Status 200:
+                    </div>
+                    <pre
+                        class="prettyprint source"
+                        style="margin-top: 0.5em"
+                    ><code>// Answer from Watson Assistant
+[
+    {
+        text: "I'm glad I could help!",
+        confidence: 1
+    }
+]</code></pre>
+
+                    <dl class="details"></dl>
+
+                    <h5>Error Codes:</h5>
+
+                    <dl class="details">
+                        <dt class="tag-source">HTTP Status 400:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    Missing <code>sessionId</code> and/or
+                                    <code>query</code> parameter
+                                </li>
+                            </ul>
+                        </dd>
+                        <dt class="tag-source">HTTP Status 500:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>Failed to retrieve answer to query</li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id="rateanswer">
+                        Rate Answer
+                        <span class="type-signature"> /rate</span>
+                    </h4>
+
+                    <div class="description">
+                        Rate an answer returned from a query.
+                    </div>
+
+                    <h5>Request Body:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>query</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">string</span>
+                                </td>
+
+                                <td class="description last">
+                                    The query used to retrieve answer
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="name"><code>documentId</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">string</span>
+                                </td>
+
+                                <td class="description last">
+                                    The id of the document that the answer came
+                                    from
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="name">
+                                    <code
+                                        >relevant<span class="type-signature">
+                                            (nullable)</span
+                                        ></code
+                                    >
+                                </td>
+
+                                <td class="type">
+                                    <span class="param-type">boolean</span>
+                                </td>
+
+                                <td class="description last">
+                                    Was the answer relevant to the query. If set
+                                    to <code>null</code>, no new rating is added
+                                    to the answer however a previous rating can
+                                    be still removed by setting
+                                    <code>oldRelevant</code> to either
+                                    <code>true</code> or <code>false</code>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="name">
+                                    <code
+                                        >oldRelevant<span
+                                            class="type-signature"
+                                        >
+                                            (nullable)</span
+                                        ></code
+                                    >
+                                </td>
+
+                                <td class="type">
+                                    <span class="param-type">boolean</span>
+                                </td>
+
+                                <td class="description last">
+                                    A previous rating that should be removed or
+                                    replaced. Set to <code>null</code> if there
+                                    is not a previous rating that needs
+                                    removing.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <dl class="details"></dl>
+
+                    <h5>Example Request:</h5>
+
+                    <pre class="prettyprint source"><code>fetch("/rate", {
+    method: "POST",
+    header: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        query: "What is IBM Cloud for Financial Services?",
+        documentId: "55cd47b1-3847-430b-ba28-1739e0654576",
+        relevant: true,
+        oldRelevant: null
+    })
+})
+.then(() => {
+    // Success
+})
+.catch(err => {
+    console.error(err)
+})</code></pre>
+
+                    <dl class="details"></dl>
+
+                    <h5>Example Response:</h5>
+
+                    <div class="description" style="margin-bottom: 0em">
+                        HTTP Status 204:
+                    </div>
+                    <pre
+                        class="prettyprint source"
+                        style="margin-top: 0.5em"
+                    ><code>"No Content"</code></pre>
+
+                    <dl class="details"></dl>
+
+                    <h5>Error Codes:</h5>
+
+                    <dl class="details">
+                        <dt class="tag-source">HTTP Status 400:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    Missing <code>query</code> and/or
+                                    <code>documentId</code> parameter
+                                </li>
+                            </ul>
+                        </dd>
+                        <dt class="tag-source">HTTP Status 500:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>Failed to update the answer's rating</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </article>
+            </section>
+        </div>
+
+        <nav>
+            <h2><a href="api-documentation.html">Home</a></h2>
+            <h3>API Endpoints</h3>
+            <ul>
+                <li><a href="#createsession">Create Session</a></li>
+                <li><a href="#deletesession">Delete Session</a></li>
+                <li><a href="#querychatbot">Query Chatbot</a></li>
+                <li><a href="#rateanswer">Rate Answer</a></li>
+            </ul>
+        </nav>
+
+        <br class="clear" />
+
+        <footer>
+            Documentation generated by
+            <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Mar
+            07 2022 16:49:08 GMT+0000 (Greenwich Mean Time)
+        </footer>
+
+        <script>
+            prettyPrint()
+        </script>
+        <script src="scripts/linenumber.js"></script>
+    </body>
+</html>

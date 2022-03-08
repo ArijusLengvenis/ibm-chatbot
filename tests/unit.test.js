@@ -14,9 +14,9 @@ describe("Unit test suite", () => {
         it("tests (POST) /createsession endpoint", async () => {
             const response = await request(app).post("/createsession")
             expect(Object.keys(response.body).length).toEqual(1)
-            expect(typeof response.body.session_id).toEqual("string")
+            expect(typeof response.body.sessionId).toEqual("string")
             expect(response.statusCode).toBe(201)
-            session_id = response.body.session_id
+            session_id = response.body.sessionId
         })
     })
 
@@ -24,11 +24,11 @@ describe("Unit test suite", () => {
         it("tests (POST) /send endpoint - valid question", async () => {
             const response = await request(app).post("/send").send({
                 sessionId: session_id,
-                message: "What is cloud for financial services?"
+                query: "What is cloud for financial services?"
             })
             expect(Object.keys(response.body).length).toBeGreaterThanOrEqual(1)
             expect(Object.keys(response.body).length).toBeLessThanOrEqual(5)
-            expect(typeof response.body[0].id).toEqual("string")
+            expect(typeof response.body[0].documentId).toEqual("string")
             expect(typeof response.body[0].header).toEqual("string")
             expect(typeof response.body[0].text).toEqual("string")
             expect(typeof response.body[0].confidence).toEqual("number")
@@ -39,12 +39,12 @@ describe("Unit test suite", () => {
 
         it("tests (POST) /send endpoint - invalid sessionId", async () => {
             const response = await request(app).post("/send").send({
-                message: "What is cloud for financial services?"
+                query: "What is cloud for financial services?"
             })
             expect(Object.keys(response.body).length).toEqual(1)
             expect(typeof response.body.err).toEqual("string")
             expect(response.body.err).toEqual("Session Id is missing")
-            expect(response.statusCode).toBe(500)
+            expect(response.statusCode).toBe(400)
         })
 
         it("tests (POST) /send endpoint - invalid message", async () => {
@@ -53,25 +53,25 @@ describe("Unit test suite", () => {
             })
             expect(Object.keys(response.body).length).toEqual(1)
             expect(typeof response.body.err).toEqual("string")
-            expect(response.body.err).toEqual("Message is missing")
-            expect(response.statusCode).toBe(500)
+            expect(response.body.err).toEqual("Query is missing")
+            expect(response.statusCode).toBe(400)
         })
 
         it("tests (POST) /send endpoint - empty string message", async () => {
             const response = await request(app).post("/send").send({
                 sessionId: session_id,
-                message: ""
+                query: ""
             })
             expect(Object.keys(response.body).length).toEqual(1)
             expect(typeof response.body.err).toEqual("string")
-            expect(response.body.err).toEqual("Message is missing")
-            expect(response.statusCode).toBe(500)
+            expect(response.body.err).toEqual("Query is missing")
+            expect(response.statusCode).toBe(400)
         })
 
         it("tests (POST) /send endpoint - random letter message", async () => {
             const response = await request(app).post("/send").send({
                 sessionId: session_id,
-                message: "jaksgnfdpsfgpohklbj"
+                query: "jaksgnfdpsfgpohklbj"
             })
             expect(Object.keys(response.body).length).toEqual(1)
             expect(typeof response.body[0].text).toEqual("string")
