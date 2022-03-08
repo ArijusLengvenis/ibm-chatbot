@@ -236,7 +236,7 @@ class APIResponse {
 
     /**
      * Convert to JSON format
-     * @returns {any}
+     * @returns {object}
      */
     json() {
         return {
