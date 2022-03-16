@@ -194,6 +194,7 @@ const replacementDictionary = {
     "{{site.data.keyword.vsi_is_full}}":
         "IBM Cloud® Virtual Servers for Virtual Private Cloud"
 }
+
 //Tested - Works
 function replaceString(string, pattern, replacement) {
     return string.replace(pattern, replacement)
