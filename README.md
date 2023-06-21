@@ -41,7 +41,7 @@ For a visual representation of the file structure, refer to Figure 3 in the ![us
 ![Flowchart diagram](https://github.com/ArijusLengvenis/ibm-chatbot/blob/main/img/flowchart.png?raw=true)
 
 ## Usage
-Please refer to the ![user manual](https://github.com/ArijusLengvenis/ibm-chatbot/main/docs/user_manual.pdf) for detailed instructions on using the chatbot and understanding its functionality. The manual provides step-by-step guidance on interacting with the chatbot, utilizing its features, the API documentation, testing, maintenance details, possible future work and more.
+Please refer to the ![user manual](https://github.com/ArijusLengvenis/ibm-chatbot/blob/main/docs/user_manual.pdf) for detailed instructions on using the chatbot and understanding its functionality. The manual provides step-by-step guidance on interacting with the chatbot, utilizing its features, the API documentation, testing, maintenance details, possible future work and more.
 
 ## Testing
 
